@@ -1,0 +1,33 @@
+import React from 'react';
+import { Page } from '../components/Page';
+import { NavTabDef } from '../enums/NavTabDef';
+
+export default class ReturnsAndExchangesPage extends React.PureComponent {
+
+    public render(): JSX.Element {
+
+        return (
+
+            <Page title={NavTabDef.RETURNS_EXCHANGES}  currentTab={NavTabDef.RETURNS_EXCHANGES}>
+
+                <h2>Returns & Exchanges</h2>
+
+                <p>We happily accept returns and size exchanges!</p>
+
+                <h3>Conditions</h3>
+                <ul>
+                    <li>The product must be unworn, unwashed, and in the same condition as it was when you received it.</li>
+                    <li>The shipment to us should be postmarked within 30 days of your receipt of the original shipment.</li>
+                </ul>
+
+                <h3>Shipping</h3>
+                <ul>
+                        <li>For exchanges, we'll cover the cost of shipping the new skirt to you.</li>
+                        <li>For returns, the shipping charges you originally paid will be refunded.</li>
+                        <li>You are responsible for the cost of shipping the exchanged or returned item back to us.</li>
+                </ul>
+
+            </Page>
+        );
+    }
+}

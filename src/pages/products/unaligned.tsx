@@ -1,0 +1,138 @@
+import React from 'react';
+import { InventoryState, ProductPage } from '../../components/ProductPage';
+import ImgButton from '../../images/button.png';
+import ImgUnalignedColors from '../../images/colors_black_khaki_grey.png';
+import ImgFabricDenim from '../../images/fabric_denim_9_5_oz.png';
+import ImgHipPockets from '../../images/hip_pockets.png';
+import ImgHipPocketsMeasured from '../../images/hip_pockets_measured.png';
+import ImgLaydownBack from '../../images/laydown_back.png';
+import ImgLaydownFront from '../../images/laydown_front.png';
+import ImgLaydownSide from '../../images/laydown_side.png';
+import ImgLineDrawing from '../../images/line_drawing.png';
+import ImgOneBack from '../../images/one_back.png';
+import ImgOneJump from '../../images/one_jump.png';
+import ImgTwoFrontSide from '../../images/two_front_side.png';
+import ImgTwoLean from '../../images/two_lean.png';
+import ImgUnaligned01R from '../../images/unaligned01-r.png';
+import ImgUnaligned02 from '../../images/unaligned02.png';
+import ImgWaistDetail from '../../images/waist_detail.png';
+import ImgZipperPockets from '../../images/zipper_pockets.png';
+import ImgZipperPocketsMeasured from '../../images/zipper_pockets_measured.png';
+import { ColorSize } from '../../util/ColorSize';
+
+export default class UnalignedSkirtProductPage extends React.PureComponent {
+
+    public render(): JSX.Element {
+
+        return (
+
+            <ProductPage
+                name={'Unaligned Skirt'}
+                details={
+                    <>
+                        <p>The Unaligned is a sturdy, unique, knee-length skirt with multiple large pockets.</p>
+
+                        <p>Made in the USA of imported fabric.</p>
+
+                        <h4>Style</h4>
+
+                        <ul>
+                            <li>Two large hip pockets</li>
+                            <li>Two large lower side pockets with zippers</li>
+                            <li>Distinctive asymmetric seams</li>
+                            <li>Seven belt loops: three in front, four in back (two in center back). Note: some photos are of a prototype with only five belt loops; actual product has seven.</li>
+                            <li>Colors: black, khaki, grey</li>
+                        </ul>
+
+                        <h4>Materials</h4>
+
+                        <ul>
+                            <li>Main fabric: 9.5-ounce brushed bull denim
+                                <ul>
+                                    <li>Denim: durable and comfortable</li>
+                                    <li>9.5-ounce: lighter than typical jeans denim (12-16 ounces), so it drapes better (more flowy) yet is still tough</li>
+                                    <li>Bull: has a solid-color look because it's made from yarn that's all the same color. Unlike classic denim, which has a two-color look because its warp yarns are blue and its weft yarns are white.</li>
+                                    <li>Brushed: for a soft touch</li>
+                                </ul>
+                            </li>
+                            <li>Fly zipper: YKK square metal jeans zipper with nickel finish</li>
+                            <li>Lower pocket zippers: YKK nylon coil zippers, with color matched to fabric</li>
+                            <li>Button: metal, jeans-style, with Skirtcraft logo and dark-grey nickel finish</li>
+                        </ul>
+
+                        <br/>
+                        <p>Note: On skirts made in the second production run, the two rear belt loops are shifted about two inches to the left of where they're meant to be: centered at the top of the diagonal seam rather than at the garment's true center. This includes all grey Unaligned skirts, and black Unaligned skirt sizes 30-31, 32-33, 34-35, and 40-41.</p>
+                    </>
+                }
+                colors={[
+                    {
+                        name: 'Black',
+                        paypalButtonId: 'LW3HR3QTX7FHU',
+                    },
+                    {
+                        name: 'Khaki',
+                        paypalButtonId: 'GRAPRW8XXKXF4',
+                    },
+                    {
+                        name: 'Grey',
+                        paypalButtonId: 'ZX5G325WH6LJ4',
+                    },
+                ]}
+                sizes={[
+                    '30-31 inches',
+                    '32-33 inches',
+                    '34-35 inches',
+                    '36-37 inches',
+                    '38-39 inches',
+                    '40-41 inches',
+                    '42-43 inches',
+                    '44-45 inches',
+                ]}
+                specialInventoryStates={new Map<ColorSize, InventoryState>([
+                    [
+                        new ColorSize('Khaki', '30-31 inches'),
+                        InventoryState.FEW_LEFT,
+                    ], [
+                        new ColorSize('Khaki', '34-35 inches'),
+                        InventoryState.SOLD_OUT,
+                    ], [
+                        new ColorSize('Khaki', '40-41 inches'),
+                        InventoryState.SOLD_OUT,
+                    ], [
+                        new ColorSize('Khaki', '42-43 inches'),
+                        InventoryState.SOLD_OUT,
+                    ], [
+                        new ColorSize('Grey', '34-35 inches'),
+                        InventoryState.FEW_LEFT,
+                    ],
+                ])}
+                priceUsDollars={75}
+                photoUrls={[
+                    ImgUnaligned01R,
+                    ImgUnalignedColors,
+                    ImgUnaligned02,
+                    ImgTwoLean,
+                    ImgOneBack,
+                    ImgTwoFrontSide,
+                    ImgLaydownFront,
+                    ImgLaydownBack,
+                    ImgLaydownSide,
+                    ImgWaistDetail,
+                    ImgHipPockets,
+                    ImgZipperPockets,
+                    ImgFabricDenim,
+                    ImgLineDrawing,
+                    ImgHipPocketsMeasured,
+                    ImgZipperPocketsMeasured,
+                    ImgButton,
+                    ImgOneJump,
+                ]}
+                flickrAlbum={{
+                    url: 'https://www.flickr.com/photos/skirtcraft/albums/72157660573573463',
+                    mainPhotoUrl: 'https://farm2.staticflickr.com/1492/24029798925_bb4273cf11_n.jpg',
+                }}
+                testimonialCategoryCode={'ua'}
+            />
+        );
+    }
+}

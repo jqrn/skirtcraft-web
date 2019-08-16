@@ -1,0 +1,63 @@
+{
+  "name": "skirtcraft-web",
+  "private": true,
+  "description": "Skirtcraft website",
+  "version": "3.0.0",
+  "author": "Joe Quarion <joe@skirtcraft.com>",
+  "dependencies": {
+    "babel-plugin-styled-components": "^1.10.6",
+    "gatsby": "^2.9.4",
+    "gatsby-cli": "^2.7.30",
+    "gatsby-image": "^2.1.4",
+    "gatsby-plugin-google-analytics": "^2.1.7",
+    "gatsby-plugin-manifest": "^2.2.5",
+    "gatsby-plugin-offline": "^2.2.6",
+    "gatsby-plugin-react-helmet": "^3.0.12",
+    "gatsby-plugin-s3": "^0.3.1",
+    "gatsby-plugin-sharp": "^2.1.5",
+    "gatsby-plugin-styled-components": "^3.1.2",
+    "gatsby-plugin-tslint": "0.0.2",
+    "gatsby-plugin-typescript": "^2.1.0",
+    "gatsby-source-filesystem": "^2.0.39",
+    "gatsby-source-tumblr": "^0.1.2",
+    "gatsby-transformer-sharp": "^2.1.21",
+    "moment": "^2.24.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-helmet": "^5.2.1",
+    "styled-components": "^4.3.2",
+    "ts-node": "^8.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.23",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-helmet": "^5.0.8",
+    "@types/styled-components": "^4.1.18",
+    "tslint": "^5.18.0",
+    "tslint-loader": "^3.5.4",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.5.2"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "scripts": {
+    "clean": "gatsby clean",
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
+    "type-check": "tsc --noEmit",
+    "lint": "tslint --project .",
+    "deploy": "npm run clean && npm run build && gatsby-plugin-s3 deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  }
+}

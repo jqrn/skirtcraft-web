@@ -1,0 +1,41 @@
+body, div {
+    margin: 0;
+}
+
+body, input, select, option {
+    font-family: 'Muli', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+h1, h2, h3, h4 {
+    text-transform: uppercase;
+}
+
+h1, h2 {
+    margin-top: 0;
+}
+
+a {
+    user-select: none;
+}
+
+p, ul {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+table, th, td {
+    border: 1px solid black;
+ }
+
+ table.simple-table {
+    border: none;
+}
+
+table.simple-table td {
+    border: none;
+    padding: 0.5em 0.5em 0 0;
+}

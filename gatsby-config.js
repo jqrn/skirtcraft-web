@@ -1,0 +1,61 @@
+require("dotenv").config({
+    path: `.env.${process.env.NODE_ENV}`,
+  })
+
+module.exports = {
+  siteMetadata: {
+    title: `Skirtcraft`,
+    description: `Unisex skirts with large pockets`,
+    author: `@jqrn`,
+  },
+  plugins: [
+    `gatsby-plugin-react-helmet`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/src/images`,
+      },
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-typescript`,
+    `gatsby-plugin-tslint`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Skirtcraft`,
+        short_name: `Skirtcraft`,
+        start_url: `/`,
+        background_color: `#501B5E`,
+        theme_color: `#501B5E`,
+        display: `minimal-ui`,
+        icon: `src/images/icon.png`,
+      },
+    },
+    'gatsby-plugin-offline',
+    {
+      resolve: `gatsby-plugin-s3`,
+      options: {
+        bucketName: 'skirtcraft.com'
+      },
+    },
+    {
+        resolve: `gatsby-plugin-google-analytics`,
+        options: {
+            trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+            head: true,
+            anonymize: true,
+            respectDNT: true,
+        },
+      },
+      {
+        resolve: `gatsby-source-tumblr`,
+        options: {
+          blogIdentifier: `skirtcraft`,
+          consumerKey: process.env.TUMBLR_API_KEY,
+        },
+      },
+  ],
+}
