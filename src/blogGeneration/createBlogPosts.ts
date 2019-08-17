@@ -1,5 +1,5 @@
 import { resolve } from 'path';
-import { GatsbyCreatePages } from './types';
+import { GatsbyCreatePages } from './blogGenerationTypes';
 
 interface TumblrGraphqlEdge {
     node: {
@@ -32,7 +32,7 @@ export const createBlogPosts: GatsbyCreatePages = async ({
 
     const filteredTumblrPostEdges = allTumblrPosts.data.allTumblrPost.edges.filter((edge: any) => {
         const node = edge.node;
-        return node.tags.includes('unspooled-yarns') && node.title != undefined && node.title.length > 0 && node.slug != undefined && node.slug.length > 0;
+        return node.tags.includes(process.env.TUMBLR_SITEBLOG_TAG) && node.title != undefined && node.title.length > 0 && node.slug != undefined && node.slug.length > 0;
     });
 
     // create individual post pages

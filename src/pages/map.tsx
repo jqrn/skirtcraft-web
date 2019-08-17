@@ -17,7 +17,7 @@ export default class MapPage extends React.PureComponent {
                 <p>The latitudes and longitudes shown in this map are <b>not</b> derived from precise addresses; they're city/town locations only.  Purple markers indicate places to which we've sent multiple orders.</p><br/>
 
                 <AspectRatio>
-                    <MapIframe src='https://www.google.com/maps/d/u/2/embed?mid=1ERs5vdTVwmLQzcqBnP0FfwITo90&z=2&ll=22,20'/>
+                    <MapIframe src={process.env.GOOGLE_MAP_URL}/>
                 </AspectRatio>
 
             </Page>

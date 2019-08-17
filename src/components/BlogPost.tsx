@@ -33,10 +33,10 @@ export const BlogPost = React.memo((props: Props) => {
                     <Link to={`/blog-posts/${post.slug}`}>{moment(post.date, 'YYYY-MM-DD HH:mm:ss').format('dddd, MMMM Do, YYYY')}</Link>
                 </span>
                 &nbsp;by&nbsp;
-                <span>Joe</span>
+                <span>{process.env.BLOG_BY_NAME}</span>
             </Byline>
 
-            <SocialShareAnchor href={`https://twitter.com/intent/tweet?text=${postTitleEncoded}&url=${postUrlEncoded}&via=skirtcraft`} target='_blank'>
+            <SocialShareAnchor href={`https://twitter.com/intent/tweet?text=${postTitleEncoded}&url=${postUrlEncoded}&via=${process.env.TWITTER_HANDLE}`} target='_blank'>
                 <img src={ImgTwitterShare} width={24} alt='Share on Twitter'/>
             </SocialShareAnchor>
 

@@ -28,7 +28,7 @@ export class Page extends React.Component<Props> {
 
                     <meta name='description' content='Unisex skirts with large pockets'/>
                     <meta name='theme-color' content='#501B5E'/>
-                    <meta name='google-site-verification' content='uHzz-YE_sXeH7O9_gPjULkYIezVqIe7jM__40uhRD64'/>
+                    <meta name='google-site-verification' content={process.env.GOOGLE_SITE_VERIFICATION_CODE}/>
                     <meta property='og:site_name' content='Skirtcraft - Unisex skirts with large pockets'/>
                     <meta property='og:image' content={this.props.openGraphImageUrl || `${BASE_URL}/images/pair.png'`}/>
                     {this.props.openGraphImageUrl == undefined && <meta property='og:image:width' content='1200'/>}

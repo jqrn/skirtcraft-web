@@ -21,7 +21,7 @@ export default class ProductsPage extends React.PureComponent {
                         <Link to='/products/unaligned'>
                             <img src={ImgUnaligned01} />
                             <ProductTitle>Unaligned Skirt</ProductTitle>
-                            <ProductPrice>$75 (USD)</ProductPrice>
+                            <ProductPrice>${process.env.PRICE_US_DOLLARS_UNALIGNED} (USD)</ProductPrice>
                         </Link>
                     </ProductListing>
 
@@ -29,7 +29,7 @@ export default class ProductsPage extends React.PureComponent {
                         <Link to='/products/aqueous'>
                             <img src={ImgAqueous21s} />
                             <ProductTitle>Aqueous Skirt</ProductTitle>
-                            <ProductPrice>$75 (USD)</ProductPrice>
+                            <ProductPrice>${process.env.PRICE_US_DOLLARS_AQUEOUS} (USD)</ProductPrice>
                         </Link>
                     </ProductListing>
 

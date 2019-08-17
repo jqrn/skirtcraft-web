@@ -74,15 +74,15 @@ export default class AqueousSkirtProductPage extends React.PureComponent {
                 colors={[
                     {
                         name: 'Black',
-                        paypalButtonId: 'Z8VUPD6J39PBU',
+                        paypalButtonId: process.env.PAYPAL_BUTTON_ID_AQUEOUS_BLACK!,
                     },
                     {
                         name: 'Purple',
-                        paypalButtonId: 'APKP98KMJ6PNS',
+                        paypalButtonId: process.env.PAYPAL_BUTTON_ID_AQUEOUS_PURPLE!,
                     },
                     {
                         name: 'Grey',
-                        paypalButtonId: '257GS6P9Z7YU8',
+                        paypalButtonId: process.env.PAYPAL_BUTTON_ID_AQUEOUS_GREY!,
                     },
                 ]}
                 sizes={[
@@ -97,7 +97,7 @@ export default class AqueousSkirtProductPage extends React.PureComponent {
                     '44-45 inches',
                 ]}
                 specialInventoryStates={new Map<ColorSize, InventoryState>()}
-                priceUsDollars={75}
+                priceUsDollars={parseFloat(process.env.PRICE_US_DOLLARS_AQUEOUS!)}
                 photoUrls={[
                     ImgAqueous21,
                     ImgAqueousColors,
@@ -117,8 +117,8 @@ export default class AqueousSkirtProductPage extends React.PureComponent {
                     ImgAqueous06,
                 ]}
                 flickrAlbum={{
-                    url: 'https://www.flickr.com/photos/skirtcraft/albums/72157676289754098',
-                    mainPhotoUrl: 'https://farm5.staticflickr.com/4881/31210952007_59c3ed83a4_z.jpg',
+                    url: process.env.FLICKR_ALBUM_URL_AQUEOUS!,
+                    mainPhotoUrl: process.env.FLICKR_ALBUM_MAIN_PHOTO_URL_AQUEOUS!,
                 }}
                 testimonialCategoryCode={'aq'}
             />
