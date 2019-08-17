@@ -38,7 +38,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-s3`,
       options: {
-        bucketName: 'skirtcraft.com'
+        bucketName: process.env.AWS_S3_BUCKET
       },
     },
     {
