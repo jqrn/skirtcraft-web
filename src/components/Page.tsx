@@ -33,11 +33,12 @@ export class Page extends React.Component<Props> {
                     <meta property='og:image' content={this.props.openGraphImageUrl || `${BASE_URL}/images/pair.png'`}/>
                     {this.props.openGraphImageUrl == undefined && <meta property='og:image:width' content='1200'/>}
                     {this.props.openGraphImageUrl == undefined && <meta property='og:image:height' content='620'/>}
+                    <meta name='twitter:card' content='summary' />
+                    <meta name='twitter:site' content='@skirtcraft' />
+                    <meta name='twitter:creator' content='@skirtcraft' />
 
                     <link href='https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i&display=swap' rel='stylesheet' type='text/css'/>
                     <link rel='icon' href={ImgFavicon}/>
-
-                    <body />
                 </Helmet>
                 <Header />
                 <NavBar currentTab={this.props.currentTab}/>
