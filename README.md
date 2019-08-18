@@ -1,6 +1,6 @@
 # Summary
 
-The Skirtcraft website: https://skirtcraft.com.
+The [Skirtcraft website](https://skirtcraft.com).
 
 Build with Gatsby, React, and TypeScript.
 
