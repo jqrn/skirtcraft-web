@@ -80,11 +80,12 @@ const Container = styled.div`
 `;
 
 const TotalLabel = styled.span`
+    font-size: 110%;
     font-style: italic;
 `;
 
 const TotalValue = styled.span`
-    font-size: 120%;
+    font-size: 125%;
     font-style: italic;
 `;
 
@@ -102,7 +103,7 @@ const Button = styled.button`
     padding: 0.5em;
     text-align: center;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 90%;
     text-transform: uppercase;
     cursor: ${(props: { disabled?: boolean }) => props.disabled ? 'default' : 'pointer'};
     transition: background 0.3s;
