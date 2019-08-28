@@ -98,7 +98,7 @@ const ButtonContainer = styled.div`
 
 const Button = styled.button`
     margin: 0 0.3em;
-    border:  ${(props: { disabled?: boolean }) => props.disabled ? undefined : '1px solid gray'};
+    border:  ${(props: { disabled?: boolean }) => props.disabled ? '1px solid lightgray' : '1px solid gray'};
     border-radius: 0.3em;
     padding: 0.5em;
     text-align: center;
@@ -106,10 +106,11 @@ const Button = styled.button`
     font-size: 90%;
     text-transform: uppercase;
     cursor: ${(props: { disabled?: boolean }) => props.disabled ? 'default' : 'pointer'};
+    background: white;
     transition: background 0.3s;
     user-select: none;
     &:hover {
-        background: ${(props: { disabled?: boolean}) => props.disabled ? undefined : '#eee'};
+        background: ${(props: { disabled?: boolean}) => props.disabled ? 'white' : '#eee'};
     }
     &:focus {
         outline:0;
