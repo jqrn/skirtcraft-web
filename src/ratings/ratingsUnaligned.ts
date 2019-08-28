@@ -145,5 +145,6 @@ export const RATINGS_UNALIGNED: Rating[] = [
     { date: '2019-08-24', ratingStars: 5 },
     { date: '2019-08-24', ratingStars: 5, review: 'Nice local craft' },
     { date: '2019-08-24', ratingStars: 4 },
-    { date: '2019-08-24', ratingStars: 5 }
+    { date: '2019-08-24', ratingStars: 5 },
+    { date: '2019-08-25', ratingStars: 4 }
 ];

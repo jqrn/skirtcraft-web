@@ -4,8 +4,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { DestinationPrices } from '../components/DestinationPrices';
 import { Page } from '../components/Page';
+import { Rating } from '../ratings/Rating';
 import { ColorSize } from '../util/ColorSize';
 import { addScriptToPage } from '../util/scriptUtils';
+import { RatingSet } from './RatingSet';
 
 interface Color {
     name: string;
@@ -29,7 +31,7 @@ interface Props {
         url: string;
         mainPhotoUrl: string;
     };
-    testimonialCategoryCode: string;
+    ratings: Rating[];
 }
 
 interface State {
@@ -39,6 +41,7 @@ interface State {
     isSizeInfoShowing: boolean;
     areShippingRatesShowing: boolean;
     arePaymentMethodsShowing: boolean;
+    selectedReviewPageIndex: number;
 }
 
 export class ProductPage extends React.Component<Props, State> {
@@ -48,6 +51,7 @@ export class ProductPage extends React.Component<Props, State> {
         isSizeInfoShowing: false,
         areShippingRatesShowing: false,
         arePaymentMethodsShowing: false,
+        selectedReviewPageIndex: 0,
     };
 
     public componentDidMount(): void {
@@ -227,11 +231,15 @@ export class ProductPage extends React.Component<Props, State> {
                             {this.props.details}
                         </ProductDetails>
 
-                        <RatingsAndReviews>
+                        <RatingsAndReviewsSection>
                             <h4>RATINGS & REVIEWS</h4>
                             <p>These tend to cluster around certain dates because we send out feedback requests to groups of recent customers at once.</p>
-                            <iframe src={`../../trobot-${this.props.testimonialCategoryCode}-2.html`} frameBorder={0} height={1000} width={'100%'} />
-                        </RatingsAndReviews>
+                            <RatingSet
+                                ratings={this.props.ratings}
+                                selectedPageIndex={this.state.selectedReviewPageIndex}
+                                onPageNavClicked={(pageIndex: number) => this.setState({ selectedReviewPageIndex: pageIndex})}
+                            />
+                        </RatingsAndReviewsSection>
 
                     </Right>
 
@@ -418,7 +426,7 @@ const ProductDetails = styled.div`
     margin-bottom: 2em;
 `;
 
-const RatingsAndReviews = styled.div`
+const RatingsAndReviewsSection = styled.div`
     box-sizing: undefined;
     font-size: 95%;
 `;

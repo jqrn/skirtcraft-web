@@ -16,6 +16,7 @@ import ImgAqueous27 from '../../images/aqueous27.jpg';
 import ImgAqueous28 from '../../images/aqueous28.jpg';
 import ImgAqueous29 from '../../images/aqueous29.jpg';
 import ImgAqueousColors from '../../images/aqueous_colors.png';
+import { RATINGS_AQUEOUS } from '../../ratings/ratingsAqueous';
 import { ColorSize } from '../../util/ColorSize';
 
 export default class AqueousSkirtProductPage extends React.PureComponent {
@@ -120,7 +121,7 @@ export default class AqueousSkirtProductPage extends React.PureComponent {
                     url: process.env.FLICKR_ALBUM_URL_AQUEOUS!,
                     mainPhotoUrl: process.env.FLICKR_ALBUM_MAIN_PHOTO_URL_AQUEOUS!,
                 }}
-                testimonialCategoryCode={'aq'}
+                ratings={RATINGS_AQUEOUS}
             />
         );
     }

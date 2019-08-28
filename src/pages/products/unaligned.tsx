@@ -18,6 +18,7 @@ import ImgUnaligned02 from '../../images/unaligned02.png';
 import ImgWaistDetail from '../../images/waist_detail.png';
 import ImgZipperPockets from '../../images/zipper_pockets.png';
 import ImgZipperPocketsMeasured from '../../images/zipper_pockets_measured.png';
+import { RATINGS_UNALIGNED } from '../../ratings/ratingsUnaligned';
 import { ColorSize } from '../../util/ColorSize';
 
 export default class UnalignedSkirtProductPage extends React.PureComponent {
@@ -131,7 +132,7 @@ export default class UnalignedSkirtProductPage extends React.PureComponent {
                     url: process.env.FLICKR_ALBUM_URL_UNALIGNED!,
                     mainPhotoUrl: process.env.FLICKR_ALBUM_MAIN_PHOTO_URL_UNALIGNED!,
                 }}
-                testimonialCategoryCode={'ua'}
+                ratings={RATINGS_UNALIGNED}
             />
         );
     }
