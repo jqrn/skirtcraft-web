@@ -43,5 +43,7 @@ export const RATINGS_AQUEOUS: Rating[] = [
     { review: 'Thank you for being you. <3', name: 'Derek DePrator', ratingStars: 5, date: '2019-06-15 03:45:09' },
     { ratingStars: 4, date: '2019-06-16 03:46:40' },
     { review: 'Favourite skirt ever!', name: 'Bren, UK', ratingStars: 5, date: '2019-07-13 03:38:21' },
-    { date: '2019-08-24', ratingStars: 5 }
+    { date: '2019-08-24', ratingStars: 5 },
+    { date: '2019-09-06', ratingStars: 4 },
+    { review: 'Absolutely love the Aqueous, huge pockets, solid construction. Glad I added it to my wardrobe.', name: 'Nolan', ratingStars: 5, date: '2019-09-14' },
 ];
