@@ -5,6 +5,7 @@ interface TumblrGraphqlEdge {
     node: {
         title?: string;
         slug?: string;
+        date?: string;
         tags: string[];
     };
 }
@@ -21,9 +22,10 @@ export const createBlogPosts: GatsbyCreatePages = async ({
             allTumblrPost(sort: { fields: date, order: DESC }) {
                 edges {
                     node {
-                        slug
-                        tags
                         title
+                        slug
+                        date
+                        tags
                     }
                 }
             }
@@ -32,7 +34,8 @@ export const createBlogPosts: GatsbyCreatePages = async ({
 
     const filteredTumblrPostEdges = allTumblrPosts.data.allTumblrPost.edges.filter((edge: any) => {
         const node = edge.node;
-        return node.tags.includes(process.env.TUMBLR_SITEBLOG_TAG) && node.title != undefined && node.title.length > 0 && node.slug != undefined && node.slug.length > 0;
+        return node.tags.includes(process.env.TUMBLR_SITEBLOG_TAG) && node.title != undefined
+            && node.title.length > 0 && node.slug != undefined && node.slug.length > 0;
     });
 
     // create individual post pages
@@ -42,6 +45,7 @@ export const createBlogPosts: GatsbyCreatePages = async ({
             path: `blog-posts/${node.slug}`,
             component: resolve(`./src/components/BlogPostPage.tsx`),
             context: {
+                date: node.date,
                 slug: node.slug,
                 nextSlug: index > 0 ? filteredTumblrPostEdges[index - 1].node.slug : undefined,
                 previousSlug: index < filteredTumblrPostEdges.length - 1 ? filteredTumblrPostEdges[index + 1].node.slug : undefined
