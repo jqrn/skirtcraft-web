@@ -147,5 +147,6 @@ export const RATINGS_UNALIGNED: Rating[] = [
     { date: '2019-08-24', ratingStars: 4 },
     { date: '2019-08-24', ratingStars: 5 },
     { date: '2019-08-25', ratingStars: 4 },
-    { date: '2019-09-06', ratingStars: 4 }
+    { date: '2019-09-06', ratingStars: 4 },
+    { date: '2019-09-15', ratingStars: 5, name: 'Kelly in Orlando', review: 'Great, well thought out design and skirt to meet the needs of all who want comfort and style, regardless person. Kudos to Skirtcraft for offering other quality clothing choices besides the "normal". You don\'t know what your missing.' }
 ];
