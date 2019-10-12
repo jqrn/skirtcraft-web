@@ -274,9 +274,9 @@ export class ProductPage extends React.Component<Props, State> {
 
         if (this.state.selectedColor && this.state.selectedSize) {
             const selectedColorSize = new ColorSize(this.state.selectedColor.name, this.state.selectedSize);
-            if (Array.from(this.props.specialInventoryStates.entries())
-                .find((inventoryState) => inventoryState[0].equals(selectedColorSize))) {
-
+            if (Array.from(this.props.specialInventoryStates.entries()).find((inventoryState) =>
+                inventoryState[0].equals(selectedColorSize) && inventoryState[1] == InventoryState.SOLD_OUT)
+            ) {
                 messages.push(`Sorry, ${this.state.selectedColor.name} is sold out in size ${this.state.selectedSize}.`);
             }
         } else {
