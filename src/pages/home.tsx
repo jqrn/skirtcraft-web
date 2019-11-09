@@ -156,7 +156,7 @@ const SlideImage = styled.img`
     align-self: center;
 `;
 
-const SlideLabel = styled((props: any) => <span {...props} />)`
+const SlideLabel = styled.span`
     color: #000;
     text-transform: uppercase;
     text-decoration: none;
