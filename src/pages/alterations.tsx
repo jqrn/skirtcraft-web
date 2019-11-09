@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Page } from '../components/Page';
 import { NavTabDef } from '../enums/NavTabDef';
 
@@ -9,9 +10,9 @@ export default class AlterationsPage extends React.PureComponent {
         return (
 
             <Page title={NavTabDef.ALTERATIONS} currentTab={NavTabDef.ALTERATIONS}>
-                <h2>Alterations</h2>
+                <h1>Alterations</h1>
 
-                <h3>Aqueous Skirt Shortening</h3>
+                <H2>Aqueous Skirt Shortening</H2>
 
                 <p>If you have an Aqueous skirt you'd like to shorten yourself, it's straightforward:</p>
                 <ol>
@@ -22,7 +23,7 @@ export default class AlterationsPage extends React.PureComponent {
                     <li>Fold the hem under along the pressed line and sew a plain stitch about 3/8 inch in.</li>
                 </ol>
 
-                <h3>Unaligned Skirt Shortening</h3>
+                <H2>Unaligned Skirt Shortening</H2>
 
                 <p>If you would like your Unaligned skirt to be shorter and are interested in altering it yourself, here's how to do it. Before proceeding, remember that the skirt will shrink by about 1/2 inch the first 1-2 times it is washed. Altered items cannot be returned or exchanged.</p>
 
@@ -36,7 +37,7 @@ export default class AlterationsPage extends React.PureComponent {
                     <li>Optional: A serger, also known as an overlock sewing machine</li>
                 </ul>
 
-                <h4>Option A</h4>
+                <H3>Option A</H3>
 
                 <p>This is the easiest approach. The drawback is it leaves layers of pocket fabric in the hem, which can make the hem hang in a more rigid and boxy way at the sides.</p>
 
@@ -51,7 +52,7 @@ export default class AlterationsPage extends React.PureComponent {
                     <li>With the top-stitching thread, sew a basic lockstitch all the way around the folded edge. This stitch should be from the exterior of the skirt and should be 1/2 inch from the folded edge. Be sure to remove pins before they reach the machine!</li>
                 </ol>
 
-                <h4>Option B</h4>
+                <H3>Option B</H3>
 
                 <p>Only a little more complicated than Option A. The hem won't have the extra weight, and will hang properly. However, there will be one additional, visible, horizontal stitch across the side panel, near the bottom.</p>
 
@@ -74,3 +75,11 @@ export default class AlterationsPage extends React.PureComponent {
         );
     }
 }
+
+const H2 = styled.h2`
+    font-size: 18px;
+`;
+
+const H3 = styled.h3`
+    font-size: 16px;
+`;

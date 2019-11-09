@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { InventoryState, ProductPage } from '../../components/ProductPage';
 import ImgButton from '../../images/button.png';
 import ImgUnalignedColors from '../../images/colors_black_khaki_grey.png';
@@ -35,7 +36,7 @@ export default class UnalignedSkirtProductPage extends React.PureComponent {
 
                         <p>Made in the USA of imported fabric.</p>
 
-                        <h4>Style</h4>
+                        <H2>Style</H2>
 
                         <ul>
                             <li>Two large hip pockets</li>
@@ -45,7 +46,7 @@ export default class UnalignedSkirtProductPage extends React.PureComponent {
                             <li>Colors: black, khaki, grey</li>
                         </ul>
 
-                        <h4>Materials</h4>
+                        <H2>Materials</H2>
 
                         <ul>
                             <li>Main fabric: 9.5-ounce brushed bull denim
@@ -137,3 +138,9 @@ export default class UnalignedSkirtProductPage extends React.PureComponent {
         );
     }
 }
+
+const H2 = styled.h2`
+    font-size: 15px;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+`;

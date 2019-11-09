@@ -15,14 +15,14 @@ export default class SizeGuidePage extends React.PureComponent {
 
                 <Container>
 
-                <h2>Size Guide</h2>
+                <h1>Size Guide</h1>
 
                     <div>
 
                         <ImageRight src={ImgMeasuringTape} alt='measuring tape' />
                         <p>Your Skirtcraft waist size may or may not be your usual size.</p>
 
-                        <h3>Get Your Size</h3>
+                        <H2>Get Your Size</H2>
 
                         <ol>
                             <li>Select a pair of pants/trousers, or a skirt, that fits you well. Preferably of a heavier fabric like denim, and not stretchy.</li>
@@ -47,7 +47,7 @@ export default class SizeGuidePage extends React.PureComponent {
                         </tbody>
                     </SizeTable>
 
-                    <h3>Why Our Sizing Is Different</h3>
+                    <H2>Why Our Sizing Is Different</H2>
 
                     <ul>
                         <li>Sizing differs from brand to brand in general, partly due to vanity sizing.</li>
@@ -55,7 +55,7 @@ export default class SizeGuidePage extends React.PureComponent {
                         <li>Since you won't be able to try on different sizes before choosing, it's critical that we have an objective sizing method that allows you to clearly figure out your correct size at home.</li>
                     </ul>
 
-                    <h3>Skirt Length</h3>
+                    <H2>Skirt Length</H2>
 
                     <p>Skirt length, measured on the side, from the top of the waistband to the bottom of the hem:</p>
 
@@ -77,7 +77,7 @@ export default class SizeGuidePage extends React.PureComponent {
 
                     <p>If you do some sewing and are wondering about shortening the skirt yourself: yes, it is possible. See <Link to='/alterations'>DIY Alterations</Link>.</p>
 
-                    <h3>Shrinking</h3>
+                    <H2>Shrinking</H2>
 
                     <p>The fabric is pre-shrunk, but may shrink up to 1 inch in waist circumference and 1 inch in length after washing. Some of the shrinkage goes away again as you wear it.</p>
 
@@ -107,4 +107,10 @@ const SizeTable = styled.table`
 const SizeTableInchesCell = styled.td`
     text-align: center;
     margin: 0.5em;
+`;
+
+const H2 = styled.h2`
+    font-size: 18px;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
 `;

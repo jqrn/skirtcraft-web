@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const Footer = React.memo<Props>((props: Props) => (
-    <Container>
+    <Container aria-label='footer navigation bar'>
         <FooterNavTab text={'Size Guide'} url={'/size-guide'} tab={NavTabDef.SIZE_GUIDE} currentTab={props.currentTab} />
         <FooterNavTab text={'Shipping'} url={'/shipping'} tab={NavTabDef.SHIPPING} currentTab={props.currentTab} />
         <FooterNavTab text={'Returns & Exchanges'} url={'/returns-exchanges'} tab={NavTabDef.RETURNS_EXCHANGES} currentTab={props.currentTab} />

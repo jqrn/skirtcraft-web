@@ -9,7 +9,7 @@ interface Props {
 }
 
 export const NavBar = React.memo<Props>((props: Props) => (
-    <Container>
+    <Container aria-label='navigation bar'>
         <NavTabs>
             <NavTab text={'Products'} url={'/products'} tab={NavTabDef.PRODUCTS} currentTab={props.currentTab} />
             <NavTab text={'Blog'} url={'/blog'} tab={NavTabDef.BLOG} currentTab={props.currentTab} />

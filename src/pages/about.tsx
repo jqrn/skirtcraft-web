@@ -17,7 +17,7 @@ export default class AboutPage extends React.PureComponent {
 
             <Page title={NavTabDef.ABOUT} currentTab={NavTabDef.ABOUT}>
 
-                <h2>About</h2>
+                <h1>About</h1>
 
                 <p>Skirtcraft is a micro-brand based in Minneapolis, Minnesota.</p>
 

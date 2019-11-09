@@ -14,7 +14,6 @@ export const NavTab = React.memo<Props>((props: Props) => (
     <StyledLink
         iscurrenttab={(props.currentTab != undefined && props.tab == props.currentTab) ? 'true' : 'false'}
         to={props.url}
-        title={props.text}
     >
         {props.text}
     </StyledLink>

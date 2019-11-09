@@ -10,7 +10,7 @@ export default class ShippingPage extends React.PureComponent {
         return (
 
             <Page title={NavTabDef.SHIPPING}  currentTab={NavTabDef.SHIPPING}>
-                <h2>Shipping</h2>
+                <h1>Shipping</h1>
 
                 <p>We typically ship within 48 hours of receiving an order. All orders are shipped via United States Postal Service. </p>
 

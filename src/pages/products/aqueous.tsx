@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { InventoryState, ProductPage } from '../../components/ProductPage';
 import ImgAqueous03 from '../../images/aqueous03.png';
 import ImgAqueous04 from '../../images/aqueous04.png';
@@ -33,7 +34,7 @@ export default class AqueousSkirtProductPage extends React.PureComponent {
 
                         <p>Made in the USA of imported fabric.</p>
 
-                        <h4>Style</h4>
+                        <H2>Style</H2>
 
                         <ul>
                             <li>Two large hip pockets</li>
@@ -44,7 +45,7 @@ export default class AqueousSkirtProductPage extends React.PureComponent {
                             <li>Colors: Grey, Purple, Black</li>
                         </ul>
 
-                        <h4>Materials</h4>
+                        <H2>Materials</H2>
 
                         <ul>
                             <li>Main fabric: 6-ounce plain weave
@@ -126,3 +127,9 @@ export default class AqueousSkirtProductPage extends React.PureComponent {
         );
     }
 }
+
+const H2 = styled.h2`
+    font-size: 15px;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+`;

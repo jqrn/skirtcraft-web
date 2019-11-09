@@ -13,7 +13,7 @@ export default class TshirtsProductPage extends React.PureComponent {
 
             <Page title='T-Shirts' >
 
-                <h2>T-Shirts</h2>
+                <h1>T-Shirts</h1>
 
                 <ul>
                     <li>These shirts are our design, but they're sold, printed, and shipped by Zazzle. We receive 10% of the sales price.</li>
@@ -29,7 +29,7 @@ export default class TshirtsProductPage extends React.PureComponent {
 
                 <TshirtType>
 
-                    <h3>Dark with white graphics</h3>
+                    <H2>Dark with white graphics</H2>
 
                     <TshirtTileSet>
 
@@ -54,7 +54,7 @@ export default class TshirtsProductPage extends React.PureComponent {
 
                 <TshirtType>
 
-                    <h3>Light with black graphics</h3>
+                    <H2>Light with black graphics</H2>
 
                     <TshirtTileSet>
 
@@ -91,4 +91,8 @@ const TshirtType = styled.div`
 const TshirtTileSet = styled.div`
     display: flex;
     flex-wrap: wrap;
+`;
+
+const H2 = styled.h2`
+    font-size: 18px;
 `;

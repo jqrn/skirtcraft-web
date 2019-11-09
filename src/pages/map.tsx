@@ -10,7 +10,7 @@ export default class MapPage extends React.PureComponent {
         return (
 
             <Page title={NavTabDef.MAP} currentTab={NavTabDef.MAP}>
-                <h2>Map</h2>
+                <h1>Map</h1>
 
                 <p>Cities/towns we've shipped skirts to!</p>
 

@@ -14,12 +14,12 @@ interface Props {
 export const Rating = React.memo<Props>((props: Props) => {
 
     const stars = new Array(MAX_STARS).fill(undefined).map((_, index) =>
-        <Star key={index} src={index < props.data.ratingStars ? StarGold : StarGrey} />
+        <Star key={index} src={index < props.data.ratingStars ? StarGold : StarGrey} alt='' />
     );
 
     return (
         <Container>
-            <Stars>
+            <Stars aria-label={`Rating: ${props.data.ratingStars} stars`}>
                 {stars.map((star) => star)}
             </Stars>
             {props.data.review && <Review>{props.data.review}</Review>}

@@ -12,7 +12,7 @@ export default class ContactPage extends React.PureComponent {
 
             <Page title={NavTabDef.CONTACT} currentTab={NavTabDef.CONTACT}>
 
-                <h2>Contact</h2>
+                <h1>Contact</h1>
 
                 <p>Skirtcraft LLC<br/>
                     P.O. Box 17062<br/>

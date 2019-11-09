@@ -71,7 +71,7 @@ export class ProductPage extends React.Component<Props, State> {
 
                     <Left>
 
-                        <MainImage src={selectedImageUrl}/>
+                        <MainImage src={selectedImageUrl} alt={this.props.name}/>
 
                         <Thumbnails>
                             {this.props.photoUrls.map((photoUrl, index) =>
@@ -95,7 +95,7 @@ export class ProductPage extends React.Component<Props, State> {
 
                     <Right>
 
-                        <h2>{this.props.name}</h2>
+                        <h1>{this.props.name}</h1>
 
                         <form target='paypal' action='https://www.paypal.com/cgi-bin/webscr' method='post'>
 
@@ -109,7 +109,7 @@ export class ProductPage extends React.Component<Props, State> {
                                     <ProductSelectionText>Color:</ProductSelectionText>
                                 </div>
                                 <div>
-                                    <ProductDropdown onChange={(changeEvent) => this.selectColor(changeEvent)}>
+                                    <ProductDropdown aria-label='color' onChange={(changeEvent) => this.selectColor(changeEvent)}>
                                         <option value='none'>select&nbsp;&nbsp;&#x2193;</option>
                                         {this.props.colors.map((color) => (
                                             <option
@@ -126,7 +126,7 @@ export class ProductPage extends React.Component<Props, State> {
                                     <ProductSelectionText>Size (waist):</ProductSelectionText>
                                 </div>
                                 <div>
-                                    <ProductDropdown name='os0' onChange={(changeEvent) => this.selectSize(changeEvent)}>
+                                    <ProductDropdown aria-label='waist size'  name='os0' onChange={(changeEvent) => this.selectSize(changeEvent)}>
                                         <option value='none'>select&nbsp;&nbsp;&#x2193;</option>
                                         {this.props.sizes.map((size) => {
                                             let displayText = size;
@@ -232,7 +232,7 @@ export class ProductPage extends React.Component<Props, State> {
                         </ProductDetails>
 
                         <RatingsAndReviewsSection>
-                            <h4>RATINGS & REVIEWS</h4>
+                            <H2>RATINGS & REVIEWS</H2>
                             <p>These tend to cluster around certain dates because we send out feedback requests to groups of recent customers at once.</p>
                             <RatingSet
                                 ratings={this.props.ratings}
@@ -429,4 +429,8 @@ const ProductDetails = styled.div`
 const RatingsAndReviewsSection = styled.div`
     box-sizing: undefined;
     font-size: 95%;
+`;
+
+const H2 = styled.h2`
+    font-size: 16px;
 `;

@@ -17,7 +17,7 @@ export class EmailSignupForm extends React.PureComponent<{}, State> {
                 <EmailInputLabel htmlFor='mce-EMAIL'>Email Address</EmailInputLabel>
                 <EmailInput type='email' value={this.state.emailAddress} onChange={this.emailAddressChanged} name='EMAIL' class-name='emailAddress' id='mce-EMAIL' placeholder='email address' required={true} />
                 <MailchimpHidden>
-                    <input type='text' name={process.env.EMAIL_LIST_SUBSCRIBE_FORM_HIDDEN_INPUT} value='' readOnly={true} />
+                    <input type='text' name={process.env.EMAIL_LIST_SUBSCRIBE_FORM_HIDDEN_INPUT} value='' readOnly={true} tabIndex={-1} aria-hidden={true} aria-label={'email list identifier'} />
                 </MailchimpHidden>
                 <SubmitButton type='submit' value='Subscribe' name='subscribe'/>
             </form>

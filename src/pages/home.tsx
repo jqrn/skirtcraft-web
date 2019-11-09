@@ -84,8 +84,8 @@ export default class HomePage extends React.PureComponent<{}, State> {
 
                         {currentSlide.linkUrl != undefined
                             ? <>
-                                <StyledLink to={currentSlide.linkUrl}>{currentSlide.title}</StyledLink>
                                 <Link to={currentSlide.linkUrl}>
+                                    <SlideLabel>{currentSlide.title}</SlideLabel>
                                     <SlideImage src={currentSlide.imageUrl} alt={currentSlide.title}/>
                                 </Link>
                             </>
@@ -156,7 +156,7 @@ const SlideImage = styled.img`
     align-self: center;
 `;
 
-const StyledLink = styled((props: any) => <Link {...props} />)`
+const SlideLabel = styled((props: any) => <span {...props} />)`
     color: #000;
     text-transform: uppercase;
     text-decoration: none;

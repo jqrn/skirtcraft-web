@@ -1,7 +1,7 @@
-import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
 import { Page } from '../components/Page';
+import { ProductTile } from '../components/ProductTile';
 import { NavTabDef } from '../enums/NavTabDef';
 import ImgAqueous21s from '../images/aqueous21s.jpg';
 import ImgShirt01 from '../images/shirt01.png';
@@ -17,29 +17,26 @@ export default class ProductsPage extends React.PureComponent {
 
                 <Container>
 
-                    <ProductListing>
-                        <Link to='/products/unaligned'>
-                            <img src={ImgUnaligned01} />
-                            <ProductTitle>Unaligned Skirt</ProductTitle>
-                            <ProductPrice>${process.env.PRICE_US_DOLLARS_UNALIGNED} (USD)</ProductPrice>
-                        </Link>
-                    </ProductListing>
+                    <ProductTile
+                        name='Unaligned Skirt'
+                        pagePath='unaligned'
+                        imageSource={ImgUnaligned01}
+                        priceUsDollars={process.env.PRICE_US_DOLLARS_UNALIGNED!}
+                    />
 
-                    <ProductListing>
-                        <Link to='/products/aqueous'>
-                            <img src={ImgAqueous21s} />
-                            <ProductTitle>Aqueous Skirt</ProductTitle>
-                            <ProductPrice>${process.env.PRICE_US_DOLLARS_AQUEOUS} (USD)</ProductPrice>
-                        </Link>
-                    </ProductListing>
+                    <ProductTile
+                        name='Aqueous Skirt'
+                        pagePath='aqueous'
+                        imageSource={ImgAqueous21s}
+                        priceUsDollars={process.env.PRICE_US_DOLLARS_AQUEOUS!}
+                    />
 
-                    <ProductListing>
-                        <Link to={'/products/tshirts'}>
-                            <img src={ImgShirt01} />
-                            <ProductTitle>T-Shirts</ProductTitle>
-                            <ProductPrice>$26-31 (USD)</ProductPrice>
-                        </Link>
-                    </ProductListing>
+                    <ProductTile
+                        name='T-Shirts'
+                        pagePath='tshirts'
+                        imageSource={ImgShirt01}
+                        priceUsDollars='26-31'
+                    />
 
                 </Container>
 
@@ -51,32 +48,4 @@ export default class ProductsPage extends React.PureComponent {
 const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
-`;
-
-const ProductListing = styled.div`
-    width: 100%;
-    max-width: 27em;
-    padding: 2em 3em 1em 3em;
-    text-align: center;
-    a {
-        text-decoration: none;
-        color: black;
-    }
-    img {
-        width: 100%;
-        border-radius: 0.3em;
-    }
-    p {
-        margin-bottom: 0;
-        text-transform: uppercase;
-    }
-`;
-
-const ProductTitle = styled.p`
-    margin-top: 0.5em;
-`;
-
-const ProductPrice = styled.p`
-    margin-top: 0.3em;
-    font-size: 85%;
 `;
