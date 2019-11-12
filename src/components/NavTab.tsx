@@ -23,7 +23,7 @@ interface StyledLinkProps {
     iscurrenttab: string;
 }
 
-const StyledLink = styled((props: any) => <Link {...props} />)`
+const StyledLink = styled((props: any) => <Link {...props} iscurrenttab={undefined} />)`
     margin: 0 0.3em;
     border-radius: 0.15em;
     padding: 0.5em;
