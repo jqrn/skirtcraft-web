@@ -22,6 +22,7 @@ export default class ProductsPage extends React.PureComponent {
                         pagePath='unaligned'
                         imageSource={ImgUnaligned01}
                         priceUsDollars={process.env.PRICE_US_DOLLARS_UNALIGNED!}
+                        temporaryPrice={{ priceUsDollars: '69', untilDate: 'Dec 31' }}
                     />
 
                     <ProductTile
@@ -29,6 +30,7 @@ export default class ProductsPage extends React.PureComponent {
                         pagePath='aqueous'
                         imageSource={ImgAqueous21s}
                         priceUsDollars={process.env.PRICE_US_DOLLARS_AQUEOUS!}
+                        temporaryPrice={{ priceUsDollars: '69', untilDate: 'Dec 31' }}
                     />
 
                     <ProductTile

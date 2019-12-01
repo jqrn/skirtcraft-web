@@ -109,6 +109,7 @@ export default class UnalignedSkirtProductPage extends React.PureComponent {
                     ],
                 ])}
                 priceUsDollars={parseFloat(process.env.PRICE_US_DOLLARS_UNALIGNED!)}
+                temporaryPrice={{ priceUsDollars: '69', untilDate: 'Dec 31' }}
                 photoUrls={[
                     ImgUnaligned01R,
                     ImgUnalignedColors,

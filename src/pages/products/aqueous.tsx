@@ -100,6 +100,7 @@ export default class AqueousSkirtProductPage extends React.PureComponent {
                 ]}
                 specialInventoryStates={new Map<ColorSize, InventoryState>()}
                 priceUsDollars={parseFloat(process.env.PRICE_US_DOLLARS_AQUEOUS!)}
+                temporaryPrice={{ priceUsDollars: '69', untilDate: 'Dec 31' }}
                 photoUrls={[
                     ImgAqueous21,
                     ImgAqueousColors,

@@ -7,6 +7,7 @@ import { Page } from '../components/Page';
 import { Rating } from '../ratings/Rating';
 import { ColorSize } from '../util/ColorSize';
 import { addScriptToPage } from '../util/scriptUtils';
+import { TemporaryPrice } from '../util/TemporaryPrice';
 import { RatingSet } from './RatingSet';
 
 interface Color {
@@ -26,6 +27,7 @@ interface Props {
     sizes: string[];
     specialInventoryStates: Map<ColorSize, InventoryState>;
     priceUsDollars: number;
+    temporaryPrice?: TemporaryPrice;
     photoUrls: string[];
     flickrAlbum: {
         url: string;
@@ -155,7 +157,15 @@ export class ProductPage extends React.Component<Props, State> {
                                     <ProductSelectionText>Price:</ProductSelectionText>
                                 </div>
                                 <div>
-                                    <ProductSelectionText>${this.props.priceUsDollars}</ProductSelectionText>
+                                    <ProductSelectionText>
+                                        {this.props.temporaryPrice
+                                            ? <span>
+                                                <del>${this.props.priceUsDollars}</del>&nbsp;
+                                                <TemporaryPriceText>${this.props.temporaryPrice.priceUsDollars} until {this.props.temporaryPrice.untilDate}!</TemporaryPriceText>
+                                            </span>
+                                            : `$${this.props.priceUsDollars}`
+                                        }
+                                    </ProductSelectionText>
                                 </div>
 
                                 <div>
@@ -354,6 +364,11 @@ const ProductSelectionText = styled.p`
     text-transform: uppercase;
     margin: 0.25em;
     line-height: 2.25em;
+`;
+
+const TemporaryPriceText = styled.span`
+    color: red;
+    text-transform: none;
 `;
 
 const ProductDropdown = styled.select`

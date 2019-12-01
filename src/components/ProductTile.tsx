@@ -1,21 +1,28 @@
 import { Link } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
+import { TemporaryPrice } from '../util/TemporaryPrice';
 
 interface Props {
     name: string;
     pagePath: string;
     imageSource: string;
     priceUsDollars: string;
+    temporaryPrice?: TemporaryPrice;
 }
 
 export const ProductTile = React.memo<Props>((props: Props) => (
-
     <Container>
         <Link to={`/products/${props.pagePath}`}>
             <img src={props.imageSource} alt='' />
             <ProductTitle>{props.name}</ProductTitle>
-            <ProductPrice>${props.priceUsDollars} (USD)</ProductPrice>
+            {props.temporaryPrice
+                ? <ProductPrice>
+                    <del>${props.priceUsDollars}</del>&nbsp;
+                    <TemporaryPriceText>${props.temporaryPrice!.priceUsDollars} (USD) until {props.temporaryPrice!.untilDate}!</TemporaryPriceText>
+                </ProductPrice>
+                : <ProductPrice>${props.priceUsDollars} (USD)</ProductPrice>
+            }
         </Link>
     </Container>
 ));
@@ -43,7 +50,11 @@ const ProductTitle = styled.p`
     margin-top: 0.5em;
 `;
 
-const ProductPrice = styled.p`
+const ProductPrice = styled.span`
     margin-top: 0.3em;
     font-size: 85%;
+`;
+
+const TemporaryPriceText = styled.span`
+    color: red;
 `;
