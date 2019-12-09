@@ -76,15 +76,15 @@ export class ProductPage extends React.Component<Props, State> {
                         <MainImage src={selectedImageUrl} alt={this.props.name}/>
 
                         <Thumbnails>
-                            {this.props.photoUrls.map((photoUrl, index) =>
+                            {this.props.photoUrls.map((photoUrl, index) => (
                                 <ThumbnailImage
                                     key={index}
                                     id={`thumbnail-${index}`}
                                     src={photoUrl}
                                     alt={this.props.name}
                                     onClick={() => this.thumbnailClicked(index)}
-                                />,
-                            )}
+                                />
+                            ))}
                         </Thumbnails>
 
                         <CustomerPhotosText>Customer photos</CustomerPhotosText>
@@ -119,8 +119,8 @@ export class ProductPage extends React.Component<Props, State> {
                                                 value={color.name}
                                             >
                                                 {color.name}
-                                            </option>),
-                                        )}
+                                            </option>
+                                        ))}
                                     </ProductDropdown>
                                 </div>
 
@@ -159,10 +159,12 @@ export class ProductPage extends React.Component<Props, State> {
                                 <div>
                                     <ProductSelectionText>
                                         {this.props.temporaryPrice
-                                            ? <span>
-                                                <del>${this.props.priceUsDollars}</del>&nbsp;
-                                                <TemporaryPriceText>${this.props.temporaryPrice.priceUsDollars} until {this.props.temporaryPrice.untilDate}!</TemporaryPriceText>
-                                            </span>
+                                            ? (
+                                                <span>
+                                                    <del>${this.props.priceUsDollars}</del>&nbsp;
+                                                    <TemporaryPriceText>${this.props.temporaryPrice.priceUsDollars} until {this.props.temporaryPrice.untilDate}!</TemporaryPriceText>
+                                                </span>
+                                            )
                                             : `$${this.props.priceUsDollars}`
                                         }
                                     </ProductSelectionText>
@@ -184,11 +186,11 @@ export class ProductPage extends React.Component<Props, State> {
                                         </MoreInfoAnchor>
                                     </MoreInfoText>
 
-                                    {this.state.isSizeInfoShowing &&
+                                    {this.state.isSizeInfoShowing && (
                                         <MoreInfo>
                                             <MoreInfoLink to='/size-guide'>View Size Guide</MoreInfoLink>
                                         </MoreInfo>
-                                    }
+                                    )}
                                 </MoreInfoContainer>
 
                                 <div/>
@@ -199,13 +201,13 @@ export class ProductPage extends React.Component<Props, State> {
                                         </MoreInfoAnchor>
                                     </MoreInfoText>
 
-                                    {this.state.areShippingRatesShowing &&
+                                    {this.state.areShippingRatesShowing && (
                                         <MoreInfo isflex={true}>
                                             <DestinationPrices destinationName='United States' pricesUsDollars={[11, 14, 16]} />
                                             <DestinationPrices destinationName='Canada' pricesUsDollars={[16, 25, 31]} />
                                             <DestinationPrices destinationName='Rest of World' pricesUsDollars={[23, 35, 43]} />
                                         </MoreInfo>
-                                    }
+                                    )}
                                 </MoreInfoContainer>
 
                                 <div/>
@@ -216,7 +218,7 @@ export class ProductPage extends React.Component<Props, State> {
                                         </MoreInfoAnchor>
                                     </MoreInfoText>
 
-                                    {this.state.arePaymentMethodsShowing &&
+                                    {this.state.arePaymentMethodsShowing && (
                                         <MoreInfo>
                                             <UnorderedListNotIndented>
                                                 <li>Visa</li>
@@ -228,7 +230,7 @@ export class ProductPage extends React.Component<Props, State> {
                                             <p>Checkout is via PayPal.</p>
                                             <p>To pay by credit card: from your cart, click "Check Out - Pay without a PayPal account" (instead of "PayPal Check Out").</p>
                                         </MoreInfo>
-                                    }
+                                    )}
                                 </MoreInfoContainer>
 
                             </ProductSelectionsGrid>
