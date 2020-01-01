@@ -30,7 +30,7 @@ export default class UnalignedSkirtProductPage extends React.PureComponent {
 
             <ProductPage
                 name={'Unaligned Skirt'}
-                details={
+                details={(
                     <>
                         <p>The Unaligned is a sturdy, unique, knee-length skirt with multiple large pockets.</p>
 
@@ -65,7 +65,7 @@ export default class UnalignedSkirtProductPage extends React.PureComponent {
                         <br/>
                         <p>Note: On skirts made in the second production run, the two rear belt loops are shifted about two inches to the left of where they're meant to be: centered at the top of the diagonal seam rather than at the garment's true center. This includes all grey Unaligned skirts, and black Unaligned skirt sizes 30-31, 32-33, 34-35, and 40-41.</p>
                     </>
-                }
+                )}
                 colors={[
                     {
                         name: 'Black',
@@ -109,7 +109,6 @@ export default class UnalignedSkirtProductPage extends React.PureComponent {
                     ],
                 ])}
                 priceUsDollars={parseFloat(process.env.PRICE_US_DOLLARS_UNALIGNED!)}
-                temporaryPrice={{ priceUsDollars: '69', untilDate: 'Dec 31' }}
                 photoUrls={[
                     ImgUnaligned01R,
                     ImgUnalignedColors,

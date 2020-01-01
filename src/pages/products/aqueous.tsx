@@ -28,7 +28,7 @@ export default class AqueousSkirtProductPage extends React.PureComponent {
 
             <ProductPage
                 name={'Aqueous Skirt'}
-                details={
+                details={(
                     <>
                         <p>The Aqueous is a heavy, fluid, unique, knee-length skirt with large hip pockets and belt loops. The name refers to its smoothly-flowing drape and swirling seamlines.</p>
 
@@ -72,7 +72,7 @@ export default class AqueousSkirtProductPage extends React.PureComponent {
                         <br/>
                         <p>Note: A few customers have reported the hook-and-bar starting to pull free from the fabric around it over time. We now consider it to be a construction flaw; the area should have been better reinforced. We do not have a fix, unfortunately. Wearing a belt to hold more of the tension of the waistband helps to prevent it.</p>
                     </>
-                }
+                )}
                 colors={[
                     {
                         name: 'Black',
@@ -100,7 +100,6 @@ export default class AqueousSkirtProductPage extends React.PureComponent {
                 ]}
                 specialInventoryStates={new Map<ColorSize, InventoryState>()}
                 priceUsDollars={parseFloat(process.env.PRICE_US_DOLLARS_AQUEOUS!)}
-                temporaryPrice={{ priceUsDollars: '69', untilDate: 'Dec 31' }}
                 photoUrls={[
                     ImgAqueous21,
                     ImgAqueousColors,
