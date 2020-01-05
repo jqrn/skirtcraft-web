@@ -148,5 +148,8 @@ export const RATINGS_UNALIGNED: Rating[] = [
     { date: '2019-08-24', ratingStars: 5 },
     { date: '2019-08-25', ratingStars: 4 },
     { date: '2019-09-06', ratingStars: 4 },
-    { date: '2019-09-15', ratingStars: 5, name: 'Kelly in Orlando', review: 'Great, well thought out design and skirt to meet the needs of all who want comfort and style, regardless person. Kudos to Skirtcraft for offering other quality clothing choices besides the "normal". You don\'t know what your missing.' }
+    { date: '2019-09-15', ratingStars: 5, name: 'Kelly in Orlando', review: 'Great, well thought out design and skirt to meet the needs of all who want comfort and style, regardless person. Kudos to Skirtcraft for offering other quality clothing choices besides the "normal". You don\'t know what your missing.' },
+    { date: '2020-01-04', ratingStars: 5, name: 'Brent', review: 'Nice skirt with big pockets. My only suggestion would be to add a little spandex to the material blend to give a small degree of stretch.' },
+    { date: '2020-01-04', ratingStars: 4 },
+    { date: '2020-01-04', ratingStars: 5, name: 'David, Las Vegas', review: 'This is a truly wonderful skirt, very comfortable. I was torn between the khaki and grey, ultimately chose the grey as a I already have a couple of khaki kilts. This will be quite wonderful to wear out when I am practicing my favorite recreational activity of taking pictures.\n\nInitially, I ordered a size smaller than I should have - my mistake. Joe was wonderful and took care of that for me quickly. Thanks sir!' },
 ];
