@@ -43,12 +43,12 @@ export default class BlogTimelinePage extends React.PureComponent<Props> {
                     <BlogNavLink to='/blog'>&lt;&lt; View Latest Posts</BlogNavLink>
                 }
 
-                {tumblrPosts.map((tumblrPost: TumblrPost, index: number) =>
+                {tumblrPosts.map((tumblrPost: TumblrPost, index: number) => (
                     <div key={index}>
                         <BlogPost tumblrPost={tumblrPost}/>
                         <BlogPostSeparator/>
                     </div>
-                )}
+                ))}
 
                 <BlogPrevNextNavLinks>
                     <div>

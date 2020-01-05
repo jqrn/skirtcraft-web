@@ -83,12 +83,14 @@ export default class HomePage extends React.PureComponent<{}, State> {
                     <SlideContainer>
 
                         {currentSlide.linkUrl != undefined
-                            ? <>
-                                <Link to={currentSlide.linkUrl}>
-                                    <SlideLabel>{currentSlide.title}</SlideLabel>
-                                    <SlideImage src={currentSlide.imageUrl} alt={currentSlide.title}/>
-                                </Link>
-                            </>
+                            ? (
+                                <>
+                                    <Link to={currentSlide.linkUrl}>
+                                        <SlideLabel>{currentSlide.title}</SlideLabel>
+                                        <SlideImage src={currentSlide.imageUrl} alt={currentSlide.title}/>
+                                    </Link>
+                                </>
+                            )
                             : <SlideImage src={currentSlide.imageUrl} alt={currentSlide.title}/>
                         }
                         <NextOrPreviousButton isprevious={true} onClick={() => this.shiftSlide(true, false)}>&#10094;</NextOrPreviousButton>
@@ -98,13 +100,13 @@ export default class HomePage extends React.PureComponent<{}, State> {
                 </Container>
 
                 <NavDotGroup>
-                    {SLIDES.map((_, index) =>
+                    {SLIDES.map((_, index) => (
                         <Dot
                             key={index}
                             iscurrent={index === this.state.slideIndex}
                             onClick={() => this.setState({ slideIndex: index, isAuto: false })}
                         />
-                    )}
+                    ))}
                 </NavDotGroup>
 
             </Page>

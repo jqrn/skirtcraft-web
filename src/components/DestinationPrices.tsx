@@ -12,11 +12,11 @@ export const DestinationPrices = React.memo<Props>((props: Props) => (
 
         <DestinationName>{props.destinationName}</DestinationName>
 
-        {props.pricesUsDollars.map((priceUsd: number, index: number) =>
+        {props.pricesUsDollars.map((priceUsd: number, index: number) => (
             <p key={index}>
                 {` ${index + 1} skirt${index > 0 ? 's' : ''}: $${priceUsd}`}
             </p>
-        )}
+        ))}
 
     </Container>
 ));

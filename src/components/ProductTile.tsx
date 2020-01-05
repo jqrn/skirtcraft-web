@@ -17,10 +17,12 @@ export const ProductTile = React.memo<Props>((props: Props) => (
             <img src={props.imageSource} alt='' />
             <ProductTitle>{props.name}</ProductTitle>
             {props.temporaryPrice
-                ? <ProductPrice>
-                    <del>${props.priceUsDollars}</del>&nbsp;
-                    <TemporaryPriceText>${props.temporaryPrice!.priceUsDollars} (USD) until {props.temporaryPrice!.untilDate}!</TemporaryPriceText>
-                </ProductPrice>
+                ? (
+                    <ProductPrice>
+                        <del>${props.priceUsDollars}</del>&nbsp;
+                        <TemporaryPriceText>${props.temporaryPrice!.priceUsDollars} (USD) until {props.temporaryPrice!.untilDate}!</TemporaryPriceText>
+                    </ProductPrice>
+                )
                 : <ProductPrice>${props.priceUsDollars} (USD)</ProductPrice>
             }
         </Link>

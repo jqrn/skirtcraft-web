@@ -51,11 +51,11 @@ export class RatingSet extends React.PureComponent<Props, State> {
                 <div>
                     <TotalLabel>Ratings: </TotalLabel><TotalValue>{this.props.ratings.length}</TotalValue>
                 </div>
-                {this.state.averageRating &&
+                {this.state.averageRating && (
                     <div>
                         <TotalLabel>Average: </TotalLabel><TotalValue>{`${this.state.averageRating} / ${MAX_STARS}`}</TotalValue>
                     </div>
-                }
+                )}
 
                 <ButtonContainer>
                     <Button disabled={this.props.selectedPageIndex <= 0} onClick={() => this.props.onPageNavClicked(this.props.selectedPageIndex - 1)}>
