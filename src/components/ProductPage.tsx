@@ -338,6 +338,7 @@ const MainImage = styled.img`
 
 const ThumbnailImage = styled.img`
     width: 4em;
+    align-self: flex-start;
     margin: 0 0.1em 0.1em 0;
     user-select: none;
 `;
