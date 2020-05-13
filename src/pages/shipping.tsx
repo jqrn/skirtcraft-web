@@ -19,7 +19,7 @@ export default class ShippingPage extends React.PureComponent {
                     <li>Non-US orders use the <OutboundLink href='https://www.usps.com/international/mail-shipping-services.htm'>First Class Package International</OutboundLink> service and typically take 7-21 days after you receive notification of shipment.</li>
                 </ul>
 
-                <p>Skirts are shipped in mailers that are made of 95% recycled material (55% post-consumer), and are recyclable with mixed paper.</p>
+                <p>Orders are shipped in paper mailers or cardboard boxes. Both are made from 100% recycled material (95-97% post-consumer) and are recyclable and compostable.</p>
 
             </Page>
         );
