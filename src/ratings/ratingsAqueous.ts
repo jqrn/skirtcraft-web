@@ -50,4 +50,5 @@ export const RATINGS_AQUEOUS: Rating[] = [
     { review: 'Great skirt, love wearing it.', name: 'Drew in Fairbanks', ratingStars: 5, date: '2019-11-02' },
     { date: '2020-01-04', ratingStars: 5 },
     { date: '2020-04-17', ratingStars: 5 },
+    { date: '2020-05-13', ratingStars: 5 },
 ];
