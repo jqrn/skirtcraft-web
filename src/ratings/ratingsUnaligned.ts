@@ -152,4 +152,7 @@ export const RATINGS_UNALIGNED: Rating[] = [
     { date: '2020-01-04', ratingStars: 5, name: 'Brent', review: 'Nice skirt with big pockets. My only suggestion would be to add a little spandex to the material blend to give a small degree of stretch.' },
     { date: '2020-01-04', ratingStars: 4 },
     { date: '2020-01-04', ratingStars: 5, name: 'David, Las Vegas', review: 'This is a truly wonderful skirt, very comfortable. I was torn between the khaki and grey, ultimately chose the grey as a I already have a couple of khaki kilts. This will be quite wonderful to wear out when I am practicing my favorite recreational activity of taking pictures.\n\nInitially, I ordered a size smaller than I should have - my mistake. Joe was wonderful and took care of that for me quickly. Thanks sir!' },
+    { date: '2020-07-10', ratingStars: 5 },
+    { date: '2020-07-10', ratingStars: 4, review: 'quite perfect for a man' },
+    { date: '2020-07-10', ratingStars: 5, name: 'Adam in Ohio', review: 'Very well made. I am sure this skirt will last me forever. Looking forward to more designs.' },
 ];

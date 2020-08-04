@@ -95,6 +95,9 @@ export default class UnalignedSkirtProductPage extends React.PureComponent {
                         new ColorSize('Khaki', '30-31 inches'),
                         InventoryState.FEW_LEFT,
                     ], [
+                        new ColorSize('Khaki', '32-33 inches'),
+                        InventoryState.FEW_LEFT,
+                    ], [
                         new ColorSize('Khaki', '34-35 inches'),
                         InventoryState.SOLD_OUT,
                     ], [
