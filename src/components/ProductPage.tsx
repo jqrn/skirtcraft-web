@@ -391,7 +391,7 @@ const AddToCartSubmit = styled.input`
     height: 2.5em;
     padding-top: 0.2em;
     margin-bottom: 1em;
-    background-color: #0A9E1E;
+    background-color: #148923;
     border-radius: 3px;
     color: #fff;
     cursor: pointer;
