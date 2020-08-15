@@ -398,7 +398,7 @@ const AddToCartSubmit = styled.input`
     text-transform: uppercase;
     transition: background-color 0.3s;
     &:hover {
-        background-color: #1DC237;
+        background-color: #14A827;
     }
 `;
 
