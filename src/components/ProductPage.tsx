@@ -17,7 +17,7 @@ interface Color {
 
 export enum InventoryState {
     FEW_LEFT = 'few left',
-    SOLD_OUT = 'sold out',
+    SOLD_OUT = 'SOLD OUT',
 }
 
 interface Props {
@@ -137,7 +137,7 @@ export class ProductPage extends React.Component<Props, State> {
                                                 const specialInventoryState = Array.from(this.props.specialInventoryStates.entries())
                                                     .find((inventoryState) => inventoryState[0].equals(colorSize));
                                                 if (specialInventoryState) {
-                                                    displayText += ` (${specialInventoryState[1].toUpperCase()})`;
+                                                    displayText += ` (${specialInventoryState[1]})`;
                                                 }
                                             }
 
