@@ -157,4 +157,6 @@ export const RATINGS_UNALIGNED: Rating[] = [
     { date: '2020-07-10', ratingStars: 5, name: 'Adam in Ohio', review: 'Very well made. I am sure this skirt will last me forever. Looking forward to more designs.' },
     { date: '2020-08-14', ratingStars: 5 },
     { date: '2020-08-14', ratingStars: 5, name: 'Charles', review: 'Thankful some made a skirt for men and doesn’t force men to wear feminine clothes to access skirts.' },
+    { date: '2020-09-12', ratingStars: 5 },
+    { date: '2020-09-12', ratingStars: 4, review: 'very friendly, good service' },
 ];
