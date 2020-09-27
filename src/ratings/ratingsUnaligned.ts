@@ -159,4 +159,5 @@ export const RATINGS_UNALIGNED: Rating[] = [
     { date: '2020-08-14', ratingStars: 5, name: 'Charles', review: 'Thankful some made a skirt for men and doesn’t force men to wear feminine clothes to access skirts.' },
     { date: '2020-09-12', ratingStars: 5 },
     { date: '2020-09-12', ratingStars: 4, review: 'very friendly, good service' },
+    { date: '2020-09-23', ratingStars: 5 },
 ];
