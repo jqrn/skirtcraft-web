@@ -2,7 +2,6 @@ import { Link } from 'gatsby';
 import moment from 'moment';
 import React from 'react';
 import styled from 'styled-components';
-import ImgFacebookShare from '../images/share_facebook.png';
 import ImgTumblrShare from '../images/share_tumblr_2.png';
 import ImgTwitterShare from '../images/share_twitter_2.png';
 import BlogPostPage from './BlogPostPage';
@@ -38,10 +37,6 @@ export const BlogPost = React.memo((props: Props) => {
 
             <SocialShareAnchor href={`https://twitter.com/intent/tweet?text=${postTitleEncoded}&url=${postUrlEncoded}&via=${process.env.TWITTER_HANDLE}`} target='_blank'>
                 <img src={ImgTwitterShare} width={24} alt='Share on Twitter'/>
-            </SocialShareAnchor>
-
-            <SocialShareAnchor href={`https://www.facebook.com/sharer/sharer.php?u=${postUrlEncoded}&p[title]=${postTitleEncoded}`} target='_blank'>
-                <img src={ImgFacebookShare} width={24} alt='Share on Facebook'/>
             </SocialShareAnchor>
 
             <SocialShareAnchor href={post.post_url} target='_blank'>

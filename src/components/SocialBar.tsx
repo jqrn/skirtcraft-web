@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import ImgHeaderFacebook from '../images/header_facebook.png';
 import ImgHeaderInstagram from '../images/header_instagram.png';
 import ImgHeaderTumblr from '../images/header_tumblr.png';
 import ImgHeaderTwitter from '../images/header_twitter.png';
@@ -18,11 +17,6 @@ export const SocialBar = React.memo(() => (
             linkUrl={'https://twitter.com/skirtcraft'}
             imageUrl={ImgHeaderTwitter}
             altText={'Twitter'}
-        />
-        <SocialBarIcon
-            linkUrl={'https://facebook.com/skirtcraft'}
-            imageUrl={ImgHeaderFacebook}
-            altText={'Facebook'}
         />
         <SocialBarIcon
             linkUrl={'https://skirtcraft.tumblr.com'}
