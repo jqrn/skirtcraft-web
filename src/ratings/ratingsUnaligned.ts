@@ -161,4 +161,9 @@ export const RATINGS_UNALIGNED: Rating[] = [
     { date: '2020-09-12', ratingStars: 4, review: 'very friendly, good service' },
     { date: '2020-09-23', ratingStars: 5 },
     { date: '2020-12-08', ratingStars: 5 },
+    { date: '2021-01-23', ratingStars: 5, name: 'Kristi in Stillwater, MN', review: 'My Unaligned Skirt has become my favorite article of clothing! I have lamented the pathetic pockets in women\'s clothing for as long as I can remember, so having useful pockets has been incredible! The quality of the garment is great and I believe the classic cut will make it a wardrobe staple for me for years to come.' },
+    { date: '2021-01-23', ratingStars: 5, name: 'Kevin', review: 'The unaligned skirt is great! It fits well and has pockets. With the cargo pockets I can carry more than pants pockets comfortably, I don\'t have to remove my cellphone out of my back pocket to sit down! This skirt is going to be cooler than my kilt in the summer heat as well.' },
+    { date: '2021-02-28', ratingStars: 4, name: 'Jaroslav' },
+    { date: '2021-02-28', ratingStars: 2 },
+    { date: '2021-03-03', ratingStars: 5, review: 'Lighter and cooler than my kilts. Excellent for warmer weather.' },
 ];
