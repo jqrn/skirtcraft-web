@@ -204,8 +204,8 @@ export class ProductPage extends React.Component<Props, State> {
                                     {this.state.areShippingRatesShowing && (
                                         <MoreInfo isflex={true}>
                                             <DestinationPrices destinationName='United States' pricesUsDollars={[11, 14, 16]} />
-                                            <DestinationPrices destinationName='Canada' pricesUsDollars={[16, 25, 31]} />
-                                            <DestinationPrices destinationName='Rest of World' pricesUsDollars={[23, 35, 43]} />
+                                            <DestinationPrices destinationName='Canada' pricesUsDollars={[21, 31, 37]} />
+                                            <DestinationPrices destinationName='Rest of World' pricesUsDollars={[26, 39, 47]} />
                                         </MoreInfo>
                                     )}
                                 </MoreInfoContainer>
