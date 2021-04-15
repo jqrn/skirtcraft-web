@@ -166,4 +166,5 @@ export const RATINGS_UNALIGNED: Rating[] = [
     { date: '2021-02-28', ratingStars: 4, name: 'Jaroslav' },
     { date: '2021-02-28', ratingStars: 2 },
     { date: '2021-03-03', ratingStars: 5, review: 'Lighter and cooler than my kilts. Excellent for warmer weather.' },
+    { date: '2021-03-23', ratingStars: 5 },
 ];
