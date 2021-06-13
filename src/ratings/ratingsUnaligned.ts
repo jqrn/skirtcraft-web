@@ -167,4 +167,10 @@ export const RATINGS_UNALIGNED: Rating[] = [
     { date: '2021-02-28', ratingStars: 2 },
     { date: '2021-03-03', ratingStars: 5, review: 'Lighter and cooler than my kilts. Excellent for warmer weather.' },
     { date: '2021-03-23', ratingStars: 5 },
+    { date: '2021-04-24', ratingStars: 5 },
+    { date: '2021-05-26', ratingStars: 5, name: 'Ben', review: 'The Unaligned skirt is a great companion to my collection of utilikilts.' },
+    { date: '2021-05-27', ratingStars: 5 },
+    { date: '2021-05-27', ratingStars: 5, name: 'Mike', review: 'Excellent quality, I can\t wait to wear it!' },
+    { date: '2021-05-27', ratingStars: 4 },
+    { date: '2021-06-12', ratingStars: 5, name: 'Mentuhotep, in Illinois', review: 'I finally order my first skirt after a few years of procrastination. My wife said she wants one as well. It is the best edition to my hot summer wardrobe.' },
 ];
