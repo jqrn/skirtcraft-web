@@ -16,6 +16,7 @@ import ImgAqueous26 from '../../images/aqueous26.jpg';
 import ImgAqueous27 from '../../images/aqueous27.jpg';
 import ImgAqueous28 from '../../images/aqueous28.jpg';
 import ImgAqueous29 from '../../images/aqueous29.jpg';
+import ImgAqueous30 from '../../images/aqueous30.jpg';
 import ImgAqueousColors from '../../images/aqueous_colors.png';
 import { RATINGS_AQUEOUS } from '../../ratings/ratingsAqueous';
 import { ColorSize } from '../../util/ColorSize';
@@ -111,6 +112,7 @@ export default class AqueousSkirtProductPage extends React.PureComponent {
                     ImgAqueous22,
                     ImgAqueous25,
                     ImgAqueous28,
+                    ImgAqueous30,
                     ImgAqueous04,
                     ImgAqueous12,
                     ImgAqueous03,
