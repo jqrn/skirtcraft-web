@@ -173,4 +173,6 @@ export const RATINGS_UNALIGNED: Rating[] = [
     { date: '2021-05-27', ratingStars: 5, name: 'Mike', review: 'Excellent quality, I can\t wait to wear it!' },
     { date: '2021-05-27', ratingStars: 4 },
     { date: '2021-06-12', ratingStars: 5, name: 'Mentuhotep, in Illinois', review: 'I finally order my first skirt after a few years of procrastination. My wife said she wants one as well. It is the best edition to my hot summer wardrobe.' },
+    { date: '2021-07-26', ratingStars: 5 },
+    { date: '2021-07-27', ratingStars: 5, name: 'Stickthelizard' },
 ];
