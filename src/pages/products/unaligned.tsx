@@ -93,7 +93,7 @@ export default class UnalignedSkirtProductPage extends React.PureComponent {
                 specialInventoryStates={new Map<ColorSize, InventoryState>([
                     [
                         new ColorSize('Khaki', '30-31 inches'),
-                        InventoryState.FEW_LEFT,
+                        InventoryState.SOLD_OUT,
                     ], [
                         new ColorSize('Khaki', '32-33 inches'),
                         InventoryState.FEW_LEFT,
