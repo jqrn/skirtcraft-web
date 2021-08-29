@@ -176,4 +176,5 @@ export const RATINGS_UNALIGNED: Rating[] = [
     { date: '2021-07-26', ratingStars: 5 },
     { date: '2021-07-27', ratingStars: 5, name: 'Stickthelizard' },
     { date: '2021-08-28', ratingStars: 4 },
+    { date: '2021-08-29', ratingStars: 4 },
 ];

@@ -54,4 +54,5 @@ export const RATINGS_AQUEOUS: Rating[] = [
     { date: '2021-04-24', ratingStars: 5 },
     { date: '2021-05-26', ratingStars: 4 },
     { date: '2021-08-28', ratingStars: 5, name: 'Christopher' },
+    { date: '2021-08-29', ratingStars: 5 },
 ];
