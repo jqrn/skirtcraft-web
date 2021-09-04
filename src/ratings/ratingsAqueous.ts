@@ -55,4 +55,5 @@ export const RATINGS_AQUEOUS: Rating[] = [
     { date: '2021-05-26', ratingStars: 4 },
     { date: '2021-08-28', ratingStars: 5, name: 'Christopher' },
     { date: '2021-08-29', ratingStars: 5 },
+    { date: '2021-08-30', ratingStars: 4, name: 'jgd', review: 'finding this skirt was a real pleasure, receiving and wearing it even more so. it\'s comfortable and versatile. it\'s only the first of a few skirts i\'ll be getting from skirtcraft.' },
 ];
