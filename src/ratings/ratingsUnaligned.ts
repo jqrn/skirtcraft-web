@@ -178,4 +178,6 @@ export const RATINGS_UNALIGNED: Rating[] = [
     { date: '2021-08-28', ratingStars: 4 },
     { date: '2021-08-29', ratingStars: 4 },
     { date: '2021-08-30', ratingStars: 5 },
+    { date: '2021-10-02', ratingStars: 5 },
+    { date: '2021-10-02', ratingStars: 5, review: 'These skirts are very well-made and extremely comfortable, among the best I\'ve tried.' },
 ];
