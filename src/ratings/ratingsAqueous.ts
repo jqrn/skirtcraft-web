@@ -57,4 +57,5 @@ export const RATINGS_AQUEOUS: Rating[] = [
     { date: '2021-08-29', ratingStars: 5 },
     { date: '2021-08-30', ratingStars: 4, name: 'jgd', review: 'finding this skirt was a real pleasure, receiving and wearing it even more so. it\'s comfortable and versatile. it\'s only the first of a few skirts i\'ll be getting from skirtcraft.' },
     { date: '2021-10-02', ratingStars: 5, review: 'These skirts are very well-made and extremely comfortable, among the best I\'ve tried.' },
+    { date: '2021-11-06', ratingStars: 5, name: 'David, Las Vegas, NV', review: 'Absolutely top quality products, very comfortable nicely styled, roomy pockets and great service. Seriously, I could not ask for more. I have purchased three skirts to date, two Unaligned and most recent the Aqueous. They are all very comfortable and very well made. Thanks for a great product! Potential buyers, do not sit on the fence, you will not regret purchasing!' },
 ];
