@@ -182,4 +182,5 @@ export const RATINGS_UNALIGNED: Rating[] = [
     { date: '2021-10-02', ratingStars: 5, review: 'These skirts are very well-made and extremely comfortable, among the best I\'ve tried.' },
     { date: '2021-11-06', ratingStars: 5 },
     { date: '2021-11-07', ratingStars: 5, name: 'Shannon A' },
+    { date: '2021-12-22', ratingStars: 5, review: 'Great quality product, really comfortable to wear, love the pockets - makes carrying essentials (e.g. phone) easy' },
 ];
