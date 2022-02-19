@@ -17,9 +17,9 @@ interface TumblrPost {
 interface Props {
     data: {
         allTumblrPost: {
-            edges: Array<{
+            edges: {
                 node: TumblrPost;
-            }>;
+            }[];
         };
     };
     pageContext: {

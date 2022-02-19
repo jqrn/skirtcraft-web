@@ -12,10 +12,10 @@ interface TumblrGraphqlEdge {
 
 export const createBlogPosts: GatsbyCreatePages = async ({
     graphql,
-    boundActionCreators,
+    actions,
 }) => {
 
-    const { createPage } = boundActionCreators;
+    const { createPage } = actions;
 
     const allTumblrPosts = await graphql(`
         {

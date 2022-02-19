@@ -5,7 +5,7 @@ interface PageInput {
     context?: any;
 }
 
-interface BoundActionCreators {
+interface Actions {
     createPage: (page: PageInput) => void;
     deletePage: (page: PageInput) => void;
     createRedirect: (
@@ -19,5 +19,5 @@ interface BoundActionCreators {
 }
 
 export type GatsbyCreatePages = (
-    fns: { graphql: any; boundActionCreators: BoundActionCreators }
+    fns: { graphql: any; actions: Actions }
 ) => void;

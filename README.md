@@ -8,7 +8,7 @@ Build with Gatsby, React, and TypeScript.
 
 1. `npm install`
 2. `install -g gatsby-cli`
-3. Copy `.env._example` to `.env.development` and to `.env.production`, and populate with values
+3. Copy `.env.example` to `.env.development` and to `.env.production`, and populate with values
 
 # Run Locally
 
