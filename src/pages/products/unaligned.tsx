@@ -115,6 +115,9 @@ export default class UnalignedSkirtProductPage extends React.PureComponent {
                     ],   [
                         new ColorSize('Grey', '34-35 inches'),
                         InventoryState.SOLD_OUT,
+                    ],   [
+                        new ColorSize('Grey', '36-37 inches'),
+                        InventoryState.SOLD_OUT,
                     ],
                 ])}
                 priceUsDollars={parseFloat(process.env.PRICE_US_DOLLARS_UNALIGNED!)}
