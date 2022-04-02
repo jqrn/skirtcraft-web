@@ -44,6 +44,7 @@ interface State {
     areShippingRatesShowing: boolean;
     arePaymentMethodsShowing: boolean;
     selectedReviewPageIndex: number;
+    showInvalidSelectionMessage: boolean;
 }
 
 export class ProductPage extends React.Component<Props, State> {
@@ -54,6 +55,7 @@ export class ProductPage extends React.Component<Props, State> {
         areShippingRatesShowing: false,
         arePaymentMethodsShowing: false,
         selectedReviewPageIndex: 0,
+        showInvalidSelectionMessage: false,
     };
 
     public componentDidMount(): void {
@@ -111,7 +113,7 @@ export class ProductPage extends React.Component<Props, State> {
                                     <ProductSelectionText>Color:</ProductSelectionText>
                                 </div>
                                 <div>
-                                    <ProductDropdown aria-label='color' onChange={(changeEvent) => this.selectColor(changeEvent)}>
+                                    <ProductDropdown aria-label='color' onChange={(changeEvent: React.ChangeEvent<HTMLSelectElement>) => this.selectColor(changeEvent)}>
                                         <option value='none'>select&nbsp;&nbsp;&#x2193;</option>
                                         {this.props.colors.map((color) => (
                                             <option
@@ -128,7 +130,7 @@ export class ProductPage extends React.Component<Props, State> {
                                     <ProductSelectionText>Size (waist):</ProductSelectionText>
                                 </div>
                                 <div>
-                                    <ProductDropdown aria-label='waist size'  name='os0' onChange={(changeEvent) => this.selectSize(changeEvent)}>
+                                    <ProductDropdown aria-label='waist size'  name='os0' onChange={(changeEvent: React.ChangeEvent<HTMLSelectElement>) => this.selectSize(changeEvent)}>
                                         <option value='none'>select&nbsp;&nbsp;&#x2193;</option>
                                         {this.props.sizes.map((size) => {
                                             let displayText = size;
@@ -170,13 +172,15 @@ export class ProductPage extends React.Component<Props, State> {
                                     </ProductSelectionText>
                                 </div>
 
-                                <div>
-                                    <p>&nbsp;</p>
-                                </div>
-                                <div>
-                                    <AddToCartSubmit type='submit' name='submit' value='Add to Cart' alt='PayPal - The safer, easier way to pay online!' onClick={(mouseEvent) => this.addToCart(mouseEvent)} />
+                                <div/>
+                                <AddToCartContainer>
+                                    <AddToCartSubmit type='submit' name='submit' value='Add to Cart' alt='PayPal - The safer, easier way to pay online!'
+                                        onClick={(mouseEvent: React.MouseEvent<HTMLInputElement>) => this.addToCartClicked(mouseEvent)} />
                                     <img alt='pixel' src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif' width='1' height='1' />
-                                </div>
+                                    {this.state.showInvalidSelectionMessage &&
+                                        <AddToCartErrorMessage>Please select a valid color and size.</AddToCartErrorMessage>
+                                    }
+                                </AddToCartContainer>
 
                                 <div/>
                                 <MoreInfoContainer>
@@ -268,40 +272,31 @@ export class ProductPage extends React.Component<Props, State> {
         const selectedColor = changeEvent.currentTarget.value
             ? this.props.colors.find((color) => color.name == changeEvent.currentTarget.value)
             : undefined;
-        this.setState({ selectedColor });
-        console.log('color: ', selectedColor ? selectedColor.name : '(none)');
+        this.setState({ selectedColor, showInvalidSelectionMessage: false });
     }
 
     private selectSize(changeEvent: React.ChangeEvent<HTMLSelectElement>): void {
         const selectedSize = changeEvent.currentTarget.value
             ? this.props.sizes.find((size) => size == changeEvent.currentTarget.value)
             : undefined;
-        this.setState({ selectedSize });
-        console.log('size: ', selectedSize);
+        this.setState({ selectedSize, showInvalidSelectionMessage: false });
     }
 
-    private addToCart(mouseEvent: React.MouseEvent<HTMLInputElement>): void {
+    private addToCartClicked(mouseEvent: React.MouseEvent<HTMLInputElement>): void {
 
-        const messages: string[] = [];
+        let isSelectionValid = false;
 
         if (this.state.selectedColor && this.state.selectedSize) {
             const selectedColorSize = new ColorSize(this.state.selectedColor.name, this.state.selectedSize);
-            if (Array.from(this.props.specialInventoryStates.entries()).find((inventoryState) =>
-                inventoryState[0].equals(selectedColorSize) && inventoryState[1] == InventoryState.SOLD_OUT)
+            if (!Array.from(this.props.specialInventoryStates.entries()).find((inventoryState) =>
+                inventoryState[0].equals(selectedColorSize) && inventoryState[1] === InventoryState.SOLD_OUT)
             ) {
-                messages.push(`Sorry, ${this.state.selectedColor.name} is sold out in size ${this.state.selectedSize}.`);
-            }
-        } else {
-            if (!this.state.selectedColor) {
-                messages.push('Please select a color.');
-            }
-            if (!this.state.selectedSize) {
-                messages.push('Please select a size.');
+                isSelectionValid = true;
             }
         }
 
-        if (messages.length > 0) {
-            alert(messages.join('\r\n'));
+        if (!isSelectionValid) {
+            this.setState({ showInvalidSelectionMessage: true })
             mouseEvent.preventDefault();
         }
     }
@@ -386,20 +381,33 @@ const ProductDropdown = styled.select`
     text-overflow: ellipsis;
 `;
 
+const AddToCartContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+`;
+
 const AddToCartSubmit = styled.input`
     font-size: 90%;
     height: 2.5em;
+    width: 8em;
+    align-self: flex-start;
     padding-top: 0.2em;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
     background-color: #148923;
     border-radius: 3px;
     color: #fff;
-    cursor: pointer;
+    cursor:  pointer;
     text-transform: uppercase;
     transition: background-color 0.3s;
     &:hover {
         background-color: #14A827;
     }
+`;
+
+const AddToCartErrorMessage = styled.span`
+    font-size: 90%;
+    color: red;
 `;
 
 const MoreInfoContainer = styled.div`
