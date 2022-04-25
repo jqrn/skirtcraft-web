@@ -185,4 +185,5 @@ export const RATINGS_UNALIGNED: Rating[] = [
     { date: '2021-12-22', ratingStars: 5, review: 'Great quality product, really comfortable to wear, love the pockets - makes carrying essentials (e.g. phone) easy' },
     { date: '2021-03-09', ratingStars: 5 },
     { date: '2022-03-09', ratingStars: 5, name: 'Daniel', review: 'Worth it' },
+    { date: '2022-04-24', ratingStars: 5, name: 'Nick' },
 ];
