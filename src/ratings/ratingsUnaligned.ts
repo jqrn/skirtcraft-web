@@ -186,4 +186,7 @@ export const RATINGS_UNALIGNED: Rating[] = [
     { date: '2021-03-09', ratingStars: 5 },
     { date: '2022-03-09', ratingStars: 5, name: 'Daniel', review: 'Worth it' },
     { date: '2022-04-24', ratingStars: 5, name: 'Nick' },
+    { date: '2022-05-21', ratingStars: 4 },
+    { date: '2022-05-23', ratingStars: 5, review: 'Thanks Joe for contributing to the start of a long overdue revolution in men\'s fashion to make practical and affordable skirts an option for forward thinking men!' },
+    { date: '2022-05-24', ratingStars: 4 },
 ];
