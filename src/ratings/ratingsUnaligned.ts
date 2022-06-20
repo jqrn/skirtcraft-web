@@ -189,4 +189,5 @@ export const RATINGS_UNALIGNED: Rating[] = [
     { date: '2022-05-21', ratingStars: 4 },
     { date: '2022-05-23', ratingStars: 5, review: 'Thanks Joe for contributing to the start of a long overdue revolution in men\'s fashion to make practical and affordable skirts an option for forward thinking men!' },
     { date: '2022-05-24', ratingStars: 4 },
+    { date: '2022-05-31', ratingStars: 5 },
 ];

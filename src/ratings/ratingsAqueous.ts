@@ -60,4 +60,5 @@ export const RATINGS_AQUEOUS: Rating[] = [
     { date: '2021-11-06', ratingStars: 5, name: 'David, Las Vegas, NV', review: 'Absolutely top quality products, very comfortable nicely styled, roomy pockets and great service. Seriously, I could not ask for more. I have purchased three skirts to date, two Unaligned and most recent the Aqueous. They are all very comfortable and very well made. Thanks for a great product! Potential buyers, do not sit on the fence, you will not regret purchasing!' },
     { date: '2022-03-09', ratingStars: 5, name: 'Daniel', review: 'Worth it' },
     { date: '2022-04-24', ratingStars: 5, name: 'Nick' },
+    { date: '2022-05-31', ratingStars: 5 },
 ];
