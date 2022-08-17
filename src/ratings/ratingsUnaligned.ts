@@ -170,7 +170,7 @@ export const RATINGS_UNALIGNED: Rating[] = [
     { date: '2021-04-24', ratingStars: 5 },
     { date: '2021-05-26', ratingStars: 5, name: 'Ben', review: 'The Unaligned skirt is a great companion to my collection of utilikilts.' },
     { date: '2021-05-27', ratingStars: 5 },
-    { date: '2021-05-27', ratingStars: 5, name: 'Mike', review: 'Excellent quality, I can\t wait to wear it!' },
+    { date: '2021-05-27', ratingStars: 5, name: 'Mike', review: 'Excellent quality, I can\'t wait to wear it!' },
     { date: '2021-05-27', ratingStars: 4 },
     { date: '2021-06-12', ratingStars: 5, name: 'Mentuhotep, in Illinois', review: 'I finally order my first skirt after a few years of procrastination. My wife said she wants one as well. It is the best edition to my hot summer wardrobe.' },
     { date: '2021-07-26', ratingStars: 5 },
@@ -191,4 +191,9 @@ export const RATINGS_UNALIGNED: Rating[] = [
     { date: '2022-05-24', ratingStars: 4 },
     { date: '2022-05-31', ratingStars: 5 },
     { date: '2022-06-16', ratingStars: 5, review: 'Perfect first skirt for a man!' },
+    { date: '2022-07-16', ratingStars: 5, name: 'Ike in LoCo', review: 'Discerning customers won\'t be satisfied, they\'ll be delighted!' },
+    { date: '2022-07-16', ratingStars: 5, name: 'Mark' },
+    { date: '2022-07-16', ratingStars: 5, review: 'The skirts are of fantastic quality and shipped quickly, I have ordered several already' },
+    { date: '2022-08-15', ratingStars: 5 },
+    { date: '2022-08-15', ratingStars: 4 },
 ];
