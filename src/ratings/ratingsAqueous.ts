@@ -63,4 +63,5 @@ export const RATINGS_AQUEOUS: Rating[] = [
     { date: '2022-05-31', ratingStars: 5 },
     { date: '2022-07-16', ratingStars: 5, name: 'Ike in LoCo', review: 'Discerning customers won\'t be satisfied, they\'ll be delighted!' },
     { date: '2022-07-16', ratingStars: 5, review: 'The skirts are of fantastic quality and shipped quickly, I have ordered several already' },
+    { date: '2022-08-21', ratingStars: 5, name: 'fab', review: 'good quality' },
 ];
