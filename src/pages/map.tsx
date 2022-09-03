@@ -14,7 +14,7 @@ export default class MapPage extends React.PureComponent {
 
                 <p>Cities/towns we've shipped skirts to!</p>
 
-                <p>The latitudes and longitudes shown in this map are <b>not</b> derived from precise addresses; they're city/town locations only.  Purple markers indicate places to which we've sent multiple orders.</p><br/>
+                <p>The latitudes and longitudes shown in this map are <b>not</b> derived from precise addresses; they're city/town locations only.</p><br/>
 
                 <AspectRatio>
                     <MapIframe src={process.env.GOOGLE_MAP_URL}/>
