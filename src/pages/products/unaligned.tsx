@@ -101,6 +101,9 @@ export default class UnalignedSkirtProductPage extends React.PureComponent {
                         new ColorSize('Khaki', '34-35 inches'),
                         InventoryState.SOLD_OUT,
                     ], [
+                        new ColorSize('Khaki', '36-37 inches'),
+                        InventoryState.SOLD_OUT,
+                    ], [
                         new ColorSize('Khaki', '38-39 inches'),
                         InventoryState.SOLD_OUT,
                     ], [
@@ -110,6 +113,9 @@ export default class UnalignedSkirtProductPage extends React.PureComponent {
                         new ColorSize('Khaki', '42-43 inches'),
                         InventoryState.SOLD_OUT,
                     ], [
+                        new ColorSize('Khaki', '44-45 inches'),
+                        InventoryState.FEW_LEFT,
+                    ], [
                         new ColorSize('Grey', '30-31 inches'),
                         InventoryState.SOLD_OUT,
                     ],   [
@@ -118,6 +124,9 @@ export default class UnalignedSkirtProductPage extends React.PureComponent {
                     ],   [
                         new ColorSize('Grey', '36-37 inches'),
                         InventoryState.SOLD_OUT,
+                    ],   [
+                        new ColorSize('Grey', '38-39 inches'),
+                        InventoryState.FEW_LEFT,
                     ],
                 ])}
                 priceUsDollars={parseFloat(process.env.PRICE_US_DOLLARS_UNALIGNED!)}
