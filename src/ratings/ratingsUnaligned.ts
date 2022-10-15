@@ -196,4 +196,8 @@ export const RATINGS_UNALIGNED: Rating[] = [
     { date: '2022-07-16', ratingStars: 5, review: 'The skirts are of fantastic quality and shipped quickly, I have ordered several already' },
     { date: '2022-08-15', ratingStars: 5 },
     { date: '2022-08-15', ratingStars: 4 },
+    { date: '2022-10-08', ratingStars: 4, review: 'The quality of the skirts is absolutely fantastic and they couldn’t have arrived any faster! Great customer support! Would buy again!' },
+    { date: '2022-10-08', ratingStars: 5 },
+    { date: '2022-10-08', ratingStars: 5, name: 'Craig from Winnipeg', review: 'Excellent product and great service' },
+    { date: '2022-10-09', ratingStars: 5 },
 ];
