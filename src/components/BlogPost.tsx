@@ -3,7 +3,6 @@ import moment from 'moment';
 import React from 'react';
 import styled from 'styled-components';
 import ImgTumblrShare from '../images/share_tumblr_2.png';
-import ImgTwitterShare from '../images/share_twitter_2.png';
 import BlogPostPage from './BlogPostPage';
 
 interface Props {
@@ -34,10 +33,6 @@ export const BlogPost = React.memo((props: Props) => {
                 &nbsp;by&nbsp;
                 <span>{process.env.BLOG_BY_NAME}</span>
             </Byline>
-
-            <SocialShareAnchor href={`https://twitter.com/intent/tweet?text=${postTitleEncoded}&url=${postUrlEncoded}&via=${process.env.TWITTER_HANDLE}`} target='_blank'>
-                <img src={ImgTwitterShare} width={24} alt='Share on Twitter'/>
-            </SocialShareAnchor>
 
             <SocialShareAnchor href={post.post_url} target='_blank'>
                 <img src={ImgTumblrShare} width={24} alt='View on Tumblr'/>
