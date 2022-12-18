@@ -15,11 +15,12 @@ export const SocialBarIcon = React.memo<Props>((props: Props) => (
 ));
 
 const StyledOutboundLink = styled((props: any) => <OutboundLink {...props} />)`
-    padding: 0 0.5em;
+    padding: 0 0.75em;
+    display: flex;
 `;
 
 const Image = styled.img`
-    height: 1.5em;
+    height: 1.1em;
     width: auto;
     margin: auto;
     vertical-align: middle;

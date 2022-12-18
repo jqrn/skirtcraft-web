@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import ImgHeaderInstagram from '../images/header_instagram.png';
+import ImgHeaderMastodon from '../images/header_mastodon.svg';
 import ImgHeaderTumblr from '../images/header_tumblr.png';
-import ImgHeaderTwitter from '../images/header_twitter.png';
 import { SocialBarIcon } from './SocialBarIcon';
 
 export const SocialBar = React.memo(() => (
@@ -14,9 +14,9 @@ export const SocialBar = React.memo(() => (
             altText={'Instagram'}
         />
         <SocialBarIcon
-            linkUrl={'https://twitter.com/skirtcraft'}
-            imageUrl={ImgHeaderTwitter}
-            altText={'Twitter'}
+            linkUrl={'https://mastodon.cloud/@skirtcraft'}
+            imageUrl={ImgHeaderMastodon}
+            altText={'Mastodon'}
         />
         <SocialBarIcon
             linkUrl={'https://skirtcraft.tumblr.com'}
