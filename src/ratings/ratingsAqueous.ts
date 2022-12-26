@@ -66,4 +66,5 @@ export const RATINGS_AQUEOUS: Rating[] = [
     { date: '2022-08-21', ratingStars: 5, name: 'fab', review: 'good quality' },
     { date: '2022-10-08', ratingStars: 4, review: 'The quality of the skirts is absolutely fantastic and they couldn’t have arrived any faster! Great customer support! Would buy again!' },
     { date: '2022-10-08', ratingStars: 5 },
+    { date: '2022-12-24', ratingStars: 5 },
 ];
