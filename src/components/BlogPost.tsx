@@ -3,10 +3,11 @@ import moment from 'moment';
 import React from 'react';
 import styled from 'styled-components';
 import ImgTumblrShare from '../images/share_tumblr_2.png';
-import BlogPostPage from './BlogPostPage';
+import { getBlogPostSlug } from '../util/blog';
 
 interface Props {
     tumblrPost: {
+        id: string;
         title: string;
         slug: string;
         date: string;
@@ -18,9 +19,7 @@ interface Props {
 export const BlogPost = React.memo((props: Props) => {
 
     const post = props.tumblrPost;
-
-    const postUrlEncoded = encodeURIComponent(BlogPostPage.getPostUrl(post.slug));
-    const postTitleEncoded = encodeURIComponent(post.title);
+    const slug = getBlogPostSlug(post);
 
     return(
         <Container>
@@ -28,7 +27,7 @@ export const BlogPost = React.memo((props: Props) => {
 
             <Byline>
                 <span>
-                    <Link to={`/blog-posts/${post.slug}`}>{moment(post.date, 'YYYY-MM-DD HH:mm:ss').format('dddd, MMMM Do, YYYY')}</Link>
+                    <Link to={`/blog-posts/${slug}`}>{moment(post.date, 'YYYY-MM-DD HH:mm:ss').format('dddd, MMMM Do, YYYY')}</Link>
                 </span>
                 &nbsp;by&nbsp;
                 <span>{process.env.BLOG_BY_NAME}</span>

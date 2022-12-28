@@ -1,13 +1,15 @@
 import { resolve } from 'path';
+import { getBlogPostSlug } from '../util/blog';
 import { GatsbyCreatePages } from './blogGenerationTypes';
 
 interface TumblrGraphqlEdge {
     node: {
-        title?: string;
-        slug?: string;
-        date?: string;
+        id: string;
+        title: string;
+        slug: string;
+        date: string;
         tags: string[];
-    };
+    },
 }
 
 export const createBlogPosts: GatsbyCreatePages = async ({
@@ -19,9 +21,10 @@ export const createBlogPosts: GatsbyCreatePages = async ({
 
     const allTumblrPosts = await graphql(`
         {
-            allTumblrPost(sort: { fields: date, order: DESC }) {
+            allTumblrPost(sort: { date: DESC }) {
                 edges {
                     node {
+                        id: id_string
                         title
                         slug
                         date
@@ -41,14 +44,14 @@ export const createBlogPosts: GatsbyCreatePages = async ({
     // create individual post pages
     filteredTumblrPostEdges.forEach((edge: TumblrGraphqlEdge, index: number) => {
         const node = edge.node;
+        const newSlug = getBlogPostSlug(node);
         createPage({
-            path: `blog-posts/${node.slug}`,
+            path: `blog-posts/${newSlug}`,
             component: resolve(`./src/components/BlogPostPage.tsx`),
             context: {
-                date: node.date,
-                slug: node.slug,
-                nextSlug: index > 0 ? filteredTumblrPostEdges[index - 1].node.slug : undefined,
-                previousSlug: index < filteredTumblrPostEdges.length - 1 ? filteredTumblrPostEdges[index + 1].node.slug : undefined
+                id: node.id,
+                nextSlug: index > 0 ? getBlogPostSlug(filteredTumblrPostEdges[index - 1].node) : undefined,
+                previousSlug: index < filteredTumblrPostEdges.length - 1 ? getBlogPostSlug(filteredTumblrPostEdges[index + 1].node) : undefined
             },
         });
     });
@@ -57,10 +60,10 @@ export const createBlogPosts: GatsbyCreatePages = async ({
     const maxPostsPerTimelinePage = 5;
     const timelinePageCount = Math.ceil(filteredTumblrPostEdges.length / maxPostsPerTimelinePage);
     let currentTimelinePageNumber = 1;
-    let currentTimelinePageSlugs: string[] = [];
+    let currentTimelinePagePostIds: string[] = [];
     filteredTumblrPostEdges.forEach((edge: TumblrGraphqlEdge, index: number) => {
-        currentTimelinePageSlugs.push(edge.node.slug!);
-        if (currentTimelinePageSlugs.length >= maxPostsPerTimelinePage
+        currentTimelinePagePostIds.push(edge.node.id);
+        if (currentTimelinePagePostIds.length >= maxPostsPerTimelinePage
             || index >= filteredTumblrPostEdges.length - 1
         ) {
 
@@ -68,14 +71,14 @@ export const createBlogPosts: GatsbyCreatePages = async ({
                 path: currentTimelinePageNumber === 1 ? 'blog' : `blog/page-${currentTimelinePageNumber}`,
                 component: resolve(`./src/components/BlogTimelinePage.tsx`),
                 context: {
-                    postSlugs: currentTimelinePageSlugs,
+                    postIds: currentTimelinePagePostIds,
                     pageNumber: currentTimelinePageNumber,
                     isLastPage: currentTimelinePageNumber === timelinePageCount,
                 },
             });
 
             currentTimelinePageNumber += 1;
-            currentTimelinePageSlugs = [];
+            currentTimelinePagePostIds = [];
         }
     });
 

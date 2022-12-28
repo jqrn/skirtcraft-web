@@ -7,6 +7,7 @@ import { BlogPost } from './BlogPost';
 import { Page } from './Page';
 
 interface TumblrPost {
+    id: string;
     title: string;
     slug: string;
     date: string;
@@ -52,10 +53,10 @@ export default class BlogTimelinePage extends React.PureComponent<Props> {
 
                 <BlogPrevNextNavLinks>
                     <div>
-                        <BlogNavLink isvisible={pageNumber > 1} to={'/blog' + (pageNumber === 2 ? '' : `/page-${pageNumber - 1}`)}>&lt; Newer</BlogNavLink>
+                        <BlogNavLink $isvisible={pageNumber > 1} to={'/blog' + (pageNumber === 2 ? '' : `/page-${pageNumber - 1}`)}>&lt; Newer</BlogNavLink>
                     </div>
                     <div>
-                        <BlogNavLink isvisible={!this.props.pageContext.isLastPage} to={`/blog/page-${pageNumber + 1}`}>Older &gt;</BlogNavLink>
+                        <BlogNavLink $isvisible={!this.props.pageContext.isLastPage} to={`/blog/page-${pageNumber + 1}`}>Older &gt;</BlogNavLink>
                     </div>
                 </BlogPrevNextNavLinks>
 
@@ -79,13 +80,14 @@ const BlogPrevNextNavLinks = styled.div`
 `;
 
 export const query = graphql`
-    query($postSlugs: [String!]!) {
+    query($postIds: [String!]!) {
         allTumblrPost(
-            filter: { slug: { in: $postSlugs }},
-            sort: { fields: date, order: DESC }
+            filter: { id_string: { in: $postIds }},
+            sort: { date: DESC }
         ) {
             edges {
                 node {
+                    id: id_string
                     title
                     slug
                     date
