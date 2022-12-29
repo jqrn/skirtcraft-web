@@ -11,7 +11,7 @@ interface Props {
 }
 
 interface State {
-    averageRating?: number;
+    averageRating?: string;
 }
 
 const RATINGS_PER_PAGE = 5;
@@ -21,9 +21,8 @@ export class RatingSet extends React.PureComponent<Props, State> {
     public state: State = {};
 
     public componentDidMount(): void {
-        const averateRatingRaw = this.props.ratings.reduce((sum, currentRating) => sum + currentRating.ratingStars, 0) / this.props.ratings.length;
-        const averageRating = Math.round(100 * averateRatingRaw) / 100;
-        this.setState({ averageRating });
+        const averageRatingRaw = this.props.ratings.reduce((sum, currentRating) => sum + currentRating.ratingStars, 0) / this.props.ratings.length;
+        this.setState({ averageRating: averageRatingRaw.toFixed(2) });
     }
 
     public render(): JSX.Element {
