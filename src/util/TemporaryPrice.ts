@@ -1,4 +1,4 @@
 export interface TemporaryPrice {
-    price: string;
-    untilDate: string;
+  price: string;
+  untilDate: string;
 }

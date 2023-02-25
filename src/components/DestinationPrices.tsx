@@ -2,29 +2,26 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface Props {
-    destinationName: string;
-    pricesUsDollars: number[];
+  destinationName: string;
+  pricesUsDollars: number[];
 }
 
-export const DestinationPrices = React.memo<Props>((props: Props) => (
+export const DestinationPrices = (props: Props) => (
+  <Container>
+    <DestinationName>{props.destinationName}</DestinationName>
 
-    <Container>
-
-        <DestinationName>{props.destinationName}</DestinationName>
-
-        {props.pricesUsDollars.map((priceUsd: number, index: number) => (
-            <p key={index}>
-                {` ${index + 1} skirt${index > 0 ? 's' : ''}: $${priceUsd}`}
-            </p>
-        ))}
-
-    </Container>
-));
+    {props.pricesUsDollars.map((priceUsd: number, index: number) => (
+      <p key={index}>
+        {` ${index + 1} skirt${index > 0 ? 's' : ''}: $${priceUsd}`}
+      </p>
+    ))}
+  </Container>
+);
 
 const Container = styled.div`
-    margin: 0 0.5em;
+  margin: 0 0.5em;
 `;
 
 const DestinationName = styled.p`
-    font-weight: bold;
+  font-weight: bold;
 `;

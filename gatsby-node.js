@@ -4,14 +4,15 @@
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-'use strict';
+"use strict";
 
-require('source-map-support').install();
-require('ts-node').register({
+require("source-map-support").install();
+require("ts-node").register({
   compilerOptions: {
-    module: 'commonjs',
-    target: 'es2017',
+    module: "commonjs",
+    target: "es2017",
   },
 });
 
-exports.createPages = require('./src/blogGeneration/createBlogPosts').createBlogPosts;
+exports.createPages =
+  require("./src/blogGeneration/createBlogPosts").createBlogPosts;

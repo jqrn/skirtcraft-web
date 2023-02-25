@@ -1,2 +1,2 @@
-
-export const getBlogPostSlug = (node: { id: string, slug: string }) => `${node.slug}-${node.id}`;
+export const getBlogPostSlug = (node: { id: string; slug: string }) =>
+  `${node.slug}-${node.id}`;

@@ -23,7 +23,6 @@ module.exports = {
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-typescript`,
-    `gatsby-plugin-tslint`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

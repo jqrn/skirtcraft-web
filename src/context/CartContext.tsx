@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, PropsWithChildren, useEffect, useState } from 'react';
 
 export interface CartItem {
   productName: string;
   color: string;
   size: string;
   price: number;
-};
+}
 
 export interface CartContextType {
   addItem: (item: CartItem) => void;
@@ -16,20 +16,27 @@ export interface CartContextType {
 }
 
 export const CartContext = React.createContext<CartContextType>({
-  addItem: _ => {/* nothing */},
-  clear: () => {/* nothing */},
+  addItem: () => {
+    /* nothing */
+  },
+  clear: () => {
+    /* nothing */
+  },
   items: [],
-  removeItem: _ => {/* nothing */},
-  removeItemGroup: _ => {/* nothing */},
+  removeItem: () => {
+    /* nothing */
+  },
+  removeItemGroup: () => {
+    /* nothing */
+  },
 });
 
 const doItemsMatch = (item1: CartItem, item2: CartItem) =>
-  item1.productName === item2.productName
-  && item1.color === item2.color
-  && item1.size === item2.size;
+  item1.productName === item2.productName &&
+  item1.color === item2.color &&
+  item1.size === item2.size;
 
-export const CartProvider = props => {
-  const { children } = props;
+export const CartProvider: FC<PropsWithChildren> = ({ children }) => {
   const [items, setItems] = useState<CartItem[]>(
     JSON.parse(localStorage.getItem('cart-items') ?? '[]')
   );
@@ -38,7 +45,9 @@ export const CartProvider = props => {
   const removeItem = (item: CartItem) =>
     setItems(oldItems => {
       const newItems = [...oldItems];
-      const matchingItems = newItems.filter(newItem => doItemsMatch(newItem, item))
+      const matchingItems = newItems.filter(newItem =>
+        doItemsMatch(newItem, item)
+      );
       const index = newItems.indexOf(matchingItems[matchingItems.length - 1]);
       newItems.splice(index, 1);
       return newItems;
@@ -54,7 +63,9 @@ export const CartProvider = props => {
   }, [items]);
 
   return (
-    <CartContext.Provider value={{ items, addItem, removeItem, removeItemGroup, clear }}>
+    <CartContext.Provider
+      value={{ items, addItem, removeItem, removeItemGroup, clear }}
+    >
       {children}
     </CartContext.Provider>
   );

@@ -1,6 +1,6 @@
 export interface Rating {
-    ratingStars: number;
-    review?: string;
-    name?: string;
-    date: string;
+  ratingStars: number;
+  review?: string;
+  name?: string;
+  date: string;
 }
