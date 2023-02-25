@@ -105,22 +105,18 @@ export default class UnalignedSkirtProductPage extends React.PureComponent {
           '42-43 inches',
           '44-45 inches',
         ]}
-        specialInventoryStates={
-          new Map<ColorSize, InventoryState>([
-            [new ColorSize('Khaki', '30-31 inches'), InventoryState.SOLD_OUT],
-            [new ColorSize('Khaki', '32-33 inches'), InventoryState.FEW_LEFT],
-            [new ColorSize('Khaki', '34-35 inches'), InventoryState.SOLD_OUT],
-            [new ColorSize('Khaki', '36-37 inches'), InventoryState.SOLD_OUT],
-            [new ColorSize('Khaki', '38-39 inches'), InventoryState.SOLD_OUT],
-            [new ColorSize('Khaki', '40-41 inches'), InventoryState.SOLD_OUT],
-            [new ColorSize('Khaki', '42-43 inches'), InventoryState.SOLD_OUT],
-            [new ColorSize('Khaki', '44-45 inches'), InventoryState.FEW_LEFT],
-            [new ColorSize('Grey', '30-31 inches'), InventoryState.SOLD_OUT],
-            [new ColorSize('Grey', '34-35 inches'), InventoryState.SOLD_OUT],
-            [new ColorSize('Grey', '36-37 inches'), InventoryState.SOLD_OUT],
-            [new ColorSize('Grey', '38-39 inches'), InventoryState.SOLD_OUT],
-          ])
-        }
+        soldOutColorSizes={[
+          new ColorSize('Khaki', '30-31 inches'),
+          new ColorSize('Khaki', '34-35 inches'),
+          new ColorSize('Khaki', '36-37 inches'),
+          new ColorSize('Khaki', '38-39 inches'),
+          new ColorSize('Khaki', '40-41 inches'),
+          new ColorSize('Khaki', '42-43 inches'),
+          new ColorSize('Grey', '30-31 inches'),
+          new ColorSize('Grey', '34-35 inches'),
+          new ColorSize('Grey', '36-37 inches'),
+          new ColorSize('Grey', '38-39 inches'),
+        ]}
         price={parseFloat(process.env.PRICE_UNALIGNED!)}
         photoUrls={[
           ImgUnaligned01R,

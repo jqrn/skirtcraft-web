@@ -107,7 +107,7 @@ export default class AqueousSkirtProductPage extends React.PureComponent {
           '42-43 inches',
           '44-45 inches',
         ]}
-        specialInventoryStates={new Map<ColorSize, InventoryState>()}
+        soldOutColorSizes={[]}
         price={parseFloat(process.env.PRICE_AQUEOUS!)}
         photoUrls={[
           ImgAqueous21,

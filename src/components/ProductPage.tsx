@@ -12,17 +12,12 @@ import { TemporaryPrice } from '../util/TemporaryPrice';
 import { ColorSquare } from './ColorSquare';
 import { RatingSet } from './RatingSet';
 
-export enum InventoryState {
-  FEW_LEFT = 'few left',
-  SOLD_OUT = 'SOLD OUT',
-}
-
 interface Props {
   name: string;
   details: JSX.Element;
   colors: string[];
   sizes: string[];
-  specialInventoryStates: Map<ColorSize, InventoryState>;
+  soldOutColorSizes: ColorSize[];
   price: number;
   temporaryPrice?: TemporaryPrice;
   photoUrls: string[];
@@ -118,42 +113,37 @@ export class ProductPage extends React.Component<Props, State> {
               </ColorButtons>
 
               <div>
-                <ProductSelectionText>Size (waist):</ProductSelectionText>
+                <ProductSelectionText>
+                  Waist size:
+                  <br />
+                  (inches)
+                </ProductSelectionText>
               </div>
-              <div>
-                <ProductDropdown
-                  aria-label="waist size"
-                  name="os0"
-                  onChange={(
-                    changeEvent: React.ChangeEvent<HTMLSelectElement>
-                  ) => this.selectSize(changeEvent)}
-                >
-                  <option value="none">select&nbsp;&nbsp;&#x2193;</option>
-                  {this.props.sizes.map(size => {
-                    let displayText = size;
-                    if (this.state.selectedColor) {
-                      const colorSize: ColorSize = new ColorSize(
-                        this.state.selectedColor,
-                        size
-                      );
-                      const specialInventoryState = Array.from(
-                        this.props.specialInventoryStates.entries()
-                      ).find(inventoryState =>
-                        inventoryState[0].equals(colorSize)
-                      );
-                      if (specialInventoryState) {
-                        displayText += ` (${specialInventoryState[1]})`;
-                      }
-                    }
-
-                    return (
-                      <option key={size} value={size}>
-                        {displayText}
-                      </option>
+              <SizeButtons aria-label="waist sizes">
+                {this.props.sizes.map(size => {
+                  let disabled = false;
+                  if (this.state.selectedColor) {
+                    const colorSize = new ColorSize(
+                      this.state.selectedColor,
+                      size
                     );
-                  })}
-                </ProductDropdown>
-              </div>
+                    disabled = this.props.soldOutColorSizes.some(
+                      soldOutColorSize => soldOutColorSize.equals(colorSize)
+                    );
+                  }
+
+                  return (
+                    <SizeButton
+                      key={size}
+                      disabled={disabled}
+                      selected={this.state.selectedSize === size}
+                      onClick={() => this.selectSize(size)}
+                    >
+                      {size.replace(' inches', '')}
+                    </SizeButton>
+                  );
+                })}
+              </SizeButtons>
 
               <div>
                 <ProductSelectionText>Price:</ProductSelectionText>
@@ -317,10 +307,7 @@ export class ProductPage extends React.Component<Props, State> {
     this.setState({ selectedColor, showInvalidSelectionMessage: false });
   }
 
-  private selectSize(changeEvent: React.ChangeEvent<HTMLSelectElement>): void {
-    const selectedSize = changeEvent.currentTarget.value
-      ? this.props.sizes.find(size => size == changeEvent.currentTarget.value)
-      : undefined;
+  private selectSize(selectedSize: string): void {
     this.setState({ selectedSize, showInvalidSelectionMessage: false });
   }
 
@@ -333,10 +320,8 @@ export class ProductPage extends React.Component<Props, State> {
         this.state.selectedSize
       );
       if (
-        !Array.from(this.props.specialInventoryStates.entries()).find(
-          inventoryState =>
-            inventoryState[0].equals(selectedColorSize) &&
-            inventoryState[1] === InventoryState.SOLD_OUT
+        !this.props.soldOutColorSizes.some(soldOutColorSize =>
+          soldOutColorSize.equals(selectedColorSize)
         )
       ) {
         isSelectionValid = true;
@@ -406,18 +391,17 @@ const FlickrImage = styled.img`
 
 const ProductSelectionsGrid = styled.div`
   width: 100%;
-  max-width: 20em;
+  max-width: 25em;
   display: grid;
-  grid-template-columns: 40% auto;
-  align-items: center;
-  row-gap: 0.5em;
+  grid-template-columns: 30% auto;
+  align-items: start;
+  row-gap: 1em;
 `;
 
 const ProductSelectionText = styled.p`
   font-size: 85%;
   text-transform: uppercase;
   margin: 0.25em;
-  line-height: 2.25em;
 `;
 
 const ColorButtons = styled.div`
@@ -428,25 +412,29 @@ const ColorButtons = styled.div`
 const ColorButton = styled.button<{ selected?: boolean }>`
   border-width: 2px;
   border-color: ${props => (props.selected ? 'black' : 'transparent')};
+  border-radius: 8px;
   padding: 2px;
   background-color: transparent;
+`;
+
+const SizeButtons = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+`;
+
+const SizeButton = styled.button<{ selected?: boolean }>`
+  border-width: 2px;
+  border-color: ${props => (props.selected ? 'black' : 'transparent')};
+  border-radius: 8px;
+  padding: 4px;
+  background-color: #eeeeee;
+  font-size: 16px;
 `;
 
 const TemporaryPriceText = styled.span`
   color: red;
   text-transform: none;
-`;
-
-const ProductDropdown = styled.select`
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border-radius: 0;
-  background-color: #eee;
-  padding: 0.5em;
-  width: 100%;
-  font-size: 85%;
-  text-overflow: ellipsis;
 `;
 
 const AddToCartContainer = styled.div`
@@ -460,18 +448,17 @@ const AddToCartContainer = styled.div`
 
 const AddToCartButton = styled.button`
   height: 3em;
-  width: 80%;
   background-color: #000;
   box-sizing: initial;
   border: 0px;
   border-radius: 8px;
+  padding: 0 16px;
   color: #fff;
   cursor: pointer;
   font-size: 110%;
   text-transform: uppercase;
-  transition: outline 0.3s ease-in-out;
   &:hover {
-    outline: 1px solid #000;
+    outline: 2px solid #000;
   }
 `;
 

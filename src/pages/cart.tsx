@@ -183,7 +183,7 @@ const CartPage = () => {
                   </li>
                   <li>
                     <TotalPrice>
-                      <span>rest of world</span>
+                      <span>Rest of world:</span>
                       {formatCurrency(getShippingAmount('RW'))}
                     </TotalPrice>
                   </li>

@@ -5,5 +5,6 @@ export const ColorSquare = styled.div<{ width: string }>`
   height: ${props => props.width};
   background-color: ${props =>
     props.color === 'Khaki' ? '#C2B584' : props.color};
+  border-radius: 4px;
   flex-shrink: 0;
 `;
