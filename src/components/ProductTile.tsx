@@ -7,7 +7,7 @@ interface Props {
     name: string;
     pagePath: string;
     imageSource: string;
-    priceUsDollars: string;
+    price: string;
     temporaryPrice?: TemporaryPrice;
 }
 
@@ -19,11 +19,11 @@ export const ProductTile = React.memo<Props>((props: Props) => (
             {props.temporaryPrice
                 ? (
                     <ProductPrice>
-                        <del>${props.priceUsDollars}</del>&nbsp;
-                        <TemporaryPriceText>${props.temporaryPrice!.priceUsDollars} (USD) until {props.temporaryPrice!.untilDate}!</TemporaryPriceText>
+                        <del>${props.price}</del>&nbsp;
+                        <TemporaryPriceText>${props.temporaryPrice!.price} (USD) until {props.temporaryPrice!.untilDate}!</TemporaryPriceText>
                     </ProductPrice>
                 )
-                : <ProductPrice>${props.priceUsDollars} (USD)</ProductPrice>
+                : <ProductPrice>${props.price} (USD)</ProductPrice>
             }
         </Link>
     </Container>

@@ -67,4 +67,5 @@ export const RATINGS_AQUEOUS: Rating[] = [
     { date: '2022-10-08', ratingStars: 4, review: 'The quality of the skirts is absolutely fantastic and they couldn’t have arrived any faster! Great customer support! Would buy again!' },
     { date: '2022-10-08', ratingStars: 5 },
     { date: '2022-12-24', ratingStars: 5 },
+    { date: '2023-02-18', ratingStars: 5, name: 'Jolyon', review: 'Skirtcraft is doing a superb job. Keep on doing it.' },
 ];

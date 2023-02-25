@@ -74,20 +74,7 @@ export default class AqueousSkirtProductPage extends React.PureComponent {
                         <p>Note: A few customers have reported the hook-and-bar starting to pull free from the fabric around it over time. We now consider it to be a construction flaw; the area should have been better reinforced. We do not have a fix, unfortunately. Wearing a belt to hold more of the tension of the waistband helps to prevent it.</p>
                     </>
                 )}
-                colors={[
-                    {
-                        name: 'Black',
-                        paypalButtonId: process.env.PAYPAL_BUTTON_ID_AQUEOUS_BLACK!,
-                    },
-                    {
-                        name: 'Purple',
-                        paypalButtonId: process.env.PAYPAL_BUTTON_ID_AQUEOUS_PURPLE!,
-                    },
-                    {
-                        name: 'Grey',
-                        paypalButtonId: process.env.PAYPAL_BUTTON_ID_AQUEOUS_GREY!,
-                    },
-                ]}
+                colors={['Black', 'Purple', 'Grey']}
                 sizes={[
                     '28-29 inches',
                     '30-31 inches',
@@ -100,7 +87,7 @@ export default class AqueousSkirtProductPage extends React.PureComponent {
                     '44-45 inches',
                 ]}
                 specialInventoryStates={new Map<ColorSize, InventoryState>()}
-                priceUsDollars={parseFloat(process.env.PRICE_US_DOLLARS_AQUEOUS!)}
+                price={parseFloat(process.env.PRICE_AQUEOUS!)}
                 photoUrls={[
                     ImgAqueous21,
                     ImgAqueousColors,

@@ -5,6 +5,7 @@
   "version": "3.0.0",
   "author": "Joe Quarion <joe@skirtcraft.com>",
   "dependencies": {
+    "@paypal/react-paypal-js": "^7.8.2",
     "babel-plugin-styled-components": "^2.0.3",
     "gatsby": "^5.3.3",
     "gatsby-cli": "^5.3.1",

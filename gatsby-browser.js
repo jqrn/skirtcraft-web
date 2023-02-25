@@ -1,9 +1,21 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
+import React from "react";
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { CartProvider } from "./src/context/CartContext.tsx";
+import "./src/styles/global.css";
 
-// You can delete this file if you're not using it
-
-import './src/styles/global.css';
+export const wrapRootElement = ({ element }) => {
+  return (
+    <CartProvider>
+      <PayPalScriptProvider
+        options={{
+          "client-id": process.env.PAYPAL_CLIENT_ID,
+          currency: process.env.CURRENCY_CODE,
+          debug: process.env.PAYPAL_DEBUG,
+          "integration-date": process.env.PAYPAL_INTEGRATION_DATE,
+        }}
+      >
+        {element}
+      </PayPalScriptProvider>
+    </CartProvider>
+  );
+};

@@ -21,21 +21,21 @@ export default class ProductsPage extends React.PureComponent {
                         name='Unaligned Skirt'
                         pagePath='unaligned'
                         imageSource={ImgUnaligned01}
-                        priceUsDollars={process.env.PRICE_US_DOLLARS_UNALIGNED!}
+                        price={process.env.PRICE_UNALIGNED!}
                     />
 
                     <ProductTile
                         name='Aqueous Skirt'
                         pagePath='aqueous'
                         imageSource={ImgAqueous21s}
-                        priceUsDollars={process.env.PRICE_US_DOLLARS_AQUEOUS!}
+                        price={process.env.PRICE_AQUEOUS!}
                     />
 
                     <ProductTile
                         name='T-Shirts'
                         pagePath='tshirts'
                         imageSource={ImgShirt01}
-                        priceUsDollars='26-31'
+                        price='26-31'
                     />
 
                 </Container>

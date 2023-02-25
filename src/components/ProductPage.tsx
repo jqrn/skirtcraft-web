@@ -1,19 +1,15 @@
-import { Link } from 'gatsby';
+import { Link, navigate } from 'gatsby';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import React from 'react';
 import styled from 'styled-components';
 import { DestinationPrices } from '../components/DestinationPrices';
 import { Page } from '../components/Page';
+import { CartContext } from '../context/CartContext';
 import { Rating } from '../ratings/Rating';
 import { ColorSize } from '../util/ColorSize';
 import { addScriptToPage } from '../util/scriptUtils';
 import { TemporaryPrice } from '../util/TemporaryPrice';
 import { RatingSet } from './RatingSet';
-
-interface Color {
-    name: string;
-    paypalButtonId: string;
-}
 
 export enum InventoryState {
     FEW_LEFT = 'few left',
@@ -23,10 +19,10 @@ export enum InventoryState {
 interface Props {
     name: string;
     details: JSX.Element;
-    colors: Color[];
+    colors: string[];
     sizes: string[];
     specialInventoryStates: Map<ColorSize, InventoryState>;
-    priceUsDollars: number;
+    price: number;
     temporaryPrice?: TemporaryPrice;
     photoUrls: string[];
     flickrAlbum: {
@@ -38,7 +34,7 @@ interface Props {
 
 interface State {
     selectedImageIndex: number;
-    selectedColor?: Color;
+    selectedColor?: string;
     selectedSize?: string;
     isSizeInfoShowing: boolean;
     areShippingRatesShowing: boolean;
@@ -48,6 +44,8 @@ interface State {
 }
 
 export class ProductPage extends React.Component<Props, State> {
+
+    static contextType = CartContext;
 
     public state: State = {
         selectedImageIndex: 0,
@@ -66,6 +64,16 @@ export class ProductPage extends React.Component<Props, State> {
 
         const selectedImageUrl = this.props.photoUrls[this.state.selectedImageIndex];
         const flickrAlbumName = `${this.props.name} Backers and Customers`;
+
+        let isSelectionValid = false;
+        if (this.state.selectedColor && this.state.selectedSize) {
+          const selectedColorSize = new ColorSize(this.state.selectedColor, this.state.selectedSize);
+          if (!Array.from(this.props.specialInventoryStates.entries()).find((inventoryState) =>
+              inventoryState[0].equals(selectedColorSize) && inventoryState[1] === InventoryState.SOLD_OUT)
+          ) {
+              isSelectionValid = true;
+          }
+        }
 
         return (
 
@@ -101,145 +109,137 @@ export class ProductPage extends React.Component<Props, State> {
 
                         <h1>{this.props.name}</h1>
 
-                        <form target='paypal' action='https://www.paypal.com/cgi-bin/webscr' method='post'>
+                        <ProductSelectionsGrid>
 
-                            <input type='hidden' name='cmd' value='_s-xclick'/>
-                            <input type='hidden' name='hosted_button_id' value={this.state.selectedColor ? this.state.selectedColor.paypalButtonId : undefined} onChange={() => { return; }}/>
-                            <input type='hidden' name='on0' value='Waist Size'/>
+                            <div>
+                                <ProductSelectionText>Color:</ProductSelectionText>
+                            </div>
+                            <div>
+                                <ProductDropdown aria-label='color' onChange={(changeEvent: React.ChangeEvent<HTMLSelectElement>) => this.selectColor(changeEvent)}>
+                                    <option value='none'>select&nbsp;&nbsp;&#x2193;</option>
+                                    {this.props.colors.map((color) => (
+                                        <option
+                                            key={color}
+                                            value={color}
+                                        >
+                                            {color}
+                                        </option>
+                                    ))}
+                                </ProductDropdown>
+                            </div>
 
-                            <ProductSelectionsGrid>
-
-                                <div>
-                                    <ProductSelectionText>Color:</ProductSelectionText>
-                                </div>
-                                <div>
-                                    <ProductDropdown aria-label='color' onChange={(changeEvent: React.ChangeEvent<HTMLSelectElement>) => this.selectColor(changeEvent)}>
-                                        <option value='none'>select&nbsp;&nbsp;&#x2193;</option>
-                                        {this.props.colors.map((color) => (
-                                            <option
-                                                key={color.name}
-                                                value={color.name}
-                                            >
-                                                {color.name}
-                                            </option>
-                                        ))}
-                                    </ProductDropdown>
-                                </div>
-
-                                <div>
-                                    <ProductSelectionText>Size (waist):</ProductSelectionText>
-                                </div>
-                                <div>
-                                    <ProductDropdown aria-label='waist size'  name='os0' onChange={(changeEvent: React.ChangeEvent<HTMLSelectElement>) => this.selectSize(changeEvent)}>
-                                        <option value='none'>select&nbsp;&nbsp;&#x2193;</option>
-                                        {this.props.sizes.map((size) => {
-                                            let displayText = size;
-                                            if (this.state.selectedColor) {
-                                                const colorSize: ColorSize = new ColorSize(this.state.selectedColor.name, size);
-                                                const specialInventoryState = Array.from(this.props.specialInventoryStates.entries())
-                                                    .find((inventoryState) => inventoryState[0].equals(colorSize));
-                                                if (specialInventoryState) {
-                                                    displayText += ` (${specialInventoryState[1]})`;
-                                                }
+                            <div>
+                                <ProductSelectionText>Size (waist):</ProductSelectionText>
+                            </div>
+                            <div>
+                                <ProductDropdown aria-label='waist size'  name='os0' onChange={(changeEvent: React.ChangeEvent<HTMLSelectElement>) => this.selectSize(changeEvent)}>
+                                    <option value='none'>select&nbsp;&nbsp;&#x2193;</option>
+                                    {this.props.sizes.map((size) => {
+                                        let displayText = size;
+                                        if (this.state.selectedColor) {
+                                            const colorSize: ColorSize = new ColorSize(this.state.selectedColor, size);
+                                            const specialInventoryState = Array.from(this.props.specialInventoryStates.entries())
+                                                .find((inventoryState) => inventoryState[0].equals(colorSize));
+                                            if (specialInventoryState) {
+                                                displayText += ` (${specialInventoryState[1]})`;
                                             }
-
-                                            return (
-                                                <option
-                                                    key={size}
-                                                    value={size}
-                                                >
-                                                    {displayText}
-                                                </option>
-                                            );
-                                        })}
-                                    </ProductDropdown>
-                                </div>
-
-                                <div>
-                                    <ProductSelectionText>Price:</ProductSelectionText>
-                                </div>
-                                <div>
-                                    <ProductSelectionText>
-                                        {this.props.temporaryPrice
-                                            ? (
-                                                <span>
-                                                    <del>${this.props.priceUsDollars}</del>&nbsp;
-                                                    <TemporaryPriceText>${this.props.temporaryPrice.priceUsDollars} until {this.props.temporaryPrice.untilDate}!</TemporaryPriceText>
-                                                </span>
-                                            )
-                                            : `$${this.props.priceUsDollars}`
                                         }
-                                    </ProductSelectionText>
-                                </div>
 
-                                <div/>
-                                <AddToCartContainer>
-                                    <AddToCartSubmit type='submit' name='submit' value='Add to Cart' alt='PayPal - The safer, easier way to pay online!'
-                                        onClick={(mouseEvent: React.MouseEvent<HTMLInputElement>) => this.addToCartClicked(mouseEvent)} />
-                                    <img alt='pixel' src='https://www.paypalobjects.com/en_US/i/scr/pixel.gif' width='1' height='1' />
-                                    {this.state.showInvalidSelectionMessage &&
-                                        <AddToCartErrorMessage>Please select a valid color and size.</AddToCartErrorMessage>
+                                        return (
+                                            <option
+                                                key={size}
+                                                value={size}
+                                            >
+                                                {displayText}
+                                            </option>
+                                        );
+                                    })}
+                                </ProductDropdown>
+                            </div>
+
+                            <div>
+                                <ProductSelectionText>Price:</ProductSelectionText>
+                            </div>
+                            <div>
+                                <ProductSelectionText>
+                                    {this.props.temporaryPrice
+                                        ? (
+                                            <span>
+                                                <del>${this.props.price}</del>&nbsp;
+                                                <TemporaryPriceText>${this.props.temporaryPrice.price} (${process.env.CURRENCY_CODE}) until {this.props.temporaryPrice.untilDate}!</TemporaryPriceText>
+                                            </span>
+                                        )
+                                        : `$${this.props.price} (${process.env.CURRENCY_CODE})`
                                     }
-                                </AddToCartContainer>
+                                </ProductSelectionText>
+                            </div>
 
-                                <div/>
-                                <MoreInfoContainer>
-                                    <MoreInfoText>
-                                        <MoreInfoAnchor onClick={() => this.setState({ isSizeInfoShowing: !this.state.isSizeInfoShowing})}>
-                                            &#9432; SIZING
-                                        </MoreInfoAnchor>
-                                    </MoreInfoText>
+                            <div/>
+                            <AddToCartContainer>
+                                <AddToCartButton
+                                    onClick={(mouseEvent: React.MouseEvent<HTMLButtonElement>) => this.addToCartClicked(mouseEvent)}>
+                                      Add to Cart
+                                </AddToCartButton>
+                                {this.state.showInvalidSelectionMessage &&
+                                    <AddToCartErrorMessage>Please select a valid color and size.</AddToCartErrorMessage>
+                                }
+                            </AddToCartContainer>
 
-                                    {this.state.isSizeInfoShowing && (
-                                        <MoreInfo>
-                                            <MoreInfoLink to='/size-guide'>View Size Guide</MoreInfoLink>
-                                        </MoreInfo>
-                                    )}
-                                </MoreInfoContainer>
+                            <div/>
+                            <MoreInfoContainer>
+                                <MoreInfoText>
+                                    <MoreInfoAnchor onClick={() => this.setState({ isSizeInfoShowing: !this.state.isSizeInfoShowing})}>
+                                        &#9432; SIZING
+                                    </MoreInfoAnchor>
+                                </MoreInfoText>
 
-                                <div/>
-                                <MoreInfoContainer>
-                                    <MoreInfoText>
-                                        <MoreInfoAnchor onClick={() => this.setState({ areShippingRatesShowing: !this.state.areShippingRatesShowing})}>
-                                            &#9432; SHIPPING RATES
-                                        </MoreInfoAnchor>
-                                    </MoreInfoText>
+                                {this.state.isSizeInfoShowing && (
+                                    <MoreInfo>
+                                        <MoreInfoLink to='/size-guide'>View Size Guide</MoreInfoLink>
+                                    </MoreInfo>
+                                )}
+                            </MoreInfoContainer>
 
-                                    {this.state.areShippingRatesShowing && (
-                                        <MoreInfo isflex={true}>
-                                            <DestinationPrices destinationName='United States' pricesUsDollars={[11, 14, 16]} />
-                                            <DestinationPrices destinationName='Canada' pricesUsDollars={[21, 31, 37]} />
-                                            <DestinationPrices destinationName='Rest of World' pricesUsDollars={[26, 39, 47]} />
-                                        </MoreInfo>
-                                    )}
-                                </MoreInfoContainer>
+                            <div/>
+                            <MoreInfoContainer>
+                                <MoreInfoText>
+                                    <MoreInfoAnchor onClick={() => this.setState({ areShippingRatesShowing: !this.state.areShippingRatesShowing})}>
+                                        &#9432; SHIPPING RATES
+                                    </MoreInfoAnchor>
+                                </MoreInfoText>
 
-                                <div/>
-                                <MoreInfoContainer>
-                                    <MoreInfoText>
-                                        <MoreInfoAnchor onClick={() => this.setState({ arePaymentMethodsShowing: !this.state.arePaymentMethodsShowing})}>
-                                            &#9432; PAYMENT METHODS
-                                        </MoreInfoAnchor>
-                                    </MoreInfoText>
+                                {this.state.areShippingRatesShowing && (
+                                    <MoreInfo isflex={true}>
+                                        <DestinationPrices destinationName='United States' pricesUsDollars={[Number(process.env.SHIPPING_PRICE_US_1), Number(process.env.SHIPPING_PRICE_US_2), Number(process.env.SHIPPING_PRICE_US_3)]} />
+                                        <DestinationPrices destinationName='Canada' pricesUsDollars={[Number(process.env.SHIPPING_PRICE_CA_1), Number(process.env.SHIPPING_PRICE_CA_2), Number(process.env.SHIPPING_PRICE_CA_3)]} />
+                                        <DestinationPrices destinationName='Rest of World' pricesUsDollars={[Number(process.env.SHIPPING_PRICE_RW_1), Number(process.env.SHIPPING_PRICE_RW_2), Number(process.env.SHIPPING_PRICE_RW_3)]} />
+                                    </MoreInfo>
+                                )}
+                            </MoreInfoContainer>
 
-                                    {this.state.arePaymentMethodsShowing && (
-                                        <MoreInfo>
-                                            <UnorderedListNotIndented>
-                                                <li>Visa</li>
-                                                <li>Mastercard</li>
-                                                <li>Discover</li>
-                                                <li>American Express</li>
-                                                <li>PayPal account</li>
-                                            </UnorderedListNotIndented>
-                                            <p>Checkout is via PayPal.</p>
-                                            <p>To pay by credit card: from your cart, click "Check Out - Pay without a PayPal account" (instead of "PayPal Check Out").</p>
-                                        </MoreInfo>
-                                    )}
-                                </MoreInfoContainer>
+                            <div/>
+                            <MoreInfoContainer>
+                                <MoreInfoText>
+                                    <MoreInfoAnchor onClick={() => this.setState({ arePaymentMethodsShowing: !this.state.arePaymentMethodsShowing})}>
+                                        &#9432; PAYMENT METHODS
+                                    </MoreInfoAnchor>
+                                </MoreInfoText>
 
-                            </ProductSelectionsGrid>
+                                {this.state.arePaymentMethodsShowing && (
+                                    <MoreInfo>
+                                        <UnorderedListNotIndented>
+                                            <li>Visa</li>
+                                            <li>Mastercard</li>
+                                            <li>Discover</li>
+                                            <li>American Express</li>
+                                            <li>PayPal account</li>
+                                        </UnorderedListNotIndented>
+                                        <p>Checkout is via PayPal.</p>
+                                    </MoreInfo>
+                                )}
+                            </MoreInfoContainer>
 
-                        </form>
+                        </ProductSelectionsGrid>
 
                         <hr style={{ width: '100%' }} />
 
@@ -270,7 +270,7 @@ export class ProductPage extends React.Component<Props, State> {
 
     private selectColor(changeEvent: React.ChangeEvent<HTMLSelectElement>): void {
         const selectedColor = changeEvent.currentTarget.value
-            ? this.props.colors.find((color) => color.name == changeEvent.currentTarget.value)
+            ? this.props.colors.find((color) => color == changeEvent.currentTarget.value)
             : undefined;
         this.setState({ selectedColor, showInvalidSelectionMessage: false });
     }
@@ -282,12 +282,12 @@ export class ProductPage extends React.Component<Props, State> {
         this.setState({ selectedSize, showInvalidSelectionMessage: false });
     }
 
-    private addToCartClicked(mouseEvent: React.MouseEvent<HTMLInputElement>): void {
+    private addToCartClicked(mouseEvent: React.MouseEvent<HTMLButtonElement>): void {
 
         let isSelectionValid = false;
 
         if (this.state.selectedColor && this.state.selectedSize) {
-            const selectedColorSize = new ColorSize(this.state.selectedColor.name, this.state.selectedSize);
+            const selectedColorSize = new ColorSize(this.state.selectedColor, this.state.selectedSize);
             if (!Array.from(this.props.specialInventoryStates.entries()).find((inventoryState) =>
                 inventoryState[0].equals(selectedColorSize) && inventoryState[1] === InventoryState.SOLD_OUT)
             ) {
@@ -297,7 +297,16 @@ export class ProductPage extends React.Component<Props, State> {
 
         if (!isSelectionValid) {
             this.setState({ showInvalidSelectionMessage: true })
-            mouseEvent.preventDefault();
+        } else {
+          this.context.addItem({
+            productName: this.props.name,
+            color: this.state.selectedColor,
+            size: this.state.selectedSize,
+            price: this.props.temporaryPrice
+              ? this.props.temporaryPrice.price
+              : this.props.price
+          });
+          navigate('/cart');
         }
     }
 
@@ -385,23 +394,25 @@ const AddToCartContainer = styled.div`
     display: flex;
     flex-direction: column;
     margin-bottom: 1em;
+    height: 60px;
+    align-items: center;
+    justify-content: center;
 `;
 
-const AddToCartSubmit = styled.input`
-    font-size: 90%;
-    height: 2.5em;
-    width: 8em;
-    align-self: flex-start;
-    padding-top: 0.2em;
-    margin-bottom: 0.5em;
-    background-color: #148923;
-    border-radius: 3px;
+const AddToCartButton = styled.button`
+    height: 3em;
+    width: 80%;
+    background-color: #000;
+    box-sizing: initial;
+    border: 0px;
+    border-radius: 8px;
     color: #fff;
     cursor:  pointer;
+    font-size: 110%;
     text-transform: uppercase;
-    transition: background-color 0.3s;
+    transition: outline 0.3s ease-in-out;
     &:hover {
-        background-color: #14A827;
+      outline: 1px solid #000;
     }
 `;
 

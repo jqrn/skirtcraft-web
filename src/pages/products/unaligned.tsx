@@ -66,20 +66,7 @@ export default class UnalignedSkirtProductPage extends React.PureComponent {
                         <p>Note: On skirts made in the second production run, the two rear belt loops are shifted about two inches to the left of where they're meant to be: centered at the top of the diagonal seam rather than at the garment's true center. This includes all grey Unaligned skirts, and black Unaligned skirt sizes 30-31, 32-33, 34-35, and 40-41.</p>
                     </>
                 )}
-                colors={[
-                    {
-                        name: 'Black',
-                        paypalButtonId: process.env.PAYPAL_BUTTON_ID_UNALIGNED_BLACK!,
-                    },
-                    {
-                        name: 'Khaki',
-                        paypalButtonId: process.env.PAYPAL_BUTTON_ID_UNALIGNED_KHAKI!,
-                    },
-                    {
-                        name: 'Grey',
-                        paypalButtonId: process.env.PAYPAL_BUTTON_ID_UNALIGNED_GREY!,
-                    },
-                ]}
+                colors={['Black', 'Khaki', 'Grey']}
                 sizes={[
                     '30-31 inches',
                     '32-33 inches',
@@ -129,7 +116,7 @@ export default class UnalignedSkirtProductPage extends React.PureComponent {
                         InventoryState.SOLD_OUT,
                     ],
                 ])}
-                priceUsDollars={parseFloat(process.env.PRICE_US_DOLLARS_UNALIGNED!)}
+                price={parseFloat(process.env.PRICE_UNALIGNED!)}
                 photoUrls={[
                     ImgUnaligned01R,
                     ImgUnalignedColors,

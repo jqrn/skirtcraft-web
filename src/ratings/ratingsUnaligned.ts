@@ -202,4 +202,5 @@ export const RATINGS_UNALIGNED: Rating[] = [
     { date: '2022-10-09', ratingStars: 5 },
     { date: '2022-11-07', ratingStars: 5 },
     { date: '2023-01-05', ratingStars: 5, name: 'Michael H.', review: 'Amazing skirt! Quality, cut, design, as a cis guy I get a lot of compliments. Grateful for this company. 🙂' },
+    { date: '2023-02-18', ratingStars: 5, name: 'Jolyon', review: 'Skirtcraft is doing a superb job. Keep on doing it.' },
 ];
