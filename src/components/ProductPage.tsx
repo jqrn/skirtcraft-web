@@ -448,7 +448,6 @@ const AddToCartContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 1em;
-  height: 60px;
   align-items: center;
   justify-content: center;
 `;
