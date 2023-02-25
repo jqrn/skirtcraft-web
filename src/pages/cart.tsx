@@ -1,4 +1,4 @@
-import { PayPalButtons, usePayPalScriptReducer } from '@paypal/react-paypal-js';
+import { PayPalButtons } from '@paypal/react-paypal-js';
 import { Link } from 'gatsby';
 import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
@@ -45,7 +45,6 @@ interface CartItemGroup extends CartItem {
 const CartPage = () => {
   const cartContext = useContext(CartContext);
   const [wasOrderCompleted, setWasOrderCompleted] = useState(false);
-  const [{ isPending }] = usePayPalScriptReducer();
   const currencyCode = process.env.CURRENCY_CODE!;
 
   const totalPrice = cartContext.items.reduce(
@@ -141,7 +140,6 @@ const CartPage = () => {
             </Totals>
 
             <PayPalButtonContainer>
-              {isPending && <span>Loading payment options ...</span>}
               <PayPalButtons
                 disabled={cartContext.items.length < 1}
                 onShippingChange={(data, actions) => {
