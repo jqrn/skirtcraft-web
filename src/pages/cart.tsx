@@ -115,7 +115,7 @@ const CartPage = () => {
                     <ProductDetail>{`Size: ${cartItemGroup.size}`}</ProductDetail>
                     <ProductDetail>
                       {`Color: ${cartItemGroup.color}`}
-                      <ColorSquare color={cartItemGroup.color} />
+                      <ColorSquare color={cartItemGroup.color} width="20px" />
                     </ProductDetail>
                   </ProductDetails>
                 </ProductDetailsLeft>

@@ -9,6 +9,7 @@ import { Rating } from '../ratings/Rating';
 import { ColorSize } from '../util/ColorSize';
 import { addScriptToPage } from '../util/scriptUtils';
 import { TemporaryPrice } from '../util/TemporaryPrice';
+import { ColorSquare } from './ColorSquare';
 import { RatingSet } from './RatingSet';
 
 export enum InventoryState {
@@ -103,21 +104,18 @@ export class ProductPage extends React.Component<Props, State> {
               <div>
                 <ProductSelectionText>Color:</ProductSelectionText>
               </div>
-              <div>
-                <ProductDropdown
-                  aria-label="color"
-                  onChange={(
-                    changeEvent: React.ChangeEvent<HTMLSelectElement>
-                  ) => this.selectColor(changeEvent)}
-                >
-                  <option value="none">select&nbsp;&nbsp;&#x2193;</option>
-                  {this.props.colors.map(color => (
-                    <option key={color} value={color}>
-                      {color}
-                    </option>
-                  ))}
-                </ProductDropdown>
-              </div>
+              <ColorButtons>
+                {this.props.colors.map(color => (
+                  <ColorButton
+                    key={color}
+                    aria-label={color}
+                    selected={this.state.selectedColor === color}
+                    onClick={() => this.selectColor(color)}
+                  >
+                    <ColorSquare color={color} width="30px" />
+                  </ColorButton>
+                ))}
+              </ColorButtons>
 
               <div>
                 <ProductSelectionText>Size (waist):</ProductSelectionText>
@@ -315,12 +313,7 @@ export class ProductPage extends React.Component<Props, State> {
     this.setState({ selectedImageIndex: index });
   }
 
-  private selectColor(changeEvent: React.ChangeEvent<HTMLSelectElement>): void {
-    const selectedColor = changeEvent.currentTarget.value
-      ? this.props.colors.find(
-          color => color == changeEvent.currentTarget.value
-        )
-      : undefined;
+  private selectColor(selectedColor: string): void {
     this.setState({ selectedColor, showInvalidSelectionMessage: false });
   }
 
@@ -427,6 +420,18 @@ const ProductSelectionText = styled.p`
   line-height: 2.25em;
 `;
 
+const ColorButtons = styled.div`
+  display: flex;
+  gap: 8px;
+`;
+
+const ColorButton = styled.button<{ selected?: boolean }>`
+  border-width: 2px;
+  border-color: ${props => (props.selected ? 'black' : 'transparent')};
+  padding: 2px;
+  background-color: transparent;
+`;
+
 const TemporaryPriceText = styled.span`
   color: red;
   text-transform: none;
@@ -447,6 +452,7 @@ const ProductDropdown = styled.select`
 const AddToCartContainer = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 16px;
   margin-bottom: 1em;
   align-items: center;
   justify-content: center;
