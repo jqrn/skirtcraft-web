@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { InventoryState, ProductPage } from '../../components/ProductPage';
+import { ProductPage } from '../../components/ProductPage';
 import ImgAqueous03 from '../../images/aqueous03.png';
 import ImgAqueous04 from '../../images/aqueous04.png';
 import ImgAqueous06 from '../../images/aqueous06.png';
@@ -19,7 +19,6 @@ import ImgAqueous29 from '../../images/aqueous29.jpg';
 import ImgAqueous30 from '../../images/aqueous30.jpg';
 import ImgAqueousColors from '../../images/aqueous_colors.png';
 import { RATINGS_AQUEOUS } from '../../ratings/ratingsAqueous';
-import { ColorSize } from '../../util/ColorSize';
 
 export default class AqueousSkirtProductPage extends React.PureComponent {
   public render(): JSX.Element {
@@ -97,15 +96,15 @@ export default class AqueousSkirtProductPage extends React.PureComponent {
         }
         colors={['Black', 'Purple', 'Grey']}
         sizes={[
-          '28-29 inches',
-          '30-31 inches',
-          '32-33 inches',
-          '34-35 inches',
-          '36-37 inches',
-          '38-39 inches',
-          '40-41 inches',
-          '42-43 inches',
-          '44-45 inches',
+          '28-29',
+          '30-31',
+          '32-33',
+          '34-35',
+          '36-37',
+          '38-39',
+          '40-41',
+          '42-43',
+          '44-45',
         ]}
         soldOutColorSizes={[]}
         price={parseFloat(process.env.PRICE_AQUEOUS!)}

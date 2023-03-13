@@ -40,52 +40,62 @@ export default class SizeGuidePage extends React.PureComponent {
           <SizeTable>
             <tbody>
               <tr>
-                <th>Size</th>
+                <th>Size (in)</th>
+                <th>Size (cm)</th>
                 <th>Unaligned (before washing)</th>
                 <th>Aqueous (before washing)</th>
               </tr>
               <tr>
                 <SizeTableInchesCell>28-29</SizeTableInchesCell>
+                <SizeTableInchesCell>70-74</SizeTableInchesCell>
                 <td>(not available)</td>
                 <td>14 1/2 inches (36 3/4 cm)</td>
               </tr>
               <tr>
                 <SizeTableInchesCell>30-31</SizeTableInchesCell>
+                <SizeTableInchesCell>75-79</SizeTableInchesCell>
                 <td>15 1/2 inches (39 1/4 cm)</td>
                 <td>15 1/2 inches (39 1/4 cm)</td>
               </tr>
               <tr>
                 <SizeTableInchesCell>32-33</SizeTableInchesCell>
+                <SizeTableInchesCell>80-84</SizeTableInchesCell>
                 <td>16 1/2 inches (42 cm)</td>
                 <td>16 1/2 inches (42 cm)</td>
               </tr>
               <tr>
                 <SizeTableInchesCell>34-35</SizeTableInchesCell>
+                <SizeTableInchesCell>85-89</SizeTableInchesCell>
                 <td>17 1/2 inches (44 1/2 cm)</td>
                 <td>17 1/2 inches (44 1/2 cm)</td>
               </tr>
               <tr>
                 <SizeTableInchesCell>36-37</SizeTableInchesCell>
+                <SizeTableInchesCell>90-94</SizeTableInchesCell>
                 <td>18 3/4 inches (47 1/2 cm)</td>
                 <td>18 1/2 inches (47 cm)</td>
               </tr>
               <tr>
                 <SizeTableInchesCell>38-39</SizeTableInchesCell>
+                <SizeTableInchesCell>95-99</SizeTableInchesCell>
                 <td>19 3/4 inches (50 1/4 cm)</td>
                 <td>19 1/2 inches (49 1/2 cm)</td>
               </tr>
               <tr>
                 <SizeTableInchesCell>40-41</SizeTableInchesCell>
+                <SizeTableInchesCell>100-105</SizeTableInchesCell>
                 <td>20 3/4 inches (52 3/4 cm)</td>
                 <td>20 1/2 inches (52 cm)</td>
               </tr>
               <tr>
                 <SizeTableInchesCell>42-43</SizeTableInchesCell>
+                <SizeTableInchesCell>106-110</SizeTableInchesCell>
                 <td>21 3/4 inches (55 1/4 cm)</td>
                 <td>21 1/2 inches (54 1/2 cm)</td>
               </tr>
               <tr>
                 <SizeTableInchesCell>44-45</SizeTableInchesCell>
+                <SizeTableInchesCell>111-115</SizeTableInchesCell>
                 <td>22 3/4 inches (57 3/4 cm)</td>
                 <td>22 1/2 inches (57 1/4 cm)</td>
               </tr>

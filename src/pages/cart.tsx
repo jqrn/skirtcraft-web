@@ -7,6 +7,7 @@ import { Page } from '../components/Page';
 import { CartContext, CartItem } from '../context/CartContext';
 import ImgAqueous from '../images/aqueous21s.jpg';
 import ImgUnaligned from '../images/unaligned01.png';
+import { getSizeDisplayAllUnits } from '../util/sizeUtils';
 
 const PRODUCTS = {
   'Unaligned Skirt': {
@@ -112,7 +113,9 @@ const CartPage = () => {
                     <ProductName to={`/products/${product.pagePath}`}>
                       {cartItemGroup.productName}
                     </ProductName>
-                    <ProductDetail>{`Size: ${cartItemGroup.size}`}</ProductDetail>
+                    <ProductDetail>{`Size: ${getSizeDisplayAllUnits(
+                      cartItemGroup.size
+                    )}`}</ProductDetail>
                     <ProductDetail>
                       {`Color: ${cartItemGroup.color}`}
                       <ColorSquare color={cartItemGroup.color} width="20px" />
@@ -250,7 +253,9 @@ const CartPage = () => {
                             },
                           },
                           items: cartContext.items.map((item: CartItem) => ({
-                            name: `${item.productName} - ${item.color}, ${item.size}`,
+                            name: `${item.productName} - ${
+                              item.color
+                            }, ${getSizeDisplayAllUnits(item.size)}`,
                             quantity: String(1),
                             unit_amount: {
                               value: item.price.toFixed(2),

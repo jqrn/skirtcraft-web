@@ -7,6 +7,7 @@ import { Page } from '../components/Page';
 import { CartContext } from '../context/CartContext';
 import { Rating } from '../ratings/Rating';
 import { ColorSize } from '../util/ColorSize';
+import { getSizeDisplay } from '../util/sizeUtils';
 import { addScriptToPage } from '../util/scriptUtils';
 import { TemporaryPrice } from '../util/TemporaryPrice';
 import { ColorSquare } from './ColorSquare';
@@ -31,6 +32,7 @@ interface Props {
 interface State {
   selectedImageIndex: number;
   selectedColor?: string;
+  selectedSizeUnits: 'in' | 'cm';
   selectedSize?: string;
   isSizeInfoShowing: boolean;
   areShippingRatesShowing: boolean;
@@ -44,6 +46,7 @@ export class ProductPage extends React.Component<Props, State> {
 
   public state: State = {
     selectedImageIndex: 0,
+    selectedSizeUnits: 'in',
     isSizeInfoShowing: false,
     areShippingRatesShowing: false,
     arePaymentMethodsShowing: false,
@@ -113,37 +116,55 @@ export class ProductPage extends React.Component<Props, State> {
               </ColorButtons>
 
               <div>
-                <ProductSelectionText>
-                  Waist size:
-                  <br />
-                  (inches)
-                </ProductSelectionText>
+                <ProductSelectionText>Waist size:</ProductSelectionText>
               </div>
-              <SizeButtons aria-label="waist sizes">
-                {this.props.sizes.map(size => {
-                  let disabled = false;
-                  if (this.state.selectedColor) {
-                    const colorSize = new ColorSize(
-                      this.state.selectedColor,
-                      size
-                    );
-                    disabled = this.props.soldOutColorSizes.some(
-                      soldOutColorSize => soldOutColorSize.equals(colorSize)
-                    );
-                  }
+              <SizeSelection>
+                <SizeUnitButtons>
+                  <SizeUnitButton
+                    selected={this.state.selectedSizeUnits === 'in'}
+                    onClick={() => this.setState({ selectedSizeUnits: 'in' })}
+                  >
+                    <SizeUnitButtonText narrow={false}>
+                      inches
+                    </SizeUnitButtonText>
+                    <SizeUnitButtonText narrow={true}>in</SizeUnitButtonText>
+                  </SizeUnitButton>
+                  <SizeUnitButton
+                    selected={this.state.selectedSizeUnits === 'cm'}
+                    onClick={() => this.setState({ selectedSizeUnits: 'cm' })}
+                  >
+                    <SizeUnitButtonText narrow={false}>
+                      centimeters
+                    </SizeUnitButtonText>
+                    <SizeUnitButtonText narrow={true}>cm</SizeUnitButtonText>
+                  </SizeUnitButton>
+                </SizeUnitButtons>
+                <SizeButtons aria-label="waist sizes">
+                  {this.props.sizes.map(size => {
+                    let disabled = false;
+                    if (this.state.selectedColor) {
+                      const colorSize = new ColorSize(
+                        this.state.selectedColor,
+                        size
+                      );
+                      disabled = this.props.soldOutColorSizes.some(
+                        soldOutColorSize => soldOutColorSize.equals(colorSize)
+                      );
+                    }
 
-                  return (
-                    <SizeButton
-                      key={size}
-                      disabled={disabled}
-                      selected={this.state.selectedSize === size}
-                      onClick={() => this.selectSize(size)}
-                    >
-                      {size.replace(' inches', '')}
-                    </SizeButton>
-                  );
-                })}
-              </SizeButtons>
+                    return (
+                      <SizeButton
+                        key={size}
+                        disabled={disabled}
+                        selected={this.state.selectedSize === size}
+                        onClick={() => this.selectSize(size)}
+                      >
+                        {this.getSizeButtonText(size)}
+                      </SizeButton>
+                    );
+                  })}
+                </SizeButtons>
+              </SizeSelection>
 
               <div>
                 <ProductSelectionText>Price:</ProductSelectionText>
@@ -307,6 +328,10 @@ export class ProductPage extends React.Component<Props, State> {
     this.setState({ selectedColor, showInvalidSelectionMessage: false });
   }
 
+  private getSizeButtonText(size: string): string {
+    return getSizeDisplay(size, this.state.selectedSizeUnits);
+  }
+
   private selectSize(selectedSize: string): void {
     this.setState({ selectedSize, showInvalidSelectionMessage: false });
   }
@@ -356,6 +381,7 @@ const Left = styled.div`
 
 const Right = styled.div`
   flex: 56;
+  min-width: 50%;
   padding-left: 3%;
   display: flex;
   flex-direction: column;
@@ -391,9 +417,9 @@ const FlickrImage = styled.img`
 
 const ProductSelectionsGrid = styled.div`
   width: 100%;
-  max-width: 25em;
   display: grid;
-  grid-template-columns: 30% auto;
+  grid-template-columns: minmax(3em, 20%) auto;
+  column-gap: 0.5em;
   align-items: start;
   row-gap: 1em;
 `;
@@ -401,12 +427,12 @@ const ProductSelectionsGrid = styled.div`
 const ProductSelectionText = styled.p`
   font-size: 85%;
   text-transform: uppercase;
-  margin: 0.25em;
+  margin: 0;
 `;
 
 const ColorButtons = styled.div`
   display: flex;
-  gap: 8px;
+  gap: 1%;
 `;
 
 const ColorButton = styled.button<{ selected?: boolean }>`
@@ -415,6 +441,51 @@ const ColorButton = styled.button<{ selected?: boolean }>`
   border-radius: 8px;
   padding: 2px;
   background-color: transparent;
+  cursor: ${props => (props.selected ? 'inherit' : 'pointer')};
+`;
+
+const SizeSelection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+`;
+
+const SizeUnitButtons = styled.div`
+  display: flex;
+  background-color: dimgray;
+  gap: 1px;
+  border: 0;
+  border-radius: 4px;
+`;
+
+const SizeUnitButton = styled.button<{ selected?: boolean }>`
+  padding: 4px 6px;
+  border-width: 1px;
+  border-style: solid;
+  &:first-child {
+    border-right-width: 0;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+  &:last-child {
+    border-left-width: 0;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+  text-transform: uppercase;
+  font-size: 14px;
+  color: ${props => (props.selected ? 'black' : 'dimgray')};
+  background-color: ${props => (props.selected ? 'lightgray' : '#eeeeee')};
+  border-color: ${props => (props.selected ? 'dimgray' : 'lightgray')};
+  cursor: ${props => (props.selected ? 'inherit' : 'pointer')};
+`;
+
+const SizeUnitButtonText = styled.span<{ narrow: boolean }>`
+  display: ${props => (props.narrow ? 'none' : 'block')};
+  @media only screen and (max-width: 540px) {
+    display: ${props => (props.narrow ? 'block' : 'none')};
+  }
 `;
 
 const SizeButtons = styled.div`
@@ -424,12 +495,14 @@ const SizeButtons = styled.div`
 `;
 
 const SizeButton = styled.button<{ selected?: boolean }>`
+  width: 4.5em;
   border-width: 2px;
   border-color: ${props => (props.selected ? 'black' : 'transparent')};
   border-radius: 8px;
   padding: 4px;
   background-color: #eeeeee;
   font-size: 16px;
+  cursor: ${props => (props.selected ? 'inherit' : 'pointer')};
 `;
 
 const TemporaryPriceText = styled.span`

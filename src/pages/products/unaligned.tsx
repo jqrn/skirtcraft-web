@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { InventoryState, ProductPage } from '../../components/ProductPage';
+import { ProductPage } from '../../components/ProductPage';
 import ImgButton from '../../images/button.png';
 import ImgUnalignedColors from '../../images/colors_black_khaki_grey.png';
 import ImgFabricDenim from '../../images/fabric_denim_9_5_oz.png';
@@ -96,26 +96,26 @@ export default class UnalignedSkirtProductPage extends React.PureComponent {
         }
         colors={['Black', 'Khaki', 'Grey']}
         sizes={[
-          '30-31 inches',
-          '32-33 inches',
-          '34-35 inches',
-          '36-37 inches',
-          '38-39 inches',
-          '40-41 inches',
-          '42-43 inches',
-          '44-45 inches',
+          '30-31',
+          '32-33',
+          '34-35',
+          '36-37',
+          '38-39',
+          '40-41',
+          '42-43',
+          '44-45',
         ]}
         soldOutColorSizes={[
-          new ColorSize('Khaki', '30-31 inches'),
-          new ColorSize('Khaki', '34-35 inches'),
-          new ColorSize('Khaki', '36-37 inches'),
-          new ColorSize('Khaki', '38-39 inches'),
-          new ColorSize('Khaki', '40-41 inches'),
-          new ColorSize('Khaki', '42-43 inches'),
-          new ColorSize('Grey', '30-31 inches'),
-          new ColorSize('Grey', '34-35 inches'),
-          new ColorSize('Grey', '36-37 inches'),
-          new ColorSize('Grey', '38-39 inches'),
+          new ColorSize('Khaki', '30-31'),
+          new ColorSize('Khaki', '34-35'),
+          new ColorSize('Khaki', '36-37'),
+          new ColorSize('Khaki', '38-39'),
+          new ColorSize('Khaki', '40-41'),
+          new ColorSize('Khaki', '42-43'),
+          new ColorSize('Grey', '30-31'),
+          new ColorSize('Grey', '34-35'),
+          new ColorSize('Grey', '36-37'),
+          new ColorSize('Grey', '38-39'),
         ]}
         price={parseFloat(process.env.PRICE_UNALIGNED!)}
         photoUrls={[
