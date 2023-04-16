@@ -17,17 +17,12 @@ interface Slide {
 
 const SLIDES: Slide[] = [
   {
-    imageUrl: ImgCoverAqueous02,
-    title: 'Aqueous Skirt',
-    linkUrl: '/products/aqueous',
-  },
-  {
     imageUrl: ImgCoverUnaligned02,
     title: 'Unaligned Skirt',
     linkUrl: '/products/unaligned',
   },
   {
-    imageUrl: ImgCoverAqueous03,
+    imageUrl: ImgCoverAqueous02,
     title: 'Aqueous Skirt',
     linkUrl: '/products/aqueous',
   },
@@ -35,6 +30,11 @@ const SLIDES: Slide[] = [
     imageUrl: ImgCoverUnaligned01,
     title: 'Unaligned Skirt',
     linkUrl: '/products/unaligned',
+  },
+  {
+    imageUrl: ImgCoverAqueous03,
+    title: 'Aqueous Skirt',
+    linkUrl: '/products/aqueous',
   },
   {
     imageUrl: ImgCoverBooth02,
