@@ -49,6 +49,7 @@ const Container = styled.nav`
   border-bottom: 1px solid #777;
   padding: 0.3em 2%;
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
 `;
 
