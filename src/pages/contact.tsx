@@ -11,6 +11,11 @@ export default class ContactPage extends React.PureComponent {
         <h1>Contact</h1>
 
         <p>
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
+        </p>
+        <br />
+
+        <p>
           Skirtcraft LLC
           <br />
           P.O. Box 17062
@@ -18,10 +23,6 @@ export default class ContactPage extends React.PureComponent {
           Minneapolis, MN 55417
           <br />
           USA
-        </p>
-
-        <p>
-          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
         </p>
         <br />
 

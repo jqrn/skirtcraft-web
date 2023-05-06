@@ -14,7 +14,7 @@
     "gatsby-plugin-manifest": "^5.3.1",
     "gatsby-plugin-offline": "^6.3.1",
     "gatsby-plugin-react-helmet": "^6.3.0",
-    "gatsby-plugin-s3": "^0.3.8",
+    "gatsby-plugin-s3": "github:jqrn/gatsby-plugin-s3",
     "gatsby-plugin-sharp": "^5.3.2",
     "gatsby-plugin-sitemap": "^6.3.1",
     "gatsby-plugin-styled-components": "^6.3.0",

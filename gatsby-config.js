@@ -1,4 +1,4 @@
-require("dotenv").config({
+require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 });
 
@@ -35,7 +35,7 @@ module.exports = {
         icon: `src/images/icon.png`,
       },
     },
-    "gatsby-plugin-offline",
+    'gatsby-plugin-offline',
     {
       resolve: `gatsby-plugin-s3`,
       options: {
