@@ -5,11 +5,9 @@ import ImgButton from '../../images/button.png';
 import ImgUnalignedColors from '../../images/colors_black_khaki_grey.png';
 import ImgFabricDenim from '../../images/fabric_denim_9_5_oz.png';
 import ImgHipPockets from '../../images/hip_pockets.png';
-import ImgHipPocketsMeasured from '../../images/hip_pockets_measured.png';
 import ImgLaydownBack from '../../images/laydown_back.png';
 import ImgLaydownFront from '../../images/laydown_front.png';
 import ImgLaydownSide from '../../images/laydown_side.png';
-import ImgLineDrawing from '../../images/line_drawing.png';
 import ImgOneBack from '../../images/one_back.png';
 import ImgOneJump from '../../images/one_jump.png';
 import ImgTwoFrontSide from '../../images/two_front_side.png';
@@ -18,7 +16,6 @@ import ImgUnaligned01R from '../../images/unaligned01-r.png';
 import ImgUnaligned02 from '../../images/unaligned02.png';
 import ImgWaistDetail from '../../images/waist_detail.png';
 import ImgZipperPockets from '../../images/zipper_pockets.png';
-import ImgZipperPocketsMeasured from '../../images/zipper_pockets_measured.png';
 import { RATINGS_UNALIGNED } from '../../ratings/ratingsUnaligned';
 import { ColorSize } from '../../util/ColorSize';
 
@@ -132,9 +129,6 @@ export default class UnalignedSkirtProductPage extends React.PureComponent {
           ImgHipPockets,
           ImgZipperPockets,
           ImgFabricDenim,
-          ImgLineDrawing,
-          ImgHipPocketsMeasured,
-          ImgZipperPocketsMeasured,
           ImgButton,
           ImgOneJump,
         ]}
