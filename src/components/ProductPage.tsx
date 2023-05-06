@@ -1,6 +1,6 @@
 import { Link, navigate } from 'gatsby';
 import { OutboundLink } from 'gatsby-plugin-google-analytics';
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { DestinationPrices } from '../components/DestinationPrices';
 import { Page } from '../components/Page';
@@ -29,323 +29,42 @@ interface Props {
   ratings: Rating[];
 }
 
-interface State {
-  selectedImageIndex: number;
-  selectedColor?: string;
-  selectedSizeUnits: 'in' | 'cm';
-  selectedSize?: string;
-  isSizeInfoShowing: boolean;
-  areShippingRatesShowing: boolean;
-  arePaymentMethodsShowing: boolean;
-  selectedReviewPageIndex: number;
-  showInvalidSelectionMessage: boolean;
-}
+export const ProductPage = (props: Props) => {
+  const cart = useContext(CartContext);
 
-export class ProductPage extends React.Component<Props, State> {
-  static contextType = CartContext;
+  const [selectedColor, setSelectedColor] = useState<string | undefined>();
+  const [selectedSize, setSelectedSize] = useState<string | undefined>();
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [selectedSizeUnits, setSelectedSizeUnits] = useState<'in' | 'cm'>('in');
+  const [isSizeInfoShowing, setIsSizeInfoShowing] = useState(false);
+  const [areShippingRatesShowing, setAreShippingRatesShowing] = useState(false);
+  const [arePaymentMethodsShowing, setArePaymentMethodsShowing] =
+    useState(false);
+  const [selectedReviewPageIndex, setSelectedReviewPageIndex] = useState(0);
+  const [showInvalidSelectionMessage, setShowInvalidSelectionMessage] =
+    useState(false);
 
-  public state: State = {
-    selectedImageIndex: 0,
-    selectedSizeUnits: 'in',
-    isSizeInfoShowing: false,
-    areShippingRatesShowing: false,
-    arePaymentMethodsShowing: false,
-    selectedReviewPageIndex: 0,
-    showInvalidSelectionMessage: false,
+  useEffect(() => {
+    addScriptToPage('https://embedr.flickr.com/assets/client-code.js');
+  }, []);
+
+  const selectColor = (color: string) => {
+    setSelectedColor(color);
+    setShowInvalidSelectionMessage(false);
   };
 
-  public componentDidMount(): void {
-    addScriptToPage('https://embedr.flickr.com/assets/client-code.js');
-  }
+  const selectSize = (size: string) => {
+    setSelectedSize(size);
+    setShowInvalidSelectionMessage(false);
+  };
 
-  public render(): JSX.Element {
-    const selectedImageUrl =
-      this.props.photoUrls[this.state.selectedImageIndex];
-    const flickrAlbumName = `${this.props.name} Backers and Customers`;
-
-    return (
-      <Page title={this.props.name}>
-        <Container>
-          <Left>
-            <MainImage src={selectedImageUrl} alt={this.props.name} />
-
-            <Thumbnails>
-              {this.props.photoUrls.map((photoUrl, index) => (
-                <ThumbnailImage
-                  key={index}
-                  id={`thumbnail-${index}`}
-                  src={photoUrl}
-                  alt={this.props.name}
-                  onClick={() => this.thumbnailClicked(index)}
-                />
-              ))}
-            </Thumbnails>
-
-            <CustomerPhotosText>Customer photos</CustomerPhotosText>
-
-            <OutboundLink
-              data-flickr-embed="true"
-              href={this.props.flickrAlbum.url}
-              title={flickrAlbumName}
-            >
-              <FlickrImage
-                src={this.props.flickrAlbum.mainPhotoUrl}
-                alt={flickrAlbumName}
-              />
-            </OutboundLink>
-          </Left>
-
-          <Right>
-            <h1>{this.props.name}</h1>
-
-            <ProductSelectionsGrid>
-              <div>
-                <ProductSelectionText>Color:</ProductSelectionText>
-              </div>
-              <ColorButtons>
-                {this.props.colors.map(color => (
-                  <ColorButton
-                    key={color}
-                    aria-label={color}
-                    selected={this.state.selectedColor === color}
-                    onClick={() => this.selectColor(color)}
-                  >
-                    <ColorSquare color={color} width="30px" />
-                  </ColorButton>
-                ))}
-              </ColorButtons>
-
-              <div>
-                <ProductSelectionText>Waist size:</ProductSelectionText>
-              </div>
-              <SizeSelection>
-                <SizeUnitButtons>
-                  <SizeUnitButton
-                    selected={this.state.selectedSizeUnits === 'in'}
-                    onClick={() => this.setState({ selectedSizeUnits: 'in' })}
-                  >
-                    <SizeUnitButtonText narrow={false}>
-                      inches
-                    </SizeUnitButtonText>
-                    <SizeUnitButtonText narrow={true}>in</SizeUnitButtonText>
-                  </SizeUnitButton>
-                  <SizeUnitButton
-                    selected={this.state.selectedSizeUnits === 'cm'}
-                    onClick={() => this.setState({ selectedSizeUnits: 'cm' })}
-                  >
-                    <SizeUnitButtonText narrow={false}>
-                      centimeters
-                    </SizeUnitButtonText>
-                    <SizeUnitButtonText narrow={true}>cm</SizeUnitButtonText>
-                  </SizeUnitButton>
-                </SizeUnitButtons>
-                <SizeButtons aria-label="waist sizes">
-                  {this.props.sizes.map(size => {
-                    let disabled = false;
-                    if (this.state.selectedColor) {
-                      const colorSize = new ColorSize(
-                        this.state.selectedColor,
-                        size
-                      );
-                      disabled = this.props.soldOutColorSizes.some(
-                        soldOutColorSize => soldOutColorSize.equals(colorSize)
-                      );
-                    }
-
-                    return (
-                      <SizeButton
-                        key={size}
-                        disabled={disabled}
-                        selected={this.state.selectedSize === size}
-                        onClick={() => this.selectSize(size)}
-                      >
-                        {this.getSizeButtonText(size)}
-                      </SizeButton>
-                    );
-                  })}
-                </SizeButtons>
-              </SizeSelection>
-
-              <div>
-                <ProductSelectionText>Price:</ProductSelectionText>
-              </div>
-              <div>
-                <ProductSelectionText>
-                  {this.props.temporaryPrice ? (
-                    <span>
-                      <del>${this.props.price}</del>&nbsp;
-                      <TemporaryPriceText>
-                        ${this.props.temporaryPrice.price} ($
-                        {process.env.CURRENCY_CODE}) until{' '}
-                        {this.props.temporaryPrice.untilDate}!
-                      </TemporaryPriceText>
-                    </span>
-                  ) : (
-                    `$${this.props.price} (${process.env.CURRENCY_CODE})`
-                  )}
-                </ProductSelectionText>
-              </div>
-
-              <div />
-              <AddToCartContainer>
-                <AddToCartButton onClick={() => this.addToCartClicked()}>
-                  Add to Cart
-                </AddToCartButton>
-                {this.state.showInvalidSelectionMessage && (
-                  <AddToCartErrorMessage>
-                    Please select a valid color and size.
-                  </AddToCartErrorMessage>
-                )}
-              </AddToCartContainer>
-
-              <div />
-              <MoreInfoContainer>
-                <MoreInfoText>
-                  <MoreInfoAnchor
-                    onClick={() =>
-                      this.setState({
-                        isSizeInfoShowing: !this.state.isSizeInfoShowing,
-                      })
-                    }
-                  >
-                    &#9432; SIZING
-                  </MoreInfoAnchor>
-                </MoreInfoText>
-
-                {this.state.isSizeInfoShowing && (
-                  <MoreInfo>
-                    <MoreInfoLink to="/size-guide">
-                      View Size Guide
-                    </MoreInfoLink>
-                  </MoreInfo>
-                )}
-              </MoreInfoContainer>
-
-              <div />
-              <MoreInfoContainer>
-                <MoreInfoText>
-                  <MoreInfoAnchor
-                    onClick={() =>
-                      this.setState({
-                        areShippingRatesShowing:
-                          !this.state.areShippingRatesShowing,
-                      })
-                    }
-                  >
-                    &#9432; SHIPPING RATES
-                  </MoreInfoAnchor>
-                </MoreInfoText>
-
-                {this.state.areShippingRatesShowing && (
-                  <MoreInfo isflex={true}>
-                    <DestinationPrices
-                      destinationName="United States"
-                      pricesUsDollars={[
-                        Number(process.env.SHIPPING_PRICE_US_1),
-                        Number(process.env.SHIPPING_PRICE_US_2),
-                        Number(process.env.SHIPPING_PRICE_US_3),
-                      ]}
-                    />
-                    <DestinationPrices
-                      destinationName="Canada"
-                      pricesUsDollars={[
-                        Number(process.env.SHIPPING_PRICE_CA_1),
-                        Number(process.env.SHIPPING_PRICE_CA_2),
-                        Number(process.env.SHIPPING_PRICE_CA_3),
-                      ]}
-                    />
-                    <DestinationPrices
-                      destinationName="Rest of World"
-                      pricesUsDollars={[
-                        Number(process.env.SHIPPING_PRICE_RW_1),
-                        Number(process.env.SHIPPING_PRICE_RW_2),
-                        Number(process.env.SHIPPING_PRICE_RW_3),
-                      ]}
-                    />
-                  </MoreInfo>
-                )}
-              </MoreInfoContainer>
-
-              <div />
-              <MoreInfoContainer>
-                <MoreInfoText>
-                  <MoreInfoAnchor
-                    onClick={() =>
-                      this.setState({
-                        arePaymentMethodsShowing:
-                          !this.state.arePaymentMethodsShowing,
-                      })
-                    }
-                  >
-                    &#9432; PAYMENT METHODS
-                  </MoreInfoAnchor>
-                </MoreInfoText>
-
-                {this.state.arePaymentMethodsShowing && (
-                  <MoreInfo>
-                    <UnorderedListNotIndented>
-                      <li>Visa</li>
-                      <li>Mastercard</li>
-                      <li>Discover</li>
-                      <li>American Express</li>
-                      <li>PayPal account</li>
-                    </UnorderedListNotIndented>
-                    <p>Checkout is via PayPal.</p>
-                  </MoreInfo>
-                )}
-              </MoreInfoContainer>
-            </ProductSelectionsGrid>
-
-            <hr style={{ width: '100%' }} />
-
-            <ProductDetails>{this.props.details}</ProductDetails>
-
-            <RatingsAndReviewsSection>
-              <H2>RATINGS & REVIEWS</H2>
-              <p>
-                These tend to cluster around certain dates because we send out
-                feedback requests to groups of recent customers at once.
-              </p>
-              <RatingSet
-                ratings={this.props.ratings}
-                selectedPageIndex={this.state.selectedReviewPageIndex}
-                onPageNavClicked={(pageIndex: number) =>
-                  this.setState({ selectedReviewPageIndex: pageIndex })
-                }
-              />
-            </RatingsAndReviewsSection>
-          </Right>
-        </Container>
-      </Page>
-    );
-  }
-
-  private thumbnailClicked(index: number): void {
-    this.setState({ selectedImageIndex: index });
-  }
-
-  private selectColor(selectedColor: string): void {
-    this.setState({ selectedColor, showInvalidSelectionMessage: false });
-  }
-
-  private getSizeButtonText(size: string): string {
-    return getSizeDisplay(size, this.state.selectedSizeUnits);
-  }
-
-  private selectSize(selectedSize: string): void {
-    this.setState({ selectedSize, showInvalidSelectionMessage: false });
-  }
-
-  private addToCartClicked(): void {
+  const addToCartClicked = () => {
     let isSelectionValid = false;
 
-    if (this.state.selectedColor && this.state.selectedSize) {
-      const selectedColorSize = new ColorSize(
-        this.state.selectedColor,
-        this.state.selectedSize
-      );
+    if (selectedColor && selectedSize) {
+      const selectedColorSize = new ColorSize(selectedColor, selectedSize);
       if (
-        !this.props.soldOutColorSizes.some(soldOutColorSize =>
+        !props.soldOutColorSizes.some(soldOutColorSize =>
           soldOutColorSize.equals(selectedColorSize)
         )
       ) {
@@ -354,20 +73,262 @@ export class ProductPage extends React.Component<Props, State> {
     }
 
     if (!isSelectionValid) {
-      this.setState({ showInvalidSelectionMessage: true });
+      setShowInvalidSelectionMessage(true);
     } else {
-      this.context.addItem({
-        productName: this.props.name,
-        color: this.state.selectedColor,
-        size: this.state.selectedSize,
-        price: this.props.temporaryPrice
-          ? this.props.temporaryPrice.price
-          : this.props.price,
+      cart.addItem({
+        productName: props.name,
+        color: selectedColor!,
+        size: selectedSize!,
+        price: props.temporaryPrice
+          ? Number(props.temporaryPrice.price)
+          : props.price,
       });
       navigate('/cart');
     }
-  }
-}
+  };
+
+  const flickrAlbumName = `${props.name} Backers and Customers`;
+
+  return (
+    <Page title={props.name}>
+      <Container>
+        <Left>
+          <MainImage
+            src={props.photoUrls[selectedImageIndex]}
+            alt={props.name}
+          />
+
+          <Thumbnails>
+            {props.photoUrls.map((photoUrl, index) => (
+              <ThumbnailImage
+                key={index}
+                id={`thumbnail-${index}`}
+                src={photoUrl}
+                alt={props.name}
+                onClick={() => setSelectedImageIndex(index)}
+              />
+            ))}
+          </Thumbnails>
+
+          <CustomerPhotosText>Customer photos</CustomerPhotosText>
+
+          <OutboundLink
+            data-flickr-embed="true"
+            href={props.flickrAlbum.url}
+            title={flickrAlbumName}
+          >
+            <FlickrImage
+              src={props.flickrAlbum.mainPhotoUrl}
+              alt={flickrAlbumName}
+            />
+          </OutboundLink>
+        </Left>
+
+        <Right>
+          <h1>{props.name}</h1>
+
+          <ProductSelectionsGrid>
+            <div>
+              <ProductSelectionText>Color:</ProductSelectionText>
+            </div>
+            <ColorButtons>
+              {props.colors.map(color => (
+                <ColorButton
+                  key={color}
+                  aria-label={color}
+                  selected={selectedColor === color}
+                  onClick={() => selectColor(color)}
+                >
+                  <ColorSquare color={color} width="30px" />
+                </ColorButton>
+              ))}
+            </ColorButtons>
+
+            <div>
+              <ProductSelectionText>Waist size:</ProductSelectionText>
+            </div>
+            <SizeSelection>
+              <SizeUnitButtons>
+                <SizeUnitButton
+                  selected={selectedSizeUnits === 'in'}
+                  onClick={() => setSelectedSizeUnits('in')}
+                >
+                  <SizeUnitButtonText narrow={false}>inches</SizeUnitButtonText>
+                  <SizeUnitButtonText narrow={true}>in</SizeUnitButtonText>
+                </SizeUnitButton>
+                <SizeUnitButton
+                  selected={selectedSizeUnits === 'cm'}
+                  onClick={() => setSelectedSizeUnits('cm')}
+                >
+                  <SizeUnitButtonText narrow={false}>
+                    centimeters
+                  </SizeUnitButtonText>
+                  <SizeUnitButtonText narrow={true}>cm</SizeUnitButtonText>
+                </SizeUnitButton>
+              </SizeUnitButtons>
+              <SizeButtons aria-label="waist sizes">
+                {props.sizes.map(size => {
+                  let disabled = false;
+                  if (selectedColor) {
+                    const colorSize = new ColorSize(selectedColor, size);
+                    disabled = props.soldOutColorSizes.some(soldOutColorSize =>
+                      soldOutColorSize.equals(colorSize)
+                    );
+                  }
+
+                  return (
+                    <SizeButton
+                      key={size}
+                      disabled={disabled}
+                      selected={selectedSize === size}
+                      onClick={() => selectSize(size)}
+                    >
+                      {getSizeDisplay(size, selectedSizeUnits)}
+                    </SizeButton>
+                  );
+                })}
+              </SizeButtons>
+            </SizeSelection>
+
+            <div>
+              <ProductSelectionText>Price:</ProductSelectionText>
+            </div>
+            <div>
+              <ProductSelectionText>
+                {props.temporaryPrice ? (
+                  <span>
+                    <del>${props.price}</del>&nbsp;
+                    <TemporaryPriceText>
+                      ${props.temporaryPrice.price} ($
+                      {process.env.CURRENCY_CODE}) until{' '}
+                      {props.temporaryPrice.untilDate}!
+                    </TemporaryPriceText>
+                  </span>
+                ) : (
+                  `$${props.price} (${process.env.CURRENCY_CODE})`
+                )}
+              </ProductSelectionText>
+            </div>
+
+            <div />
+            <AddToCartContainer>
+              <AddToCartButton onClick={addToCartClicked}>
+                Add to Cart
+              </AddToCartButton>
+              {showInvalidSelectionMessage && (
+                <AddToCartErrorMessage>
+                  Please select a valid color and size.
+                </AddToCartErrorMessage>
+              )}
+            </AddToCartContainer>
+
+            <div />
+            <MoreInfoContainer>
+              <MoreInfoText>
+                <MoreInfoAnchor
+                  onClick={() => setIsSizeInfoShowing(!isSizeInfoShowing)}
+                >
+                  &#9432; SIZING
+                </MoreInfoAnchor>
+              </MoreInfoText>
+
+              {isSizeInfoShowing && (
+                <MoreInfo>
+                  <MoreInfoLink to="/size-guide">View Size Guide</MoreInfoLink>
+                </MoreInfo>
+              )}
+            </MoreInfoContainer>
+
+            <div />
+            <MoreInfoContainer>
+              <MoreInfoText>
+                <MoreInfoAnchor
+                  onClick={() =>
+                    setAreShippingRatesShowing(!areShippingRatesShowing)
+                  }
+                >
+                  &#9432; SHIPPING RATES
+                </MoreInfoAnchor>
+              </MoreInfoText>
+
+              {areShippingRatesShowing && (
+                <MoreInfo isflex={true}>
+                  <DestinationPrices
+                    destinationName="United States"
+                    pricesUsDollars={[
+                      Number(process.env.SHIPPING_PRICE_US_1),
+                      Number(process.env.SHIPPING_PRICE_US_2),
+                      Number(process.env.SHIPPING_PRICE_US_3),
+                    ]}
+                  />
+                  <DestinationPrices
+                    destinationName="Canada"
+                    pricesUsDollars={[
+                      Number(process.env.SHIPPING_PRICE_CA_1),
+                      Number(process.env.SHIPPING_PRICE_CA_2),
+                      Number(process.env.SHIPPING_PRICE_CA_3),
+                    ]}
+                  />
+                  <DestinationPrices
+                    destinationName="Rest of World"
+                    pricesUsDollars={[
+                      Number(process.env.SHIPPING_PRICE_RW_1),
+                      Number(process.env.SHIPPING_PRICE_RW_2),
+                      Number(process.env.SHIPPING_PRICE_RW_3),
+                    ]}
+                  />
+                </MoreInfo>
+              )}
+            </MoreInfoContainer>
+
+            <div />
+            <MoreInfoContainer>
+              <MoreInfoText>
+                <MoreInfoAnchor
+                  onClick={() =>
+                    setArePaymentMethodsShowing(!arePaymentMethodsShowing)
+                  }
+                >
+                  &#9432; PAYMENT METHODS
+                </MoreInfoAnchor>
+              </MoreInfoText>
+
+              {arePaymentMethodsShowing && (
+                <MoreInfo>
+                  <UnorderedListNotIndented>
+                    <li>Visa</li>
+                    <li>Mastercard</li>
+                    <li>Discover</li>
+                    <li>American Express</li>
+                    <li>PayPal account</li>
+                  </UnorderedListNotIndented>
+                  <p>Checkout is via PayPal.</p>
+                </MoreInfo>
+              )}
+            </MoreInfoContainer>
+          </ProductSelectionsGrid>
+
+          <HorizontalRule />
+
+          <ProductDetails>{props.details}</ProductDetails>
+
+          <RatingsAndReviewsSection>
+            <H2>RATINGS & REVIEWS</H2>
+            <p>
+              These tend to cluster around certain dates because we send out
+              feedback requests to groups of recent customers at once.
+            </p>
+            <RatingSet
+              ratings={props.ratings}
+              selectedPageIndex={selectedReviewPageIndex}
+              onPageNavClicked={setSelectedReviewPageIndex}
+            />
+          </RatingsAndReviewsSection>
+        </Right>
+      </Container>
+    </Page>
+  );
+};
 
 const Container = styled.div`
   display: flex;
@@ -576,6 +537,10 @@ const MoreInfoLink = styled(Link)`
 
 const UnorderedListNotIndented = styled.ul`
   padding-left: 1em;
+`;
+
+const HorizontalRule = styled.hr`
+  width: 100%;
 `;
 
 const ProductDetails = styled.div`

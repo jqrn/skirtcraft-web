@@ -1,58 +1,49 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-interface State {
-  emailAddress: string;
-}
+export const EmailSignupForm = () => {
+  const [emailAddress, setEmailAddress] = useState('');
 
-export class EmailSignupForm extends React.PureComponent<null, State> {
-  public state: State = {
-    emailAddress: '',
-  };
-
-  public render(): JSX.Element {
-    return (
-      <form
-        style={{ display: 'flex' }}
-        action={process.env.EMAIL_LIST_SUBSCRIBE_FORM_ACTION_URL}
-        method="post"
-        id="mc-embedded-subscribe-form"
-        name="mc-embedded-subscribe-form"
-        className="validate"
-        target="_blank"
-        noValidate={true}
-      >
-        <EmailInputLabel htmlFor="mce-EMAIL">Email Address</EmailInputLabel>
-        <EmailInput
-          type="email"
-          value={this.state.emailAddress}
-          onChange={this.emailAddressChanged}
-          name="EMAIL"
-          className="required email"
-          id="mce-EMAIL"
-          placeholder="email address"
-          required={true}
+  return (
+    <Form
+      action={process.env.EMAIL_LIST_SUBSCRIBE_FORM_ACTION_URL}
+      method="post"
+      id="mc-embedded-subscribe-form"
+      name="mc-embedded-subscribe-form"
+      className="validate"
+      target="_blank"
+      noValidate={true}
+    >
+      <EmailInputLabel htmlFor="mce-EMAIL">Email Address</EmailInputLabel>
+      <EmailInput
+        type="email"
+        value={emailAddress}
+        onChange={event => setEmailAddress(event.target.value)}
+        name="EMAIL"
+        className="required email"
+        id="mce-EMAIL"
+        placeholder="email address"
+        required={true}
+      />
+      <MailchimpHidden>
+        <input
+          type="text"
+          name={process.env.EMAIL_LIST_SUBSCRIBE_FORM_HIDDEN_INPUT}
+          value=""
+          readOnly={true}
+          tabIndex={-1}
+          aria-hidden={true}
+          aria-label={'email list identifier'}
         />
-        <MailchimpHidden>
-          <input
-            type="text"
-            name={process.env.EMAIL_LIST_SUBSCRIBE_FORM_HIDDEN_INPUT}
-            value=""
-            readOnly={true}
-            tabIndex={-1}
-            aria-hidden={true}
-            aria-label={'email list identifier'}
-          />
-        </MailchimpHidden>
-        <SubmitButton type="submit" value="Subscribe" name="subscribe" />
-      </form>
-    );
-  }
+      </MailchimpHidden>
+      <SubmitButton type="submit" value="Subscribe" name="subscribe" />
+    </Form>
+  );
+};
 
-  private emailAddressChanged = (event: any) => {
-    this.setState({ emailAddress: event.target.value });
-  };
-}
+const Form = styled.form`
+  display: flex;
+`;
 
 const MailchimpHidden = styled.div`
   position: absolute;

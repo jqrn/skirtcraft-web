@@ -1,6 +1,7 @@
 import { graphql } from 'gatsby';
 import React from 'react';
 import styled from 'styled-components';
+import { getBlogPostSlug } from '../util/blog';
 import { BASE_URL } from '../util/constants';
 import { BlogNavLink } from './BlogNavLink';
 import { BlogPost } from './BlogPost';
@@ -26,61 +27,13 @@ interface Props {
   };
 }
 
-class BlogPostPage extends React.PureComponent<Props> {
-  public static getPostUrl(slug: string): string {
-    return `${BASE_URL}/blog-posts/${slug}/`;
-  }
+const BlogPostPage = (props: Props) => {
+  const {
+    data: { tumblrPost },
+    pageContext: { previousSlug, nextSlug },
+  } = props;
 
-  public render(): JSX.Element {
-    const tumblrPost = this.props.data.tumblrPost;
-
-    const imageUrl = this.getImageUrl(tumblrPost.body);
-
-    return (
-      <Page
-        title={`Blog - ${tumblrPost.title}`}
-        mainStyle={pageStyle}
-        openGraphImageUrl={imageUrl}
-      >
-        {this.renderViewLatestPostsLink()}
-
-        <BlogPost tumblrPost={tumblrPost} />
-
-        <BlogNavLinks>{this.renderNewerOlderNavLinks()}</BlogNavLinks>
-      </Page>
-    );
-  }
-
-  private renderNewerOlderNavLinks(): JSX.Element {
-    const nextSlug = this.props.pageContext.nextSlug;
-    const previousSlug = this.props.pageContext.previousSlug;
-    return (
-      <BlogPrevNextNavLinks>
-        <div>
-          <BlogNavLink
-            $isvisible={nextSlug != undefined}
-            to={`/blog-posts/${nextSlug}`}
-          >
-            &lt; Newer
-          </BlogNavLink>
-        </div>
-        <div>
-          <BlogNavLink
-            $isvisible={previousSlug != undefined}
-            to={`/blog-posts/${previousSlug}`}
-          >
-            Older &gt;
-          </BlogNavLink>
-        </div>
-      </BlogPrevNextNavLinks>
-    );
-  }
-
-  private renderViewLatestPostsLink(): JSX.Element {
-    return <BlogNavLink to="/blog">&lt;&lt; View Latest Posts</BlogNavLink>;
-  }
-
-  private getImageUrl(postBody: string): string | undefined {
+  const getImageUrl = (postBody: string) => {
     const firstImageStartIndex = postBody.indexOf('<img ');
 
     if (firstImageStartIndex > 0) {
@@ -97,10 +50,43 @@ class BlogPostPage extends React.PureComponent<Props> {
         }
       }
     }
-
     return undefined;
-  }
-}
+  };
+
+  return (
+    <Page
+      title={`Blog - ${tumblrPost.title}`}
+      mainStyle={pageStyle}
+      openGraphImageUrl={getImageUrl(tumblrPost.body)}
+    >
+      <BlogNavLink to="/blog">&lt;&lt; View Latest Posts</BlogNavLink>
+
+      <BlogPost tumblrPost={tumblrPost} />
+
+      <BlogNavLinks>
+        <BlogPrevNextNavLinks>
+          <div>
+            <BlogNavLink
+              $isvisible={nextSlug != undefined}
+              to={`/blog-posts/${nextSlug}`}
+            >
+              &lt; Newer
+            </BlogNavLink>
+          </div>
+          <div>
+            <BlogNavLink
+              $isvisible={previousSlug != undefined}
+              to={`/blog-posts/${previousSlug}`}
+            >
+              Older &gt;
+            </BlogNavLink>
+          </div>
+        </BlogPrevNextNavLinks>
+      </BlogNavLinks>
+    </Page>
+  );
+};
+
 export default BlogPostPage;
 
 const pageStyle: React.CSSProperties = {
@@ -140,7 +126,7 @@ export const Head = (args: { data: TumblrPostData }) => {
       <meta property="og:title" content={tumblrPost.title} />
       <meta
         property="og:url"
-        content={BlogPostPage.getPostUrl(tumblrPost.slug)}
+        content={`${BASE_URL}/blog-posts/${getBlogPostSlug(tumblrPost)}/`}
       />
       <meta property="article:published_time" content={tumblrPost.date} />
       {tumblrPost.tags.map((tag, index) => (

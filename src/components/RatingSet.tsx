@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Rating as RatingData } from '../ratings/Rating';
 import { MAX_STARS, Rating } from './Rating';
@@ -9,87 +9,73 @@ interface Props {
   onPageNavClicked: (pageIndex: number) => void;
 }
 
-interface State {
-  averageRating?: string;
-}
-
 const RATINGS_PER_PAGE = 5;
 
-export class RatingSet extends React.PureComponent<Props, State> {
-  public state: State = {};
+export const RatingSet = (props: Props) => {
+  const [averageRating, setAverageRating] = useState('');
 
-  public componentDidMount(): void {
+  useEffect(() => {
     const averageRatingRaw =
-      this.props.ratings.reduce(
+      props.ratings.reduce(
         (sum, currentRating) => sum + currentRating.ratingStars,
         0
-      ) / this.props.ratings.length;
-    this.setState({ averageRating: averageRatingRaw.toFixed(2) });
+      ) / props.ratings.length;
+    setAverageRating(averageRatingRaw.toFixed(2));
+  }, []);
+
+  const pageCount = Math.ceil(props.ratings.length / RATINGS_PER_PAGE);
+  let selectedPageIndex = props.selectedPageIndex;
+  if (selectedPageIndex >= pageCount) {
+    selectedPageIndex = pageCount - 1;
+  } else if (selectedPageIndex < 0) {
+    selectedPageIndex = 0;
   }
 
-  public render(): JSX.Element {
-    const pageCount = Math.ceil(this.props.ratings.length / RATINGS_PER_PAGE);
-    let selectedPageIndex = this.props.selectedPageIndex;
-    if (selectedPageIndex >= pageCount) {
-      selectedPageIndex = pageCount - 1;
-    } else if (selectedPageIndex < 0) {
-      selectedPageIndex = 0;
-    }
+  const newestRatingIndex =
+    props.ratings.length - 1 - RATINGS_PER_PAGE * selectedPageIndex;
+  const oldestRatingIndex = Math.max(
+    newestRatingIndex - RATINGS_PER_PAGE + 1,
+    0
+  );
 
-    const newestRatingIndex =
-      this.props.ratings.length - 1 - RATINGS_PER_PAGE * selectedPageIndex;
-    const oldestRatingIndex = Math.max(
-      newestRatingIndex - RATINGS_PER_PAGE + 1,
-      0
-    );
+  const ratingsRendered: JSX.Element[] = [];
+  for (let index = newestRatingIndex; index >= oldestRatingIndex; index -= 1) {
+    const rating = props.ratings[index];
+    ratingsRendered.push(<Rating key={index} data={rating} />);
+  }
 
-    const ratingsRendered: JSX.Element[] = [];
-    for (
-      let index = newestRatingIndex;
-      index >= oldestRatingIndex;
-      index -= 1
-    ) {
-      const rating = this.props.ratings[index];
-      ratingsRendered.push(<Rating key={index} data={rating} />);
-    }
-
-    return (
-      <Container>
+  return (
+    <Container>
+      <div>
+        <TotalLabel>Ratings: </TotalLabel>
+        <TotalValue>{props.ratings.length}</TotalValue>
+      </div>
+      {averageRating && (
         <div>
-          <TotalLabel>Ratings: </TotalLabel>
-          <TotalValue>{this.props.ratings.length}</TotalValue>
+          <TotalLabel>Average: </TotalLabel>
+          <TotalValue>{`${averageRating} / ${MAX_STARS}`}</TotalValue>
         </div>
-        {this.state.averageRating && (
-          <div>
-            <TotalLabel>Average: </TotalLabel>
-            <TotalValue>{`${this.state.averageRating} / ${MAX_STARS}`}</TotalValue>
-          </div>
-        )}
+      )}
 
-        <ButtonContainer>
-          <Button
-            disabled={this.props.selectedPageIndex <= 0}
-            onClick={() =>
-              this.props.onPageNavClicked(this.props.selectedPageIndex - 1)
-            }
-          >
-            &lt; Newer
-          </Button>
-          <Button
-            disabled={this.props.selectedPageIndex >= pageCount - 1}
-            onClick={() =>
-              this.props.onPageNavClicked(this.props.selectedPageIndex + 1)
-            }
-          >
-            Older &gt;
-          </Button>
-        </ButtonContainer>
+      <ButtonContainer>
+        <Button
+          disabled={props.selectedPageIndex <= 0}
+          onClick={() => props.onPageNavClicked(props.selectedPageIndex - 1)}
+        >
+          &lt; Newer
+        </Button>
+        <Button
+          disabled={props.selectedPageIndex >= pageCount - 1}
+          onClick={() => props.onPageNavClicked(props.selectedPageIndex + 1)}
+        >
+          Older &gt;
+        </Button>
+      </ButtonContainer>
 
-        {ratingsRendered}
-      </Container>
-    );
-  }
-}
+      {ratingsRendered}
+    </Container>
+  );
+};
 
 const Container = styled.div`
   margin-top: 2em;

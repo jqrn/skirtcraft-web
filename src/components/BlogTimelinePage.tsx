@@ -29,52 +29,50 @@ interface Props {
   };
 }
 
-export default class BlogTimelinePage extends React.PureComponent<Props> {
-  public render(): JSX.Element {
-    const pageNumber = this.props.pageContext.pageNumber;
-    const tumblrPosts = this.props.data.allTumblrPost.edges.map(
-      edge => edge.node
-    );
+const BlogTimelinePage = (props: Props) => {
+  const pageNumber = props.pageContext.pageNumber;
+  const tumblrPosts = props.data.allTumblrPost.edges.map(edge => edge.node);
 
-    return (
-      <Page
-        title={'Blog' + (pageNumber === 1 ? '' : ` (Page ${pageNumber})`)}
-        currentTab={pageNumber === 1 ? NavTabDef.BLOG : undefined}
-        mainStyle={pageStyle}
-      >
-        {pageNumber > 1 && (
-          <BlogNavLink to="/blog">&lt;&lt; View Latest Posts</BlogNavLink>
-        )}
+  return (
+    <Page
+      title={'Blog' + (pageNumber === 1 ? '' : ` (Page ${pageNumber})`)}
+      currentTab={pageNumber === 1 ? NavTabDef.BLOG : undefined}
+      mainStyle={pageStyle}
+    >
+      {pageNumber > 1 && (
+        <BlogNavLink to="/blog">&lt;&lt; View Latest Posts</BlogNavLink>
+      )}
 
-        {tumblrPosts.map((tumblrPost: TumblrPost, index: number) => (
-          <div key={index}>
-            <BlogPost tumblrPost={tumblrPost} />
-            <BlogPostSeparator />
-          </div>
-        ))}
+      {tumblrPosts.map((tumblrPost: TumblrPost, index: number) => (
+        <div key={index}>
+          <BlogPost tumblrPost={tumblrPost} />
+          <BlogPostSeparator />
+        </div>
+      ))}
 
-        <BlogPrevNextNavLinks>
-          <div>
-            <BlogNavLink
-              $isvisible={pageNumber > 1}
-              to={'/blog' + (pageNumber === 2 ? '' : `/page-${pageNumber - 1}`)}
-            >
-              &lt; Newer
-            </BlogNavLink>
-          </div>
-          <div>
-            <BlogNavLink
-              $isvisible={!this.props.pageContext.isLastPage}
-              to={`/blog/page-${pageNumber + 1}`}
-            >
-              Older &gt;
-            </BlogNavLink>
-          </div>
-        </BlogPrevNextNavLinks>
-      </Page>
-    );
-  }
-}
+      <BlogPrevNextNavLinks>
+        <div>
+          <BlogNavLink
+            $isvisible={pageNumber > 1}
+            to={'/blog' + (pageNumber === 2 ? '' : `/page-${pageNumber - 1}`)}
+          >
+            &lt; Newer
+          </BlogNavLink>
+        </div>
+        <div>
+          <BlogNavLink
+            $isvisible={!props.pageContext.isLastPage}
+            to={`/blog/page-${pageNumber + 1}`}
+          >
+            Older &gt;
+          </BlogNavLink>
+        </div>
+      </BlogPrevNextNavLinks>
+    </Page>
+  );
+};
+
+export default BlogTimelinePage;
 
 const pageStyle: React.CSSProperties = {
   maxWidth: '50em',
