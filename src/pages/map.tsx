@@ -3,27 +3,23 @@ import styled from 'styled-components';
 import { Page } from '../components/Page';
 import { NavTabDef } from '../enums/NavTabDef';
 
-export default class MapPage extends React.PureComponent {
-  public render(): JSX.Element {
-    return (
-      <Page title={NavTabDef.MAP} currentTab={NavTabDef.MAP}>
-        <h1>Map</h1>
+const MapPage = () => (
+  <Page title={NavTabDef.MAP} currentTab={NavTabDef.MAP}>
+    <h1>Map</h1>
 
-        <p>Cities/towns we've shipped skirts to!</p>
+    <p>Cities/towns we've shipped skirts to!</p>
 
-        <p>
-          The latitudes and longitudes shown in this map are <b>not</b> derived
-          from precise addresses; they're city/town locations only.
-        </p>
-        <br />
+    <p>
+      The latitudes and longitudes shown in this map are <b>not</b> derived from
+      precise addresses; they're city/town locations only.
+    </p>
+    <br />
 
-        <AspectRatio>
-          <MapIframe src={process.env.GOOGLE_MAP_URL} />
-        </AspectRatio>
-      </Page>
-    );
-  }
-}
+    <AspectRatio>
+      <MapIframe src={process.env.GOOGLE_MAP_URL} />
+    </AspectRatio>
+  </Page>
+);
 
 const AspectRatio = styled.div`
   position: relative;
@@ -37,3 +33,5 @@ const MapIframe = styled.iframe`
   top: 0;
   left: 0;
 `;
+
+export default MapPage;
