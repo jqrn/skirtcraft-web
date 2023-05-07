@@ -87,8 +87,6 @@ const BlogPostPage = (props: Props) => {
   );
 };
 
-export default BlogPostPage;
-
 const pageStyle: React.CSSProperties = {
   maxWidth: '50em',
 };
@@ -135,3 +133,5 @@ export const Head = (args: { data: TumblrPostData }) => {
     </>
   );
 };
+
+export default BlogPostPage;

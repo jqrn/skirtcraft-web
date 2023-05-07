@@ -72,8 +72,6 @@ const BlogTimelinePage = (props: Props) => {
   );
 };
 
-export default BlogTimelinePage;
-
 const pageStyle: React.CSSProperties = {
   maxWidth: '50em',
 };
@@ -107,3 +105,5 @@ export const query = graphql`
     }
   }
 `;
+
+export default BlogTimelinePage;

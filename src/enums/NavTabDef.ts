@@ -1,5 +1,4 @@
 export enum NavTabDef {
-  HOME = 'Home',
   PRODUCTS = 'Products',
   UNALIGNED = 'Unaligned',
   AQUEOUS = 'Aqueous',

@@ -4,6 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Page } from '../components/Page';
 import { NavTabDef } from '../enums/NavTabDef';
+import ImgCoverBooth02 from '../images/cover-booth02.jpg';
 import ImgGreenLongSleevedFrontHands from '../images/green_long_sleeved_front_hands.png';
 import ImgKickstarterFunded from '../images/kickstarter-badge-funded.png';
 import ImgNewsCollage from '../images/news_collage.png';
@@ -14,6 +15,8 @@ export default class AboutPage extends React.PureComponent {
     return (
       <Page title={NavTabDef.ABOUT} currentTab={NavTabDef.ABOUT}>
         <h1>About</h1>
+
+        <ImageFullWidth src={ImgCoverBooth02} alt="Skirtcraft booth at fair" />
 
         <p>Skirtcraft is a micro-brand based in Minneapolis, Minnesota.</p>
 
@@ -212,7 +215,7 @@ export default class AboutPage extends React.PureComponent {
 
 const ImageFullWidth = styled.img`
   width: 100%;
-  max-width: 40em;
+  max-width: 50em;
 `;
 
 const ImageRight = styled.img`

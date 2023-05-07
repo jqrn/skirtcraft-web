@@ -1,8 +1,5 @@
 import React from 'react';
-import Home from './home';
+import ProductsPage from './products';
 
-export default class NotFoundPage extends React.PureComponent {
-  public render(): JSX.Element {
-    return <Home />;
-  }
-}
+const NotFoundPage = <ProductsPage />;
+export default NotFoundPage;
