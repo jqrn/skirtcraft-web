@@ -5,11 +5,19 @@ import { ProductTile } from '../components/ProductTile';
 import { NavTabDef } from '../enums/NavTabDef';
 import ImgAqueous21s from '../images/aqueous21s.jpg';
 import ImgShirt01 from '../images/shirt01.png';
+import ImgTellurianComingSoon from '../images/tellurian-coming-soon.jpg';
 import ImgUnaligned01 from '../images/unaligned01.png';
 
 const ProductsPage = () => (
   <Page title={NavTabDef.PRODUCTS} currentTab={NavTabDef.PRODUCTS}>
     <Container>
+      <ProductTile
+        name="Tellurian Skirt"
+        pagePath="/blog"
+        imageSource={ImgTellurianComingSoon}
+        price="TBD"
+      />
+
       <ProductTile
         name="Unaligned Skirt"
         pagePath="unaligned"

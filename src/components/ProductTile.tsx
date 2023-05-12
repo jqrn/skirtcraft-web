@@ -13,7 +13,7 @@ interface Props {
 
 export const ProductTile = (props: Props) => (
   <Container>
-    <Link to={`/products/${props.pagePath}`}>
+    <Link to={props.pagePath}>
       <img src={props.imageSource} alt="" />
       <ProductTitle>{props.name}</ProductTitle>
       {props.temporaryPrice ? (
