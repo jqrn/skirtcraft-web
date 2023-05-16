@@ -20,21 +20,21 @@ const ProductsPage = () => (
 
       <ProductTile
         name="Unaligned Skirt"
-        pagePath="unaligned"
+        pagePath="/products/unaligned"
         imageSource={ImgUnaligned01}
         price={process.env.PRICE_UNALIGNED!}
       />
 
       <ProductTile
         name="Aqueous Skirt"
-        pagePath="aqueous"
+        pagePath="/products/aqueous"
         imageSource={ImgAqueous21s}
         price={process.env.PRICE_AQUEOUS!}
       />
 
       <ProductTile
         name="T-Shirts"
-        pagePath="tshirts"
+        pagePath="/products/tshirts"
         imageSource={ImgShirt01}
         price="26-31"
       />
