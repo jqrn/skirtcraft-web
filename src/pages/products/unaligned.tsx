@@ -42,7 +42,7 @@ const UnalignedSkirtProductPage = () => (
             Note: some photos are of a prototype with only five belt loops;
             actual product has seven.
           </li>
-          <li>Colors: black, khaki, grey</li>
+          <li>Colors: black, grey, khaki</li>
         </ul>
 
         <H2>Materials</H2>
@@ -86,7 +86,7 @@ const UnalignedSkirtProductPage = () => (
         </p>
       </>
     }
-    colors={['Black', 'Khaki', 'Grey']}
+    colors={['Black', 'Grey', 'Khaki']}
     sizes={[
       '30-31',
       '32-33',
@@ -98,16 +98,16 @@ const UnalignedSkirtProductPage = () => (
       '44-45',
     ]}
     soldOutColorSizes={[
+      new ColorSize('Grey', '30-31'),
+      new ColorSize('Grey', '34-35'),
+      new ColorSize('Grey', '36-37'),
+      new ColorSize('Grey', '38-39'),
       new ColorSize('Khaki', '30-31'),
       new ColorSize('Khaki', '34-35'),
       new ColorSize('Khaki', '36-37'),
       new ColorSize('Khaki', '38-39'),
       new ColorSize('Khaki', '40-41'),
       new ColorSize('Khaki', '42-43'),
-      new ColorSize('Grey', '30-31'),
-      new ColorSize('Grey', '34-35'),
-      new ColorSize('Grey', '36-37'),
-      new ColorSize('Grey', '38-39'),
     ]}
     price={parseFloat(process.env.PRICE_UNALIGNED!)}
     photoUrls={[
