@@ -12,10 +12,11 @@ const ProductsPage = () => (
   <Page title={NavTabDef.PRODUCTS} currentTab={NavTabDef.PRODUCTS}>
     <Container>
       <ProductTile
-        name="Tellurian Skirt"
+        name="Tellurian Wrap Skirt"
         pagePath="/blog"
         imageSource={ImgTellurianComingSoon}
-        price="TBD"
+        price="89"
+        temporaryPrice={{ price: '79', untilDate: 'June 22nd' }}
       />
 
       <ProductTile

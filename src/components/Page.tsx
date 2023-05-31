@@ -68,7 +68,7 @@ const Container = styled.div`
 `;
 
 const Main = styled.main`
-  padding: 3% 1em 2em 3%;
+  padding: 2em 1em 2em 2em;
   max-width: 70em;
   flex: 1 0 auto;
 `;
