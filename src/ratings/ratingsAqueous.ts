@@ -216,4 +216,13 @@ export const RATINGS_AQUEOUS: Rating[] = [
     name: 'Jolyon',
     review: 'Skirtcraft is doing a superb job. Keep on doing it.',
   },
+  {
+    date: '2023-04-14',
+    ratingStars: 5,
+  },
+  {
+    date: '2023-06-01',
+    ratingStars: 5,
+    name: 'Brett in Cleveland',
+  },
 ];

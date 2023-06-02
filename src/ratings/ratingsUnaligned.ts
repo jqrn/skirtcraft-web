@@ -777,4 +777,14 @@ export const RATINGS_UNALIGNED: Rating[] = [
     name: 'Jolyon',
     review: 'Skirtcraft is doing a superb job. Keep on doing it.',
   },
+  {
+    date: '2023-04-13',
+    ratingStars: 5,
+    name: 'middle-aged lady with a slight tum',
+  },
+  {
+    date: '2023-06-01',
+    ratingStars: 5,
+    name: 'Brett in Cleveland',
+  },
 ];
