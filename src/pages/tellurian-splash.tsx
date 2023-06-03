@@ -45,20 +45,19 @@ const Container = styled.div`
 
 const CenterDiv = styled.div`
   flex: 1;
-  padding-top: 5%;
-  padding-bottom: 2%;
+  padding-top: 2vw;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 5%;
+  gap: 8%;
 `;
 
 const TopMessageLink = styled(OutboundLink)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2.5vh;
+  gap: 1.5vw;
   text-decoration: none;
   color: black;
 `;
@@ -73,7 +72,7 @@ const KickstarterImage = styled.img`
 `;
 
 const GoButton = styled.button`
-  height: 3em;
+  height: 2em;
   background-color: #05ce78;
   box-sizing: initial;
   border: 0px;
