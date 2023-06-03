@@ -18,13 +18,15 @@ export const TellurianSplash = () => (
       <TopMessageLink href="https://www.kickstarter.com/projects/skirtcraft/unisex-skirts-3">
         <CenterText>The Tellurian wrap skirt is live on</CenterText>
         <KickstarterImage src={ImgKickstarter} />
+      </TopMessageLink>
+      <TopMessageLink href="https://www.kickstarter.com/projects/skirtcraft/unisex-skirts-3">
         <GoButton>Preorder Now</GoButton>
       </TopMessageLink>
       <CenterImageLink href="https://www.kickstarter.com/projects/skirtcraft/unisex-skirts-3">
         <CenterImage src={ImgSplashCenterSkirt} />
       </CenterImageLink>
       <ContinueToSkirtcraft>
-        or continue to <Link to="/products">skirtcraft.com</Link>
+        or shop <Link to="/products">skirtcraft.com</Link>
       </ContinueToSkirtcraft>
     </CenterDiv>
     <SideDiv>
@@ -50,12 +52,13 @@ const CenterDiv = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 8%;
+  gap: 3vw;
 `;
 
 const TopMessageLink = styled(OutboundLink)`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   gap: 1.5vw;
   text-decoration: none;
@@ -63,24 +66,26 @@ const TopMessageLink = styled(OutboundLink)`
 `;
 
 const CenterText = styled.p`
-  font-size: 1.8vw;
   margin: 0;
+  font-size: calc(1.3vw + 0.8em);
+  text-align: center;
 `;
 
 const KickstarterImage = styled.img`
-  width: 80%;
+  width: 100%;
+  max-width: 600px;
 `;
 
 const GoButton = styled.button`
-  height: 2em;
   background-color: #05ce78;
   box-sizing: initial;
   border: 0px;
   border-radius: 8px;
-  padding: 0 16px;
+  padding: 8px 16px;
   color: #000;
   cursor: pointer;
-  font-size: 2vw;
+  font-family: 'Muli', sans-serif;
+  font-size: calc(1.3vw + 0.8em);
   &:hover {
     outline: 2px solid #000;
   }
@@ -109,7 +114,7 @@ const SideImage = styled.img`
 `;
 
 const ContinueToSkirtcraft = styled.span`
-  font-size: 1.5vw;
+  font-size: 100%;
 `;
 
 export default TellurianSplash;
