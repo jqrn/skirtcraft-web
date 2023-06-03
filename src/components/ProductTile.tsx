@@ -1,19 +1,21 @@
 import { Link } from 'gatsby';
+import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import React from 'react';
 import styled from 'styled-components';
 import { TemporaryPrice } from '../util/TemporaryPrice';
 
 interface Props {
   name: string;
-  pagePath: string;
+  pagePath?: string;
+  externalUrl?: string;
   imageSource: string;
   price: string;
   temporaryPrice?: TemporaryPrice;
 }
 
-export const ProductTile = (props: Props) => (
-  <Container>
-    <Link to={props.pagePath}>
+export const ProductTile = (props: Props) => {
+  const linkContent = (
+    <>
       <img src={props.imageSource} alt="" />
       <ProductTitle>{props.name}</ProductTitle>
       {props.temporaryPrice ? (
@@ -27,9 +29,21 @@ export const ProductTile = (props: Props) => (
       ) : (
         <ProductPrice>${props.price} (USD)</ProductPrice>
       )}
-    </Link>
-  </Container>
-);
+    </>
+  );
+
+  return (
+    <Container>
+      {props.externalUrl ? (
+        <OutboundLink href="https://www.kickstarter.com/projects/skirtcraft/unisex-skirts-3">
+          {linkContent}
+        </OutboundLink>
+      ) : (
+        <Link to={props.pagePath!}>{linkContent}</Link>
+      )}
+    </Container>
+  );
+};
 
 const Container = styled.div`
   width: 100%;
