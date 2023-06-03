@@ -20,7 +20,7 @@ export const TellurianSplash = () => (
         <KickstarterImage src={ImgKickstarter} />
       </TopMessageLink>
       <TopMessageLink href="https://www.kickstarter.com/projects/skirtcraft/unisex-skirts-3">
-        <GoButton>Preorder Now</GoButton>
+        <GoButton>View Project</GoButton>
       </TopMessageLink>
       <CenterImageLink href="https://www.kickstarter.com/projects/skirtcraft/unisex-skirts-3">
         <CenterImage src={ImgSplashCenterSkirt} />
