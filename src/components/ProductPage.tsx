@@ -262,11 +262,35 @@ export const ProductPage = (props: Props) => {
                     ]}
                   />
                   <DestinationPrices
+                    destinationName="Australia"
+                    pricesUsDollars={[
+                      Number(process.env.SHIPPING_PRICE_AU_1),
+                      Number(process.env.SHIPPING_PRICE_AU_2),
+                      Number(process.env.SHIPPING_PRICE_AU_3),
+                    ]}
+                  />
+                  <DestinationPrices
                     destinationName="Canada"
                     pricesUsDollars={[
                       Number(process.env.SHIPPING_PRICE_CA_1),
                       Number(process.env.SHIPPING_PRICE_CA_2),
                       Number(process.env.SHIPPING_PRICE_CA_3),
+                    ]}
+                  />
+                  <DestinationPrices
+                    destinationName="New Zealand"
+                    pricesUsDollars={[
+                      Number(process.env.SHIPPING_PRICE_NZ_1),
+                      Number(process.env.SHIPPING_PRICE_NZ_2),
+                      Number(process.env.SHIPPING_PRICE_NZ_3),
+                    ]}
+                  />
+                  <DestinationPrices
+                    destinationName="United Kingdom"
+                    pricesUsDollars={[
+                      Number(process.env.SHIPPING_PRICE_GB_1),
+                      Number(process.env.SHIPPING_PRICE_GB_2),
+                      Number(process.env.SHIPPING_PRICE_GB_3),
                     ]}
                   />
                   <DestinationPrices

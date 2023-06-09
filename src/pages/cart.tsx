@@ -24,9 +24,18 @@ const SHIPPING_PRICES = {
   US_1: process.env.SHIPPING_PRICE_US_1,
   US_2: process.env.SHIPPING_PRICE_US_2,
   US_3: process.env.SHIPPING_PRICE_US_3,
+  AU_1: process.env.SHIPPING_PRICE_AU_1,
+  AU_2: process.env.SHIPPING_PRICE_AU_2,
+  AU_3: process.env.SHIPPING_PRICE_AU_3,
   CA_1: process.env.SHIPPING_PRICE_CA_1,
   CA_2: process.env.SHIPPING_PRICE_CA_2,
   CA_3: process.env.SHIPPING_PRICE_CA_3,
+  GB_1: process.env.SHIPPING_PRICE_GB_1,
+  GB_2: process.env.SHIPPING_PRICE_GB_2,
+  GB_3: process.env.SHIPPING_PRICE_GB_3,
+  NZ_1: process.env.SHIPPING_PRICE_NZ_1,
+  NZ_2: process.env.SHIPPING_PRICE_NZ_2,
+  NZ_3: process.env.SHIPPING_PRICE_NZ_3,
   RW_1: process.env.SHIPPING_PRICE_RW_1,
   RW_2: process.env.SHIPPING_PRICE_RW_2,
   RW_3: process.env.SHIPPING_PRICE_RW_3,
@@ -55,8 +64,11 @@ const CartPage = () => {
   );
 
   const getShippingAmount = (countryCode: string) => {
-    const shippingLocationCode: 'US' | 'CA' | 'RW' =
-      countryCode === 'US' || countryCode === 'CA' ? countryCode : 'RW';
+    type shippingLocationCodeType = 'US' | 'AU' | 'CA' | 'GB' | 'NZ' | 'RW';
+    let shippingLocationCode: shippingLocationCodeType = 'RW';
+    if (['US', 'AU', 'CA', 'GB', 'NZ'].includes(countryCode)) {
+      shippingLocationCode = countryCode as shippingLocationCodeType;
+    }
 
     const quantity = cartContext.items.length;
     let shippingQuantity: 1 | 2 | 3;
@@ -180,8 +192,26 @@ const CartPage = () => {
                   </li>
                   <li>
                     <TotalPrice>
+                      <span>Australia:</span>
+                      {formatCurrency(getShippingAmount('AU'))}
+                    </TotalPrice>
+                  </li>
+                  <li>
+                    <TotalPrice>
                       <span>Canada:</span>
                       {formatCurrency(getShippingAmount('CA'))}
+                    </TotalPrice>
+                  </li>
+                  <li>
+                    <TotalPrice>
+                      <span>New Zealand:</span>
+                      {formatCurrency(getShippingAmount('NZ'))}
+                    </TotalPrice>
+                  </li>
+                  <li>
+                    <TotalPrice>
+                      <span>United Kingdom:</span>
+                      {formatCurrency(getShippingAmount('GB'))}
                     </TotalPrice>
                   </li>
                   <li>
