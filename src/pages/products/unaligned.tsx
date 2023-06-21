@@ -86,7 +86,11 @@ const UnalignedSkirtProductPage = () => (
         </p>
       </>
     }
-    colors={['Black', 'Grey', 'Khaki']}
+    colors={[
+      { name: 'Black', defaultPhotoUrl: ImgUnaligned01R },
+      { name: 'Grey', defaultPhotoUrl: ImgUnalignedColors },
+      { name: 'Khaki', defaultPhotoUrl: ImgUnalignedColors },
+    ]}
     sizes={[
       '30-31',
       '32-33',

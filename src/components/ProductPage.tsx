@@ -13,20 +13,26 @@ import { TemporaryPrice } from '../util/TemporaryPrice';
 import { ColorSquare } from './ColorSquare';
 import { RatingSet } from './RatingSet';
 
+interface Color {
+  name: string;
+  defaultPhotoUrl: string;
+}
+
 interface Props {
   name: string;
   details: JSX.Element;
-  colors: string[];
+  colors: Color[];
   sizes: string[];
   soldOutColorSizes: ColorSize[];
   price: number;
   temporaryPrice?: TemporaryPrice;
   photoUrls: string[];
-  flickrAlbum: {
+  flickrAlbum?: {
     url: string;
     mainPhotoUrl: string;
   };
   ratings: Rating[];
+  comingSoonFormUrl?: string;
 }
 
 export const ProductPage = (props: Props) => {
@@ -48,8 +54,12 @@ export const ProductPage = (props: Props) => {
     addScriptToPage('https://embedr.flickr.com/assets/client-code.js');
   }, []);
 
-  const selectColor = (color: string) => {
-    setSelectedColor(color);
+  const selectColor = (color: Color) => {
+    if (color.name === selectedColor) {
+      return;
+    }
+    setSelectedColor(color.name);
+    setSelectedImageIndex(props.photoUrls.indexOf(color.defaultPhotoUrl));
     setShowInvalidSelectionMessage(false);
   };
 
@@ -110,18 +120,22 @@ export const ProductPage = (props: Props) => {
             ))}
           </Thumbnails>
 
-          <CustomerPhotosText>Customer photos</CustomerPhotosText>
+          {props.flickrAlbum && (
+            <>
+              <CustomerPhotosText>Customer photos</CustomerPhotosText>
 
-          <OutboundLink
-            data-flickr-embed="true"
-            href={props.flickrAlbum.url}
-            title={flickrAlbumName}
-          >
-            <FlickrImage
-              src={props.flickrAlbum.mainPhotoUrl}
-              alt={flickrAlbumName}
-            />
-          </OutboundLink>
+              <OutboundLink
+                data-flickr-embed="true"
+                href={props.flickrAlbum.url}
+                title={flickrAlbumName}
+              >
+                <FlickrImage
+                  src={props.flickrAlbum.mainPhotoUrl}
+                  alt={flickrAlbumName}
+                />
+              </OutboundLink>
+            </>
+          )}
         </Left>
 
         <Right>
@@ -134,12 +148,12 @@ export const ProductPage = (props: Props) => {
             <ColorButtons>
               {props.colors.map(color => (
                 <ColorButton
-                  key={color}
-                  aria-label={color}
-                  selected={selectedColor === color}
+                  key={color.name}
+                  aria-label={color.name}
+                  selected={selectedColor === color.name}
                   onClick={() => selectColor(color)}
                 >
-                  <ColorSquare color={color} width="30px" />
+                  <ColorSquare color={color.name} width="30px" />
                 </ColorButton>
               ))}
             </ColorButtons>
@@ -168,10 +182,10 @@ export const ProductPage = (props: Props) => {
               </SizeUnitButtons>
               <SizeButtons aria-label="waist sizes">
                 {props.sizes.map(size => {
-                  let disabled = false;
+                  let isSoldOut = false;
                   if (selectedColor) {
                     const colorSize = new ColorSize(selectedColor, size);
-                    disabled = props.soldOutColorSizes.some(soldOutColorSize =>
+                    isSoldOut = props.soldOutColorSizes.some(soldOutColorSize =>
                       soldOutColorSize.equals(colorSize)
                     );
                   }
@@ -179,7 +193,7 @@ export const ProductPage = (props: Props) => {
                   return (
                     <SizeButton
                       key={size}
-                      disabled={disabled}
+                      disabled={isSoldOut || props.comingSoonFormUrl != null}
                       selected={selectedSize === size}
                       onClick={() => selectSize(size)}
                     >
@@ -212,13 +226,25 @@ export const ProductPage = (props: Props) => {
 
             <div />
             <AddToCartContainer>
-              <AddToCartButton onClick={addToCartClicked}>
-                Add to Cart
-              </AddToCartButton>
-              {showInvalidSelectionMessage && (
-                <AddToCartErrorMessage>
-                  Please select a valid color and size.
-                </AddToCartErrorMessage>
+              {props.comingSoonFormUrl ? (
+                <MainActionButton
+                  onClick={() => {
+                    window.location.href = props.comingSoonFormUrl!;
+                  }}
+                >
+                  Notify Me
+                </MainActionButton>
+              ) : (
+                <>
+                  <MainActionButton onClick={addToCartClicked}>
+                    Add to Cart
+                  </MainActionButton>
+                  {showInvalidSelectionMessage && (
+                    <AddToCartErrorMessage>
+                      Please select a valid color and size.
+                    </AddToCartErrorMessage>
+                  )}
+                </>
               )}
             </AddToCartContainer>
 
@@ -336,18 +362,20 @@ export const ProductPage = (props: Props) => {
 
           <ProductDetails>{props.details}</ProductDetails>
 
-          <RatingsAndReviewsSection>
-            <H2>RATINGS & REVIEWS</H2>
-            <p>
-              These tend to cluster around certain dates because we send out
-              feedback requests to groups of recent customers at once.
-            </p>
-            <RatingSet
-              ratings={props.ratings}
-              selectedPageIndex={selectedReviewPageIndex}
-              onPageNavClicked={setSelectedReviewPageIndex}
-            />
-          </RatingsAndReviewsSection>
+          {!props.comingSoonFormUrl && (
+            <RatingsAndReviewsSection>
+              <H2>RATINGS & REVIEWS</H2>
+              <p>
+                These tend to cluster around certain dates because we send out
+                feedback requests to groups of recent customers at once.
+              </p>
+              <RatingSet
+                ratings={props.ratings}
+                selectedPageIndex={selectedReviewPageIndex}
+                onPageNavClicked={setSelectedReviewPageIndex}
+              />
+            </RatingsAndReviewsSection>
+          )}
         </Right>
       </Container>
     </Page>
@@ -388,6 +416,7 @@ const ThumbnailImage = styled.img`
   align-self: flex-start;
   margin: 0 0.1em 0.1em 0;
   user-select: none;
+  cursor: pointer;
 `;
 
 const CustomerPhotosText = styled.h4`
@@ -504,7 +533,7 @@ const AddToCartContainer = styled.div`
   justify-content: center;
 `;
 
-const AddToCartButton = styled.button`
+const MainActionButton = styled.button`
   height: 3em;
   background-color: #000;
   box-sizing: initial;

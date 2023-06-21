@@ -5,18 +5,17 @@ import { ProductTile } from '../components/ProductTile';
 import { NavTabDef } from '../enums/NavTabDef';
 import ImgAqueous21s from '../images/aqueous21s.jpg';
 import ImgShirt01 from '../images/shirt01.png';
-import ImgTellurianKickstarterLive from '../images/tellurian-kickstarter-live.jpg';
+import ImgTellurian01 from '../images/tellurian01.jpg';
 import ImgUnaligned01 from '../images/unaligned01.png';
 
 const ProductsPage = () => (
   <Page title={NavTabDef.PRODUCTS} currentTab={NavTabDef.PRODUCTS}>
     <Container>
       <ProductTile
-        name="Tellurian Wrap Skirt"
-        externalUrl="https://www.kickstarter.com/projects/skirtcraft/unisex-skirts-3"
-        imageSource={ImgTellurianKickstarterLive}
-        price="89"
-        temporaryPrice={{ price: '79', untilDate: 'June 22nd' }}
+        name="Tellurian Skirt"
+        pagePath="/products/tellurian"
+        imageSource={ImgTellurian01}
+        price={process.env.PRICE_TELLURIAN!}
       />
 
       <ProductTile

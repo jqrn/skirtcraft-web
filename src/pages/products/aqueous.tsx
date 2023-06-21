@@ -91,7 +91,11 @@ const AqueousSkirtProductPage = () => (
         </p>
       </>
     }
-    colors={['Black', 'Purple', 'Grey']}
+    colors={[
+      { name: 'Black', defaultPhotoUrl: ImgAqueousColors },
+      { name: 'Purple', defaultPhotoUrl: ImgAqueousColors },
+      { name: 'Grey', defaultPhotoUrl: ImgAqueous21 },
+    ]}
     sizes={[
       '28-29',
       '30-31',

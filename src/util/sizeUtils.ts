@@ -24,6 +24,17 @@ export const getSizeDisplay = (
       return '106-110';
     case '44-45':
       return '111-115';
+    // tellurian
+    case '26-29':
+      return '65-74';
+    case '30-34':
+      return '75-87';
+    case '35-40':
+      return '88-102';
+    case '41-46':
+      return '103-118';
+    case '47-54':
+      return '119-138';
     default:
       return '';
   }

@@ -1,7 +1,5 @@
 import React from 'react';
-// import ProductsPage from './products';
-import TellurianSplash from './tellurian-splash';
+import ProductsPage from './products';
 
-// const IndexPage = () => <ProductsPage />;
-const IndexPage = () => <TellurianSplash />;
+const IndexPage = () => <ProductsPage />;
 export default IndexPage;
