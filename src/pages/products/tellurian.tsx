@@ -21,9 +21,38 @@ const TellurianSkirtProductPage = () => (
     name={'Tellurian Skirt (coming soon)'}
     details={
       <>
-        <p>The Tellurian is a wrap skirt made of 100% organic cotton.</p>
+        <p>A wrap skirt with adjustable waist, made of 100% organic cotton.</p>
 
         <p>Made in the USA of imported fabric.</p>
+
+        <H2>Style</H2>
+
+        <ul>
+          <li>Two large hip pockets</li>
+          <li>Distinctive angled seams</li>
+          <li>
+            Built-in waist strap/belt fastened with a pair of metal D-rings
+          </li>
+          <li>
+            Strap passes through a keyhole in the waistband and 2-3 belt loops
+            (varies by size)
+          </li>
+          <li>Length: 21 inches / 53 1/2 cm</li>
+          <li>Colors: Natural, Black</li>
+        </ul>
+
+        <H2>Materials</H2>
+
+        <ul>
+          <li>
+            Fabric: 7-ounce organic cotton twill
+            <ul>
+              <li>100% GOTS certified organic cotton</li>
+              <li>About half the weight of typical jeans denim</li>
+            </ul>
+          </li>
+          <li>Closure: metal D-rings</li>
+        </ul>
       </>
     }
     colors={[

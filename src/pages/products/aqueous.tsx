@@ -26,9 +26,9 @@ const AqueousSkirtProductPage = () => (
     details={
       <>
         <p>
-          The Aqueous is a heavy, fluid, unique, knee-length skirt with large
-          hip pockets and belt loops. The name refers to its smoothly-flowing
-          drape and swirling seamlines.
+          The Aqueous is a heavy, fluid, knee-length skirt with large hip
+          pockets and belt loops. The name refers to its smoothly-flowing drape
+          and swirling seamlines.
         </p>
 
         <p>Made in the USA of imported fabric.</p>
@@ -41,6 +41,7 @@ const AqueousSkirtProductPage = () => (
           <li>Heavy-weight, for stable pockets and better privacy</li>
           <li>A fluid, natural drape&mdash;despite the weight</li>
           <li>Belt loops (6)</li>
+          <li>Length: 21 1/2 inches / 54 1/2 cm</li>
           <li>Colors: Grey, Purple, Black</li>
         </ul>
 
