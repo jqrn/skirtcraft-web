@@ -28,7 +28,7 @@ const ProductsPage = () => (
 
       <ProductTile
         name="Unaligned Skirt"
-        description="denim | zippered pockets"
+        description="denim | extra zippered pockets"
         pagePath="/products/unaligned"
         imageSource={ImgUnaligned01}
         price={process.env.PRICE_UNALIGNED!}
