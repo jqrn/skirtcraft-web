@@ -11,11 +11,6 @@ import { SocialBarIcon } from './SocialBarIcon';
 export const SocialBar = () => (
   <Container>
     <SocialBarIcon
-      linkUrl={'https://www.etsy.com/shop/Skirtcraft'}
-      imageUrl={ImgHeaderEtsy}
-      altText={'Etsy'}
-    />
-    <SocialBarIcon
       linkUrl={'https://www.instagram.com/skirtcraft'}
       imageUrl={ImgHeaderInstagram}
       altText={'Instagram'}
@@ -39,6 +34,11 @@ export const SocialBar = () => (
       linkUrl={'https://www.youtube.com/@skirtcraft'}
       imageUrl={ImgHeaderYoutube}
       altText={'YouTube'}
+    />
+    <SocialBarIcon
+      linkUrl={'https://www.etsy.com/shop/Skirtcraft'}
+      imageUrl={ImgHeaderEtsy}
+      altText={'Etsy'}
     />
   </Container>
 );
