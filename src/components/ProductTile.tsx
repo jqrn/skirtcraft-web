@@ -47,8 +47,7 @@ export const ProductTile = (props: Props) => {
 
 const Container = styled.div`
   width: 100%;
-  max-width: 27em;
-  padding: 2em 3em 1em 3em;
+  max-width: 18em;
   text-align: center;
   a {
     text-decoration: none;

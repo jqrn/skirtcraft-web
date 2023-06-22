@@ -43,7 +43,7 @@ const UnalignedSkirtProductPage = () => (
             actual product has seven.
           </li>
           <li>Length: 22 1/2 inches / 57 cm</li>
-          <li>Colors: black, grey, khaki</li>
+          <li>Colors: Black, Grey, Khaki</li>
         </ul>
 
         <H2>Materials</H2>

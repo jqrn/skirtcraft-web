@@ -42,7 +42,7 @@ const AqueousSkirtProductPage = () => (
           <li>A fluid, natural drape&mdash;despite the weight</li>
           <li>Belt loops (6)</li>
           <li>Length: 21 1/2 inches / 54 1/2 cm</li>
-          <li>Colors: Grey, Purple, Black</li>
+          <li>Colors: Black, Purple, Grey</li>
         </ul>
 
         <H2>Materials</H2>
