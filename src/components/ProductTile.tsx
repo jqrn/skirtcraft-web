@@ -6,6 +6,7 @@ import { TemporaryPrice } from '../util/TemporaryPrice';
 
 interface Props {
   name: string;
+  description: string;
   pagePath?: string;
   externalUrl?: string;
   imageSource: string;
@@ -18,6 +19,7 @@ export const ProductTile = (props: Props) => {
     <>
       <img src={props.imageSource} alt="" />
       <ProductTitle>{props.name}</ProductTitle>
+      <ProductDescription>{props.description}</ProductDescription>
       {props.temporaryPrice ? (
         <ProductPrice>
           <del>${props.price}</del>&nbsp;
@@ -59,17 +61,24 @@ const Container = styled.div`
   }
   p {
     margin-bottom: 0;
-    text-transform: uppercase;
   }
 `;
 
 const ProductTitle = styled.p`
   margin-top: 0.5em;
+  text-transform: uppercase;
+`;
+
+const ProductDescription = styled.p`
+  margin-top: 0.3em;
+  font-size: 85%;
+  text-tranform: lowercase;
 `;
 
 const ProductPrice = styled.span`
   margin-top: 0.3em;
   font-size: 85%;
+  text-transform: uppercase;
 `;
 
 const TemporaryPriceText = styled.span`

@@ -12,6 +12,7 @@ const ProductsPage = () => (
     <Container>
       <ProductTile
         name="Tellurian Skirt"
+        description="wrap skirt | organic cotton"
         pagePath="/products/tellurian"
         imageSource={ImgTellurian01}
         price={process.env.PRICE_TELLURIAN!}
@@ -19,6 +20,7 @@ const ProductsPage = () => (
 
       <ProductTile
         name="Aqueous Skirt"
+        description="two-layered | fluid drape"
         pagePath="/products/aqueous"
         imageSource={ImgAqueous21s}
         price={process.env.PRICE_AQUEOUS!}
@@ -26,6 +28,7 @@ const ProductsPage = () => (
 
       <ProductTile
         name="Unaligned Skirt"
+        description="denim | zippered pockets"
         pagePath="/products/unaligned"
         imageSource={ImgUnaligned01}
         price={process.env.PRICE_UNALIGNED!}
