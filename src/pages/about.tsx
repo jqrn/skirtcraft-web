@@ -19,26 +19,30 @@ const AboutPage = () => (
     <p>Skirtcraft is a micro-brand based in Minneapolis, Minnesota.</p>
 
     <p>
-      Our products are Made in the USA, at a factory in Los Angeles, California.
+      Our products are made in the USA at a factory in Los Angeles, California.
+      Timeline:
     </p>
 
-    <p>
-      Our first product, the{' '}
-      <Link to="/products/unaligned">Unaligned Skirt</Link>, was launched via a{' '}
-      <OutboundLink href="https://www.kickstarter.com/projects/skirtcraft/unisex-skirts">
-        Kickstarter campaign
-      </OutboundLink>{' '}
-      in the summer of 2015. We did a 2nd factory run in the fall 2017.
-    </p>
-
-    <p>
-      The <Link to="/products/aqueous">Aqueous Skirt</Link>, our second product,
-      was also launched through a{' '}
-      <OutboundLink href="https://www.kickstarter.com/projects/skirtcraft/unisex-skirts-2">
-        Kickstarter campaign
-      </OutboundLink>
-      , in the summer of 2018.
-    </p>
+    <ul>
+      <li>
+        2015: <Link to="/products/unaligned">Unaligned Skirt</Link> -{' '}
+        <OutboundLink href="https://www.kickstarter.com/projects/skirtcraft/unisex-skirts">
+          Kickstarter project
+        </OutboundLink>
+      </li>
+      <li>
+        2018: <Link to="/products/aqueous">Aqueous Skirt</Link> -{' '}
+        <OutboundLink href="https://www.kickstarter.com/projects/skirtcraft/unisex-skirts-2">
+          Kickstarter project
+        </OutboundLink>
+      </li>
+      <li>
+        2023: <Link to="/products/tellurian">Tellurian Skirt</Link> -{' '}
+        <OutboundLink href="https://www.kickstarter.com/projects/skirtcraft/unisex-skirts-3">
+          Kickstarter project
+        </OutboundLink>
+      </li>
+    </ul>
 
     <br />
 
