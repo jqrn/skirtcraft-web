@@ -1,5 +1,4 @@
 import { Link } from 'gatsby';
-import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import React from 'react';
 import styled from 'styled-components';
 import { Page } from '../components/Page';
@@ -26,21 +25,21 @@ const AboutPage = () => (
     <ul>
       <li>
         2015: <Link to="/products/unaligned">Unaligned Skirt</Link> -{' '}
-        <OutboundLink href="https://www.kickstarter.com/projects/skirtcraft/unisex-skirts">
+        <a href="https://www.kickstarter.com/projects/skirtcraft/unisex-skirts">
           Kickstarter project
-        </OutboundLink>
+        </a>
       </li>
       <li>
         2018: <Link to="/products/aqueous">Aqueous Skirt</Link> -{' '}
-        <OutboundLink href="https://www.kickstarter.com/projects/skirtcraft/unisex-skirts-2">
+        <a href="https://www.kickstarter.com/projects/skirtcraft/unisex-skirts-2">
           Kickstarter project
-        </OutboundLink>
+        </a>
       </li>
       <li>
         2023: <Link to="/products/tellurian">Tellurian Skirt</Link> -{' '}
-        <OutboundLink href="https://www.kickstarter.com/projects/skirtcraft/unisex-skirts-3">
+        <a href="https://www.kickstarter.com/projects/skirtcraft/unisex-skirts-3">
           Kickstarter project
-        </OutboundLink>
+        </a>
       </li>
     </ul>
 
@@ -58,77 +57,77 @@ const AboutPage = () => (
         <tr>
           <td>City Pages (Minneapolis):</td>
           <td>
-            <OutboundLink href="http://www.citypages.com/news/minneapolis-designer-joe-quarion-corners-untapped-market-mens-skirts/487698081">
+            <a href="http://www.citypages.com/news/minneapolis-designer-joe-quarion-corners-untapped-market-mens-skirts/487698081">
               Minneapolis designer Joe Quarion corners untapped market: men's
               skirts
-            </OutboundLink>
+            </a>
           </td>
         </tr>
         <tr>
           <td>CBS News (national):</td>
           <td>
-            <OutboundLink href="https://www.youtube.com/watch?v=aVlbbtPhQjg">
+            <a href="https://www.youtube.com/watch?v=aVlbbtPhQjg">
               Skirts for Men to Hit the Rack
-            </OutboundLink>{' '}
+            </a>{' '}
             (video)
           </td>
         </tr>
         <tr>
           <td>New York Post:</td>
           <td>
-            <OutboundLink href="https://nypost.com/2016/10/01/macho-men-are-wearing-skirts-now/">
+            <a href="https://nypost.com/2016/10/01/macho-men-are-wearing-skirts-now/">
               Macho Men Are Wearing Skirts Now
-            </OutboundLink>
+            </a>
           </td>
         </tr>
         <tr>
           <td>BBC Radio 4:</td>
           <td>
-            <OutboundLink href="http://www.bbc.co.uk/programmes/b08tvjk7">
+            <a href="http://www.bbc.co.uk/programmes/b08tvjk7">
               live interview
-            </OutboundLink>
+            </a>
           </td>
         </tr>
         <tr>
           <td>WCCO TV (CBS Minneapolis):</td>
           <td>
-            <OutboundLink href="http://minnesota.cbslocal.com/video/3280041-twin-cities-kickstarter-campaign-nearly-realizing-dream-of-unisex-skirts/">
+            <a href="http://minnesota.cbslocal.com/video/3280041-twin-cities-kickstarter-campaign-nearly-realizing-dream-of-unisex-skirts/">
               Twin Cities Kickstarter Campaign Nearly Realizing Dream of Unisex
               Skirts
-            </OutboundLink>
+            </a>
           </td>
         </tr>
         <tr>
           <td>Star Tribune:</td>
           <td>
-            <OutboundLink href="http://www.startribune.com/st-anthony-big-electronics-recycler-goes-under-amid-problems-low-commodity-prices/322458321/">
+            <a href="http://www.startribune.com/st-anthony-big-electronics-recycler-goes-under-amid-problems-low-commodity-prices/322458321/">
               Unisex Skirt Maker Scores Launch Capital
-            </OutboundLink>{' '}
+            </a>{' '}
             (scroll down in main article)
           </td>
         </tr>
         <tr>
           <td>Bring Me The News (now GoMN):</td>
           <td>
-            <OutboundLink href="https://www.gomn.com/news/for-him-or-her-mn-startup-raising-funds-to-launch-unisex-skirts">
+            <a href="https://www.gomn.com/news/for-him-or-her-mn-startup-raising-funds-to-launch-unisex-skirts">
               For Him or Her: Mn Startup Raising Funds to Launch Unisex Skirts
-            </OutboundLink>
+            </a>
           </td>
         </tr>
         <tr>
           <td>Qwear:</td>
           <td>
-            <OutboundLink href="http://www.qwearfashion.com/home/meet-skirtcraft-modern-rugged-unisex-skirts">
+            <a href="http://www.qwearfashion.com/home/meet-skirtcraft-modern-rugged-unisex-skirts">
               Meet Skirtcraft: Modern, Rugged, Unisex Skirts
-            </OutboundLink>
+            </a>
           </td>
         </tr>
         <tr>
           <td>The Closet Feminist:</td>
           <td>
-            <OutboundLink href="http://www.theclosetfeminist.ca/fashion-x-feminism-unisex-skirts-by-skirtcraft/">
+            <a href="http://www.theclosetfeminist.ca/fashion-x-feminism-unisex-skirts-by-skirtcraft/">
               Fashion x Feminism: Unisex Skirts by Skirtcraft
-            </OutboundLink>
+            </a>
           </td>
         </tr>
       </tbody>
@@ -184,10 +183,8 @@ const AboutPage = () => (
       Having done 20+ design iterations, in April 2014 we registered Skirtcraft
       LLC and started sharing prototype photos online and collecting feedback.
       In September 2014, we began working with{' '}
-      <OutboundLink href="https://clothierdesignsource.com">
-        Clothier Design Source
-      </OutboundLink>{' '}
-      on developing the design into a product for manufacture: pattern
+      <a href="https://clothierdesignsource.com">Clothier Design Source</a> on
+      developing the design into a product for manufacture: pattern
       formalization, materials sourcing, size grading, and testing. In June
       2015, we settled on a partner factory to make the skirt in the U.S.
     </p>
@@ -196,9 +193,9 @@ const AboutPage = () => (
 
     <p>
       From July 21st to August 20th, 2015, we conducted a{' '}
-      <OutboundLink href="https://www.kickstarter.com/projects/skirtcraft/unisex-skirts">
+      <a href="https://www.kickstarter.com/projects/skirtcraft/unisex-skirts">
         Kickstarter campaign
-      </OutboundLink>{' '}
+      </a>{' '}
       to fund the initial production run. Thanks to 177 backers from 16
       countries, it succeeded!
     </p>

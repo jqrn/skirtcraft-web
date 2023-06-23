@@ -1,4 +1,3 @@
-import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import React from 'react';
 import { Page } from '../components/Page';
 import { NavTabDef } from '../enums/NavTabDef';
@@ -15,16 +14,14 @@ const ShippingPage = () => (
     <ul>
       <li>
         US orders use{' '}
-        <OutboundLink href="https://www.usps.com/ship/priority-mail.htm">
-          Priority Mail
-        </OutboundLink>{' '}
+        <a href="https://www.usps.com/ship/priority-mail.htm">Priority Mail</a>{' '}
         and typically take 1-3 days after you receive notification of shipment.
       </li>
       <li>
         Non-US orders use the{' '}
-        <OutboundLink href="https://www.usps.com/international/mail-shipping-services.htm">
+        <a href="https://www.usps.com/international/mail-shipping-services.htm">
           First Class Package International
-        </OutboundLink>{' '}
+        </a>{' '}
         service and typically take 7-21 days after you receive notification of
         shipment.
       </li>

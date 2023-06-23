@@ -1,5 +1,4 @@
 import { Link } from 'gatsby';
-import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import React from 'react';
 import styled from 'styled-components';
 import { TemporaryPrice } from '../util/TemporaryPrice';
@@ -37,9 +36,9 @@ export const ProductTile = (props: Props) => {
   return (
     <Container>
       {props.externalUrl ? (
-        <OutboundLink href="https://www.kickstarter.com/projects/skirtcraft/unisex-skirts-3">
+        <a href="https://www.kickstarter.com/projects/skirtcraft/unisex-skirts-3">
           {linkContent}
-        </OutboundLink>
+        </a>
       ) : (
         <Link to={props.pagePath!}>{linkContent}</Link>
       )}

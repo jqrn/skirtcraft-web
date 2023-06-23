@@ -1,4 +1,3 @@
-import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -9,12 +8,12 @@ interface Props {
 }
 
 export const SocialBarIcon = (props: Props) => (
-  <StyledOutboundLink href={props.linkUrl}>
+  <StyledExternalLink href={props.linkUrl}>
     <Image src={props.imageUrl} alt={props.altText} />
-  </StyledOutboundLink>
+  </StyledExternalLink>
 );
 
-const StyledOutboundLink = styled((props: any) => <OutboundLink {...props} />)`
+const StyledExternalLink = styled((props: any) => <a {...props} />)`
   padding: 0 0.75em;
   display: flex;
 `;

@@ -1,5 +1,4 @@
 import { Link, navigate } from 'gatsby';
-import { OutboundLink } from 'gatsby-plugin-google-analytics';
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { DestinationPrices } from '../components/DestinationPrices';
@@ -124,7 +123,7 @@ export const ProductPage = (props: Props) => {
             <>
               <CustomerPhotosText>Customer photos</CustomerPhotosText>
 
-              <OutboundLink
+              <a
                 data-flickr-embed="true"
                 href={props.flickrAlbum.url}
                 title={flickrAlbumName}
@@ -133,7 +132,7 @@ export const ProductPage = (props: Props) => {
                   src={props.flickrAlbum.mainPhotoUrl}
                   alt={flickrAlbumName}
                 />
-              </OutboundLink>
+              </a>
             </>
           )}
         </Left>
