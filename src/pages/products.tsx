@@ -5,7 +5,7 @@ import { ProductTile } from '../components/ProductTile';
 import { NavTabDef } from '../enums/NavTabDef';
 import ImgAqueous21s from '../images/aqueous21s.jpg';
 import ImgTellurian01 from '../images/tellurian01.jpg';
-import ImgUnaligned01 from '../images/unaligned01.png';
+import ImgUnalignedTile from '../images/unaligned_tile.jpg';
 
 const ProductsPage = () => (
   <Page title={NavTabDef.PRODUCTS} currentTab={NavTabDef.PRODUCTS}>
@@ -30,7 +30,7 @@ const ProductsPage = () => (
         name="Unaligned Skirt"
         description="denim | extra zippered pockets"
         pagePath="/products/unaligned"
-        imageSource={ImgUnaligned01}
+        imageSource={ImgUnalignedTile}
         price={process.env.PRICE_UNALIGNED!}
       />
     </Container>
