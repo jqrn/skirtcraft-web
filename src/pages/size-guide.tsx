@@ -158,7 +158,7 @@ const SizeGuidePage = () => (
             <tr>
               <SizeTableInchesCell>26-29</SizeTableInchesCell>
               <SizeTableInchesCell>65-74</SizeTableInchesCell>
-              <td>13 - 15 inches (33-38 cm)</td>
+              <td>13 - 15 inches (33 - 38 cm)</td>
             </tr>
             <tr>
               <SizeTableInchesCell>30-34</SizeTableInchesCell>
@@ -173,12 +173,12 @@ const SizeGuidePage = () => (
             <tr>
               <SizeTableInchesCell>41-46</SizeTableInchesCell>
               <SizeTableInchesCell>103-118</SizeTableInchesCell>
-              <td>20 1/2 - 23 1/2 inches (52 - 57 cm)</td>
+              <td>20 1/2 - 23 1/2 inches (52 - 60 cm)</td>
             </tr>
             <tr>
               <SizeTableInchesCell>47-54</SizeTableInchesCell>
               <SizeTableInchesCell>119-138</SizeTableInchesCell>
-              <td>23 1/2 - 27 inches (57 - 69 cm)</td>
+              <td>23 1/2 - 27 inches (60 - 69 cm)</td>
             </tr>
           </tbody>
         </SizeTable>
