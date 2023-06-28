@@ -42,7 +42,7 @@ const UnalignedSkirtProductPage = () => (
             Note: some photos are of a prototype with only five belt loops;
             actual product has seven.
           </li>
-          <li>Length: 22 1/2 inches / 57 cm</li>
+          <li>Length: 22.5" / 57 cm</li>
           <li>Colors: Black, Grey, Khaki</li>
         </ul>
 

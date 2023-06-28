@@ -45,7 +45,7 @@ const TellurianSkirtProductPage = () => (
             Strap passes through a keyhole in the waistband and 2-3 belt loops
             (varies by size)
           </li>
-          <li>Length: 21 inches / 53 1/2 cm</li>
+          <li>Length: 21" / 53.5 cm</li>
           <li>Colors: Natural, Black</li>
         </ul>
 

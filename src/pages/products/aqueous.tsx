@@ -41,7 +41,7 @@ const AqueousSkirtProductPage = () => (
           <li>Heavy-weight, for stable pockets and better privacy</li>
           <li>A fluid, natural drape&mdash;despite the weight</li>
           <li>Belt loops (6)</li>
-          <li>Length: 21 1/2 inches / 54 1/2 cm</li>
+          <li>Length: 21.5" / 54.5 cm</li>
           <li>Colors: Black, Purple, Grey</li>
         </ul>
 
