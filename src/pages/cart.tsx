@@ -178,51 +178,15 @@ const CartPage = () => {
             <Totals>
               <TotalPrice>
                 <span>Subtotal:</span>
-                <Price>{`${formatCurrency(totalPrice)}`}</Price>
+                <Price>{`${formatCurrency(
+                  totalPrice
+                )} (${currencyCode})`}</Price>
               </TotalPrice>
 
-              <div>
+              <TotalPrice>
                 <span>Shipping:</span>
-                <ul>
-                  <li>
-                    <TotalPrice>
-                      <span>US:</span>
-                      {formatCurrency(getShippingAmount('US'))}
-                    </TotalPrice>
-                  </li>
-                  <li>
-                    <TotalPrice>
-                      <span>Australia:</span>
-                      {formatCurrency(getShippingAmount('AU'))}
-                    </TotalPrice>
-                  </li>
-                  <li>
-                    <TotalPrice>
-                      <span>Canada:</span>
-                      {formatCurrency(getShippingAmount('CA'))}
-                    </TotalPrice>
-                  </li>
-                  <li>
-                    <TotalPrice>
-                      <span>New Zealand:</span>
-                      {formatCurrency(getShippingAmount('NZ'))}
-                    </TotalPrice>
-                  </li>
-                  <li>
-                    <TotalPrice>
-                      <span>United Kingdom:</span>
-                      {formatCurrency(getShippingAmount('GB'))}
-                    </TotalPrice>
-                  </li>
-                  <li>
-                    <TotalPrice>
-                      <span>Rest of world:</span>
-                      {formatCurrency(getShippingAmount('RW'))}
-                    </TotalPrice>
-                  </li>
-                </ul>
-              </div>
-              <span>{`All amounts ${currencyCode}.`}</span>
+                <span>[calculated and displayed after entering address]</span>
+              </TotalPrice>
             </Totals>
 
             <PayPalButtonContainer>
@@ -427,7 +391,7 @@ const Right = styled.div`
 `;
 
 const Totals = styled.div`
-  max-width: 15em;
+  max-width: 20em;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -436,7 +400,8 @@ const Totals = styled.div`
 const TotalPrice = styled.span`
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 3em;
 `;
 
 const PayPalButtonContainer = styled.div`
