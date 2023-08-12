@@ -18,12 +18,12 @@ import { RATINGS_UNALIGNED } from '../../ratings/ratingsUnaligned';
 
 const TellurianSkirtProductPage = () => (
   <ProductPage
-    name={'Tellurian Skirt (available August 2023)'}
+    name={'Tellurian Skirt (available September 2023)'}
     details={
       <>
         <p>
           <b>
-            ** AVAILABILITY FOR PURCHASE EXPECTED AUGUST 2023 **
+            ** AVAILABILITY FOR PURCHASE EXPECTED SEPTEMBER 2023 **
             <br />
             ** USE BUTTON ABOVE TO BE NOTIFIED WHEN IT'S AVAILABLE **
           </b>
