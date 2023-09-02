@@ -103,6 +103,7 @@ const UnalignedSkirtProductPage = () => (
       '44-45',
     ]}
     soldOutColorSizes={[
+      new ColorSize('Black', '30-31'),
       new ColorSize('Grey', '30-31'),
       new ColorSize('Grey', '34-35'),
       new ColorSize('Grey', '36-37'),
