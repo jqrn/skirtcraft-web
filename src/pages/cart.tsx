@@ -6,6 +6,7 @@ import { ColorSquare } from '../components/ColorSquare';
 import { Page } from '../components/Page';
 import { CartContext, CartItem } from '../context/CartContext';
 import ImgAqueous from '../images/aqueous21s.jpg';
+import ImgTellurian from '../images/tellurian01.jpg';
 import ImgUnaligned from '../images/unaligned01.png';
 import { getSizeDisplayAllUnits } from '../util/sizeUtils';
 
@@ -17,6 +18,10 @@ const PRODUCTS = {
   'Aqueous Skirt': {
     image: ImgAqueous,
     pagePath: 'aqueous',
+  },
+  'Tellurian Skirt': {
+    image: ImgTellurian,
+    pagePath: 'tellurian',
   },
 };
 

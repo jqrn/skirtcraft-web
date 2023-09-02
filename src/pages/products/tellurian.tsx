@@ -14,21 +14,13 @@ import ImgTellurianNaturalWorn3Left from '../../images/tellurian_natural_worn_3_
 import ImgTellurianNaturalWorn4BackDetail from '../../images/tellurian_natural_worn_4_back_detail.jpg';
 import ImgTellurianNaturalFlatLay1Front from '../../images/tellurian_natural_flat_lay_1_front.jpg';
 import ImgTellurianNaturalFlatLay2Back from '../../images/tellurian_natural_flat_lay_2_back.jpg';
-import { RATINGS_UNALIGNED } from '../../ratings/ratingsUnaligned';
+import { RATINGS_TELLURIAN } from '../../ratings/ratingsTellurian';
 
 const TellurianSkirtProductPage = () => (
   <ProductPage
-    name={'Tellurian Skirt (available September 2023)'}
+    name={'Tellurian Skirt'}
     details={
       <>
-        <p>
-          <b>
-            ** AVAILABILITY FOR PURCHASE EXPECTED SEPTEMBER 2023 **
-            <br />
-            ** USE BUTTON ABOVE TO BE NOTIFIED WHEN IT'S AVAILABLE **
-          </b>
-        </p>
-
         <p>A wrap skirt with adjustable waist, made of 100% organic cotton.</p>
 
         <p>Made in the USA of imported fabric.</p>
@@ -69,7 +61,7 @@ const TellurianSkirtProductPage = () => (
     ]}
     sizes={['26-29', '30-34', '35-40', '41-46', '47-54']}
     soldOutColorSizes={[]}
-    price={parseFloat(process.env.PRICE_UNALIGNED!)}
+    price={parseFloat(process.env.PRICE_TELLURIAN!)}
     photoUrls={[
       ImgTellurianBlackWorn1Front,
       ImgTellurianBlackWorn2Back,
@@ -85,8 +77,7 @@ const TellurianSkirtProductPage = () => (
       ImgTellurianBlackFlatLay2Back,
       ImgTellurianBlackFlatLay3Spread,
     ]}
-    ratings={RATINGS_UNALIGNED}
-    comingSoonFormUrl="https://forms.gle/4XeK8i7JJyRx8Kmq7"
+    ratings={RATINGS_TELLURIAN}
   />
 );
 

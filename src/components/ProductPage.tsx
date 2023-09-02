@@ -31,7 +31,6 @@ interface Props {
     mainPhotoUrl: string;
   };
   ratings: Rating[];
-  comingSoonFormUrl?: string;
 }
 
 export const ProductPage = (props: Props) => {
@@ -192,7 +191,7 @@ export const ProductPage = (props: Props) => {
                   return (
                     <SizeButton
                       key={size}
-                      disabled={isSoldOut || props.comingSoonFormUrl != null}
+                      disabled={isSoldOut}
                       selected={selectedSize === size}
                       onClick={() => selectSize(size)}
                     >
@@ -225,25 +224,13 @@ export const ProductPage = (props: Props) => {
 
             <div />
             <AddToCartContainer>
-              {props.comingSoonFormUrl ? (
-                <MainActionButton
-                  onClick={() => {
-                    window.location.href = props.comingSoonFormUrl!;
-                  }}
-                >
-                  Notify Me
-                </MainActionButton>
-              ) : (
-                <>
-                  <MainActionButton onClick={addToCartClicked}>
-                    Add to Cart
-                  </MainActionButton>
-                  {showInvalidSelectionMessage && (
-                    <AddToCartErrorMessage>
-                      Please select a valid color and size.
-                    </AddToCartErrorMessage>
-                  )}
-                </>
+              <MainActionButton onClick={addToCartClicked}>
+                Add to Cart
+              </MainActionButton>
+              {showInvalidSelectionMessage && (
+                <AddToCartErrorMessage>
+                  Please select a valid color and size.
+                </AddToCartErrorMessage>
               )}
             </AddToCartContainer>
 
@@ -360,8 +347,7 @@ export const ProductPage = (props: Props) => {
           <HorizontalRule />
 
           <ProductDetails>{props.details}</ProductDetails>
-
-          {!props.comingSoonFormUrl && (
+          {props.ratings.length > 0 && (
             <RatingsAndReviewsSection>
               <H2>RATINGS & REVIEWS</H2>
               <p>
