@@ -109,6 +109,7 @@ const UnalignedSkirtProductPage = () => (
       new ColorSize('Grey', '36-37'),
       new ColorSize('Grey', '38-39'),
       new ColorSize('Khaki', '30-31'),
+      new ColorSize('Khaki', '32-33'),
       new ColorSize('Khaki', '34-35'),
       new ColorSize('Khaki', '36-37'),
       new ColorSize('Khaki', '38-39'),
