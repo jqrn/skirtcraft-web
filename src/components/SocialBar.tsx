@@ -36,7 +36,7 @@ export const SocialBar = () => (
       altText={'Tumblr'}
     />
     <SocialBarIcon
-      linkUrl={'https://www.etsy.com/shop/Skirtcraft'}
+      linkUrl={'https://skirtcraft.etsy.com'}
       imageUrl={ImgHeaderEtsy}
       altText={'Etsy'}
     />
