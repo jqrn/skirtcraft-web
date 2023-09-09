@@ -9,7 +9,7 @@ interface Props {
   onPageNavClicked: (pageIndex: number) => void;
 }
 
-const RATINGS_PER_PAGE = 5;
+const RATINGS_PER_PAGE = 10;
 
 export const RatingSet = (props: Props) => {
   const [averageRating, setAverageRating] = useState('');
@@ -44,6 +44,23 @@ export const RatingSet = (props: Props) => {
     ratingsRendered.push(<Rating key={index} data={rating} />);
   }
 
+  const olderNewerButtons = () => (
+    <ButtonContainer>
+      <Button
+        disabled={props.selectedPageIndex <= 0}
+        onClick={() => props.onPageNavClicked(props.selectedPageIndex - 1)}
+      >
+        &lt; Newer
+      </Button>
+      <Button
+        disabled={props.selectedPageIndex >= pageCount - 1}
+        onClick={() => props.onPageNavClicked(props.selectedPageIndex + 1)}
+      >
+        Older &gt;
+      </Button>
+    </ButtonContainer>
+  );
+
   return (
     <Container>
       <div>
@@ -57,22 +74,11 @@ export const RatingSet = (props: Props) => {
         </div>
       )}
 
-      <ButtonContainer>
-        <Button
-          disabled={props.selectedPageIndex <= 0}
-          onClick={() => props.onPageNavClicked(props.selectedPageIndex - 1)}
-        >
-          &lt; Newer
-        </Button>
-        <Button
-          disabled={props.selectedPageIndex >= pageCount - 1}
-          onClick={() => props.onPageNavClicked(props.selectedPageIndex + 1)}
-        >
-          Older &gt;
-        </Button>
-      </ButtonContainer>
+      {olderNewerButtons()}
 
       {ratingsRendered}
+
+      {olderNewerButtons()}
     </Container>
   );
 };

@@ -29,7 +29,11 @@ export const Rating = (props: Props) => {
       {props.data.review && <Review>{props.data.review}</Review>}
       <Name>{props.data.name || '[name hidden]'}</Name>
       <p>
-        {new Date(props.data.date.split(' ')[0]).toLocaleDateString('en-US', {
+        {new Date(
+          `${props.data.date.split(' ')[0]}T00:00:00.000${
+            process.env.TIME_ZONE_OFFSET
+          }`
+        ).toLocaleDateString('en-US', {
           year: 'numeric',
           month: 'short',
           day: 'numeric',
