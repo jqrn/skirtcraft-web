@@ -20,9 +20,34 @@ export const BlogPost = (props: Props) => {
   const post = props.tumblrPost;
   const slug = getBlogPostSlug(post);
 
+  let title = post.title;
+  let removeFirstNCharactersFromBody = 0;
+
+  if (!title) {
+    const headerElementMatches = post.body.match('^<h1>[^<]+<\\/h1>');
+    if (headerElementMatches?.length === 1) {
+      const headerElementString = headerElementMatches[0];
+      title = headerElementString.substring(4, headerElementString.length - 5);
+      removeFirstNCharactersFromBody = headerElementString.length;
+    }
+  }
+
+  const getTitle = () => {
+    if (post.title) {
+      return post.title;
+    }
+
+    const headerElementMatches = post.body.match('^<h1>[^<]+<\\/h1>');
+    if (headerElementMatches?.length !== 1) {
+      return '';
+    }
+    const headerElementString = headerElementMatches[0];
+    return headerElementString.substring(4, headerElementString.length - 5);
+  };
+
   return (
     <Container>
-      <Title>{post.title}</Title>
+      <Title>{getTitle()}</Title>
 
       <Byline>
         <span>
@@ -40,7 +65,11 @@ export const BlogPost = (props: Props) => {
         <img src={ImgTumblrShare} width={24} alt="View on Tumblr" />
       </SocialShareAnchor>
 
-      <Content dangerouslySetInnerHTML={{ __html: post.body }} />
+      <Content
+        dangerouslySetInnerHTML={{
+          __html: post.body.substring(removeFirstNCharactersFromBody),
+        }}
+      />
     </Container>
   );
 };

@@ -39,8 +39,6 @@ export const createBlogPosts: GatsbyCreatePages = async ({
       const node = edge.node;
       return (
         node.tags.includes(process.env.TUMBLR_SITEBLOG_TAG) &&
-        node.title != undefined &&
-        node.title.length > 0 &&
         node.slug != undefined &&
         node.slug.length > 0
       );
