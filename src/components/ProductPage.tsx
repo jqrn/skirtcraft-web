@@ -52,6 +52,13 @@ export const ProductPage = (props: Props) => {
     addScriptToPage('https://embedr.flickr.com/assets/client-code.js');
   }, []);
 
+  const isColorSizeSoldOut = (color: string, size: string) => {
+    const colorSize = new ColorSize(color, size);
+    return props.soldOutColorSizes.some(soldOutColorSize =>
+      soldOutColorSize.equals(colorSize)
+    );
+  };
+
   const selectColor = (color: Color) => {
     if (color.name === selectedColor) {
       return;
@@ -180,13 +187,11 @@ export const ProductPage = (props: Props) => {
               </SizeUnitButtons>
               <SizeButtons aria-label="waist sizes">
                 {props.sizes.map(size => {
-                  let isSoldOut = false;
-                  if (selectedColor) {
-                    const colorSize = new ColorSize(selectedColor, size);
-                    isSoldOut = props.soldOutColorSizes.some(soldOutColorSize =>
-                      soldOutColorSize.equals(colorSize)
-                    );
-                  }
+                  const isSoldOut = selectedColor
+                    ? isColorSizeSoldOut(selectedColor, size)
+                    : !props.colors.some(
+                        color => !isColorSizeSoldOut(color.name, size)
+                      );
 
                   return (
                     <SizeButton
