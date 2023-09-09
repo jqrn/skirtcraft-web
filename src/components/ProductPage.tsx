@@ -417,14 +417,13 @@ const FlickrImage = styled.img`
 const ProductSelectionsGrid = styled.div`
   width: 100%;
   display: grid;
-  grid-template-columns: minmax(3em, 20%) auto;
+  grid-template-columns: minmax(3.5em, 20%) auto;
   column-gap: 0.5em;
   align-items: start;
   row-gap: 1em;
 `;
 
 const ProductSelectionText = styled.p`
-  font-size: 85%;
   text-transform: uppercase;
   margin: 0;
 `;
