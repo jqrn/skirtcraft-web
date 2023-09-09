@@ -4,6 +4,7 @@ export const ColorSquare = styled.div<{ width: string }>`
   width: ${props => props.width};
   height: ${props => props.width};
   background-color: ${props => htmlColorFromDescription(props.color)};
+  border: 1px solid black;
   border-radius: 4px;
   flex-shrink: 0;
 `;

@@ -437,6 +437,7 @@ const ColorButtons = styled.div`
 const ColorButton = styled.button<{ selected?: boolean }>`
   border-width: 2px;
   border-color: ${props => (props.selected ? 'black' : 'transparent')};
+  border-style: solid;
   border-radius: 8px;
   padding: 2px;
   background-color: transparent;
