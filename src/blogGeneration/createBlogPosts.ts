@@ -28,6 +28,7 @@ export const createBlogPosts: GatsbyCreatePages = async ({
             slug
             date
             tags
+            body
           }
         }
       }
@@ -39,8 +40,8 @@ export const createBlogPosts: GatsbyCreatePages = async ({
       const node = edge.node;
       return (
         node.tags.includes(process.env.TUMBLR_SITEBLOG_TAG) &&
-        node.slug != undefined &&
-        node.slug.length > 0
+        node.body?.length > 0 &&
+        node.slug?.length > 0
       );
     });
 
