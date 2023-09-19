@@ -794,4 +794,14 @@ export const RATINGS_UNALIGNED: Rating[] = [
       'The unaligned skirt is the first skirt I have purchased and it is about what I expected. I have a 32" waist and the 32-33 size is a little big - requires a belt to keep above the hips. I would like to where this skirt without a belt but then it sit on my hips (which is ok) and then it is too long. I might get the skirt shortened.',
     name: 'Mark',
   },
+  {
+    date: '2023-09-16',
+    ratingStars: 5,
+    review: 'more colours/fabrics :D',
+    name: 'DF',
+  },
+  {
+    date: '2023-09-17',
+    ratingStars: 5,
+  },
 ];

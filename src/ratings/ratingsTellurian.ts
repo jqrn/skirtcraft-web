@@ -67,4 +67,27 @@ export const RATINGS_TELLURIAN: Rating[] = [
     ratingStars: 5,
     name: 'John in Minneapolis',
   },
+  {
+    date: '2023-09-11',
+    ratingStars: 5,
+    name: 'Greg',
+    review: 'Lighter weight ~ utility kilt.',
+  },
+  {
+    date: '2023-09-12',
+    ratingStars: 5,
+  },
+  {
+    date: '2023-09-12',
+    ratingStars: 5,
+    name: 'More than just kilts for Eric now',
+    review:
+      'Got both the black and the white skirts. Both fit great, feel great, and look great. So well made and so comfortable. I’ve been a full-time casual kilt wearer for some time now. These are my first step into non-kilt skirts and I’m so happy to expand the repertoire. I already can’t wait to see what other colors and styles these folks come up with next.',
+  },
+  {
+    date: '2023-09-12',
+    ratingStars: 5,
+    name: 'Karl in Denver',
+    review: "Really happy with the fabric and length, it's very comfortable",
+  },
 ];
