@@ -90,4 +90,27 @@ export const RATINGS_TELLURIAN: Rating[] = [
     name: 'Karl in Denver',
     review: "Really happy with the fabric and length, it's very comfortable",
   },
+  {
+    date: '2023-09-19',
+    ratingStars: 5,
+  },
+  {
+    date: '2023-09-19',
+    ratingStars: 5,
+  },
+  {
+    date: '2023-09-19',
+    ratingStars: 5,
+    name: 'Remi',
+    review: 'perfect! great quality of tissu and manufacture. amazing !',
+  },
+  {
+    date: '2023-09-19',
+    ratingStars: 5,
+    name: 'John in London',
+  },
+  {
+    date: '2023-09-19',
+    ratingStars: 5,
+  },
 ];
