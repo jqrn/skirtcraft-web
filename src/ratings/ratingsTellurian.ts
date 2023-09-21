@@ -102,7 +102,7 @@ export const RATINGS_TELLURIAN: Rating[] = [
     date: '2023-09-19',
     ratingStars: 5,
     name: 'Remi',
-    review: 'perfect! great quality of tissu and manufacture. amazing !',
+    review: 'perfect ! great quality of tissu and manufacture. amazing !',
   },
   {
     date: '2023-09-19',
@@ -112,5 +112,11 @@ export const RATINGS_TELLURIAN: Rating[] = [
   {
     date: '2023-09-19',
     ratingStars: 5,
+  },
+  {
+    date: '2023-09-20',
+    ratingStars: 5,
+    name: 'Craig from Winnipeg',
+    review: 'This is a great, high-quality skirt that has a true unisex vibe!',
   },
 ];
