@@ -119,4 +119,10 @@ export const RATINGS_TELLURIAN: Rating[] = [
     name: 'Craig from Winnipeg',
     review: 'This is a great, high-quality skirt that has a true unisex vibe!',
   },
+  {
+    date: '2023-09-24',
+    ratingStars: 5,
+    review:
+      'Clearly, this is the best skirt Joe has created out of the 3 projects. The comfort, design and fabric strength are just fantastic. Congratulations!',
+  },
 ];
