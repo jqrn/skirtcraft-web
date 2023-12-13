@@ -125,4 +125,11 @@ export const RATINGS_TELLURIAN: Rating[] = [
     review:
       'Clearly, this is the best skirt Joe has created out of the 3 projects. The comfort, design and fabric strength are just fantastic. Congratulations!',
   },
+  {
+    date: '2023-12-11',
+    ratingStars: 5,
+    name: 'Q',
+    review:
+      "I appreciate Skirtcraft most for its utility and the fact that these skirts are truly unisex, having been designed for no particular body type. My current favorite is the Tellurian for its material weight, adjustability and range of motion. I'm so happy to have found this product--thank you ever so much!",
+  },
 ];

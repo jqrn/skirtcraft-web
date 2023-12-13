@@ -804,4 +804,11 @@ export const RATINGS_UNALIGNED: Rating[] = [
     date: '2023-09-17',
     ratingStars: 5,
   },
+  {
+    date: '2023-12-11',
+    ratingStars: 5,
+    name: 'Q',
+    review:
+      'I appreciate Skirtcraft most for its utility and the fact that these skirts are truly unisex, having been designed for no particular body type.',
+  },
 ];
