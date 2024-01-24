@@ -132,4 +132,20 @@ export const RATINGS_TELLURIAN: Rating[] = [
     review:
       "I appreciate Skirtcraft most for its utility and the fact that these skirts are truly unisex, having been designed for no particular body type. My current favorite is the Tellurian for its material weight, adjustability and range of motion. I'm so happy to have found this product--thank you ever so much!",
   },
+  {
+    date: '2024-01-24',
+    ratingStars: 5,
+  },
+  {
+    date: '2024-01-24',
+    ratingStars: 5,
+    name: 'Shannon Layne',
+  },
+  {
+    date: '2024-01-24',
+    ratingStars: 5,
+    name: 'Josué',
+    review:
+      'Ideal skirts with good pockets and good quality. They resist pretty well heavy use and look good.',
+  },
 ];
