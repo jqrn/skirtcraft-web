@@ -84,11 +84,10 @@ const AqueousSkirtProductPage = () => (
 
         <br />
         <p>
-          Note: A few customers have reported the hook-and-bar starting to pull
-          free from the fabric around it over time. We now consider it to be a
-          construction flaw; the area should have been better reinforced. We do
-          not have a fix, unfortunately. Wearing a belt to hold more of the
-          tension of the waistband helps to prevent it.
+          Note: Initially in some units the hook and bar closure was not
+          anchored well enough to the waistband and could eventually tear loose.
+          As of February 2024 all units have the area properly reinforced and
+          are free of the issue.
         </p>
       </>
     }
