@@ -823,4 +823,20 @@ export const RATINGS_UNALIGNED: Rating[] = [
     review:
       'Ideal skirts with good pockets and good quality. They resist pretty well heavy use and look good.',
   },
+  {
+    date: '2024-02-24',
+    ratingStars: 5,
+  },
+  {
+    date: '2024-02-24',
+    ratingStars: 5,
+    name: 'Eric in Ft. Collins, Colorado',
+    review:
+      'nice fit and quality, the length is perfect. I really enjoy wearing them',
+  },
+  {
+    date: '2024-02-24',
+    ratingStars: 5,
+    name: 'Erik Lundquist',
+  },
 ];
