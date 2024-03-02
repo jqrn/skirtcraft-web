@@ -1,23 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
 import { ProductPage } from '../../components/ProductPage';
-import ImgAqueous03 from '../../images/aqueous03.png';
-import ImgAqueous04 from '../../images/aqueous04.png';
-import ImgAqueous06 from '../../images/aqueous06.png';
-import ImgAqueous07 from '../../images/aqueous07.png';
-import ImgAqueous12 from '../../images/aqueous12.png';
-import ImgAqueous14 from '../../images/aqueous14.png';
-import ImgAqueous21 from '../../images/aqueous21.jpg';
-import ImgAqueous22 from '../../images/aqueous22.jpg';
+import ImgAqueous21F from '../../images/aqueous21f.jpg';
 import ImgAqueous23 from '../../images/aqueous23.jpg';
-import ImgAqueous24 from '../../images/aqueous24.jpg';
-import ImgAqueous25 from '../../images/aqueous25.jpg';
 import ImgAqueous26 from '../../images/aqueous26.jpg';
 import ImgAqueous27 from '../../images/aqueous27.jpg';
 import ImgAqueous28 from '../../images/aqueous28.jpg';
 import ImgAqueous29 from '../../images/aqueous29.jpg';
 import ImgAqueous30 from '../../images/aqueous30.jpg';
-import ImgAqueousColors from '../../images/aqueous_colors.png';
+import ImgAqueous31 from '../../images/aqueous31.jpg';
+import ImgAqueous32 from '../../images/aqueous32.jpg';
 import { RATINGS_AQUEOUS } from '../../ratings/ratingsAqueous';
 
 const AqueousSkirtProductPage = () => (
@@ -92,9 +84,9 @@ const AqueousSkirtProductPage = () => (
       </>
     }
     colors={[
-      { name: 'Black', defaultPhotoUrl: ImgAqueousColors },
-      { name: 'Purple', defaultPhotoUrl: ImgAqueousColors },
-      { name: 'Grey', defaultPhotoUrl: ImgAqueous21 },
+      { name: 'Black', defaultPhotoUrl: ImgAqueous31 },
+      { name: 'Purple', defaultPhotoUrl: ImgAqueous29 },
+      { name: 'Grey', defaultPhotoUrl: ImgAqueous30 },
     ]}
     sizes={[
       '28-29',
@@ -110,23 +102,15 @@ const AqueousSkirtProductPage = () => (
     soldOutColorSizes={[]}
     price={parseFloat(process.env.PRICE_AQUEOUS!)}
     photoUrls={[
-      ImgAqueous21,
-      ImgAqueousColors,
+      ImgAqueous21F,
       ImgAqueous26,
       ImgAqueous27,
+      ImgAqueous28,
       ImgAqueous23,
       ImgAqueous29,
-      ImgAqueous24,
-      ImgAqueous22,
-      ImgAqueous25,
-      ImgAqueous28,
+      ImgAqueous31,
       ImgAqueous30,
-      ImgAqueous04,
-      ImgAqueous12,
-      ImgAqueous03,
-      ImgAqueous07,
-      ImgAqueous14,
-      ImgAqueous06,
+      ImgAqueous32,
     ]}
     flickrAlbum={{
       url: process.env.FLICKR_ALBUM_URL_AQUEOUS!,
