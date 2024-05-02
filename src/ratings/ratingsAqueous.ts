@@ -235,7 +235,7 @@ export const RATINGS_AQUEOUS: Rating[] = [
     ratingStars: 5,
   },
   {
-    date: '2024-02-24',
+    date: '2024-02-26',
     ratingStars: 5,
     name: 'Erik Lundquist',
   },

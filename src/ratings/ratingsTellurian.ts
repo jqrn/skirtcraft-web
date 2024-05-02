@@ -156,8 +156,12 @@ export const RATINGS_TELLURIAN: Rating[] = [
       'nice fit and quality, the length is perfect. I really enjoy wearing them',
   },
   {
-    date: '2024-02-24',
+    date: '2024-02-26',
     ratingStars: 5,
     name: 'Erik Lundquist',
+  },
+  {
+    date: '2024-03-17',
+    ratingStars: 5,
   },
 ];

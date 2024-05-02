@@ -835,8 +835,20 @@ export const RATINGS_UNALIGNED: Rating[] = [
       'nice fit and quality, the length is perfect. I really enjoy wearing them',
   },
   {
-    date: '2024-02-24',
+    date: '2024-02-26',
     ratingStars: 5,
     name: 'Erik Lundquist',
+  },
+  {
+    date: '2024-03-19',
+    ratingStars: 5,
+  },
+  {
+    date: '2024-04-30',
+    ratingStars: 5,
+  },
+  {
+    date: '2024-05-01',
+    ratingStars: 4,
   },
 ];
