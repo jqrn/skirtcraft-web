@@ -851,4 +851,8 @@ export const RATINGS_UNALIGNED: Rating[] = [
     date: '2024-05-01',
     ratingStars: 4,
   },
+  {
+    date: '2024-05-02',
+    ratingStars: 5,
+  },
 ];
