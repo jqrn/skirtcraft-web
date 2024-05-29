@@ -855,4 +855,10 @@ export const RATINGS_UNALIGNED: Rating[] = [
     date: '2024-05-02',
     ratingStars: 5,
   },
+  {
+    date: '2024-05-26',
+    ratingStars: 5,
+    name: 'Daniel and Kelly in Canada',
+    review: 'We both (M/F) got one and we both love them!',
+  },
 ];
