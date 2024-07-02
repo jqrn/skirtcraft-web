@@ -11,6 +11,7 @@ import ImgAqueous30 from '../../images/aqueous30.jpg';
 import ImgAqueous31 from '../../images/aqueous31.jpg';
 import ImgAqueous32 from '../../images/aqueous32.jpg';
 import { RATINGS_AQUEOUS } from '../../ratings/ratingsAqueous';
+import { ColorSize } from '../../util/ColorSize';
 
 const AqueousSkirtProductPage = () => (
   <ProductPage
@@ -99,7 +100,10 @@ const AqueousSkirtProductPage = () => (
       '42-43',
       '44-45',
     ]}
-    soldOutColorSizes={[]}
+    soldOutColorSizes={[
+      new ColorSize('Black', '28-29'),
+      new ColorSize('Purple', '28-29'),
+    ]}
     price={parseFloat(process.env.PRICE_AQUEOUS!)}
     photoUrls={[
       ImgAqueous21F,
