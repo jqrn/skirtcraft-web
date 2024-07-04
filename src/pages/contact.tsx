@@ -22,13 +22,6 @@ const ContactPage = () => (
       <br />
       USA
     </p>
-    <br />
-
-    <p>
-      <a href={'../../skirtcraft_cards_printable.pdf'}>
-        Download printable Skirtcraft business cards (PDF)
-      </a>
-    </p>
   </Page>
 );
 
