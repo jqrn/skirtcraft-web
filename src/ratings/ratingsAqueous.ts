@@ -239,4 +239,15 @@ export const RATINGS_AQUEOUS: Rating[] = [
     ratingStars: 5,
     name: 'Erik Lundquist',
   },
+  {
+    date: '2024-07-04',
+    ratingStars: 4,
+  },
+  {
+    date: '2024-07-04',
+    ratingStars: 5,
+    name: 'Brent from Ohio',
+    review:
+      'I now own an unaligned and aqueous skirt from Skirtcraft. Both are quality skirts that are comfortable and have large, functional pockets. Keep more coming Skirtcraft!',
+  },
 ];
