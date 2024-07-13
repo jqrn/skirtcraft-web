@@ -168,4 +168,8 @@ export const RATINGS_TELLURIAN: Rating[] = [
     date: '2024-05-25',
     ratingStars: 5,
   },
+  {
+    date: '2024-07-08',
+    ratingStars: 5,
+  },
 ];
