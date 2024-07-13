@@ -8,11 +8,11 @@ export const wrapRootElement = ({ element }) => {
     <CartProvider>
       <PayPalScriptProvider
         options={{
-          'client-id': process.env.PAYPAL_CLIENT_ID,
+          clientId: process.env.PAYPAL_CLIENT_ID,
           currency: process.env.CURRENCY_CODE,
           debug: process.env.PAYPAL_DEBUG,
-          'enable-funding': process.env.PAYPAL_ENABLE_FUNDING,
-          'integration-date': process.env.PAYPAL_INTEGRATION_DATE,
+          enableFunding: process.env.PAYPAL_ENABLE_FUNDING,
+          integrationDate: process.env.PAYPAL_INTEGRATION_DATE,
         }}
       >
         {element}

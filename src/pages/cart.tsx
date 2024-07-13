@@ -10,7 +10,7 @@ import ImgTellurian from '../images/tellurian01.jpg';
 import ImgUnaligned from '../images/unaligned01.png';
 import { getSizeDisplayAllUnits } from '../util/sizeUtils';
 
-const PRODUCTS = {
+const PRODUCTS: { [name: string]: { image: any; pagePath: string } } = {
   'Unaligned Skirt': {
     image: ImgUnaligned,
     pagePath: 'unaligned',
@@ -197,12 +197,8 @@ const CartPage = () => {
             <PayPalButtonContainer>
               <PayPalButtons
                 disabled={cartContext.items.length < 1}
+                forceReRender={[cartContext]}
                 onShippingChange={(data, actions) => {
-                  console.log(
-                    `onShippingChange - data: ${JSON.stringify(
-                      data
-                    )}; actions: ${JSON.stringify(actions)}`
-                  );
                   if (!data.shipping_address?.country_code) {
                     return actions.reject();
                   }
@@ -233,40 +229,46 @@ const CartPage = () => {
                     .then(() => Promise.resolve());
                 }}
                 createOrder={(_, actions) => {
-                  return actions.order
-                    .create({
-                      purchase_units: [
-                        {
-                          amount: {
-                            value: totalPrice.toFixed(2),
-                            currency_code: currencyCode,
-                            breakdown: {
-                              item_total: {
-                                value: totalPrice.toFixed(2),
-                                currency_code: currencyCode,
-                              },
-                              shipping: {
-                                value: '0.00',
-                                currency_code: currencyCode,
-                              },
-                            },
-                          },
-                          items: cartContext.items.map((item: CartItem) => ({
-                            name: `${item.productName} - ${
-                              item.color
-                            }, ${getSizeDisplayAllUnits(item.size)}`,
-                            quantity: String(1),
-                            unit_amount: {
-                              value: item.price.toFixed(2),
+                  const getCartItemName = (item: CartItem) =>
+                    `${item.productName} - ${
+                      item.color
+                    }, ${getSizeDisplayAllUnits(item.size)}`;
+                  const itemNames = cartContext.items.map(getCartItemName);
+                  const distinctItemNames = Array.from(new Set(itemNames));
+                  return actions.order.create({
+                    intent: 'CAPTURE',
+                    purchase_units: [
+                      {
+                        amount: {
+                          value: totalPrice.toFixed(2),
+                          currency_code: currencyCode,
+                          breakdown: {
+                            item_total: {
+                              value: totalPrice.toFixed(2),
                               currency_code: currencyCode,
                             },
-                          })),
+                            shipping: {
+                              value: '0.00',
+                              currency_code: currencyCode,
+                            },
+                          },
                         },
-                      ],
-                    })
-                    .catch(error =>
-                      console.error(`Error creating order: ${error}`)
-                    );
+                        items: distinctItemNames.map(name => {
+                          const cartItems = cartContext.items.filter(
+                            item => getCartItemName(item) == name
+                          );
+                          return {
+                            name,
+                            quantity: String(cartItems.length),
+                            unit_amount: {
+                              value: cartItems[0].price.toFixed(2),
+                              currency_code: currencyCode,
+                            },
+                          };
+                        }),
+                      },
+                    ],
+                  });
                 }}
                 onApprove={async (_, actions) => {
                   await actions.order?.capture();
