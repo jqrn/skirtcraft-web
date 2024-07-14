@@ -43,20 +43,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-gtag`,
-      options: {
-        trackingIds: [process.env.GOOGLE_ANALYTICS_MEASUREMENT_ID],
-        gtagConfig: {
-          anonymize_ip: true,
-          cookie_expires: 0,
-        },
-        pluginConfig: {
-          head: true,
-          respectDNT: true,
-        },
-      },
-    },
-    {
       resolve: `gatsby-source-tumblr`,
       options: {
         blogIdentifier: `skirtcraft`,

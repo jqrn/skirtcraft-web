@@ -10,7 +10,6 @@
     "gatsby": "^5.3.3",
     "gatsby-cli": "^5.3.1",
     "gatsby-image": "^3.11.0",
-    "gatsby-plugin-google-gtag": "^5.11.0",
     "gatsby-plugin-manifest": "^5.3.1",
     "gatsby-plugin-offline": "^6.3.1",
     "gatsby-plugin-react-helmet": "^6.3.0",
