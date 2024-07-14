@@ -229,12 +229,6 @@ const CartPage = () => {
                     .then(() => Promise.resolve());
                 }}
                 createOrder={(_, actions) => {
-                  const getCartItemName = (item: CartItem) =>
-                    `${item.productName} - ${
-                      item.color
-                    }, ${getSizeDisplayAllUnits(item.size)}`;
-                  const itemNames = cartContext.items.map(getCartItemName);
-                  const distinctItemNames = Array.from(new Set(itemNames));
                   return actions.order.create({
                     intent: 'CAPTURE',
                     purchase_units: [
@@ -253,15 +247,14 @@ const CartPage = () => {
                             },
                           },
                         },
-                        items: distinctItemNames.map(name => {
-                          const cartItems = cartContext.items.filter(
-                            item => getCartItemName(item) == name
-                          );
+                        items: groupedCartItems.map(group => {
                           return {
-                            name,
-                            quantity: String(cartItems.length),
+                            name: `${group.productName} - ${
+                              group.color
+                            }, ${getSizeDisplayAllUnits(group.size)}`,
+                            quantity: String(group.quantity),
                             unit_amount: {
-                              value: cartItems[0].price.toFixed(2),
+                              value: group.price.toFixed(2),
                               currency_code: currencyCode,
                             },
                           };
