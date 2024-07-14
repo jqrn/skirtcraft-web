@@ -37,9 +37,11 @@ const doItemsMatch = (item1: CartItem, item2: CartItem) =>
   item1.size === item2.size;
 
 export const CartProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [items, setItems] = useState<CartItem[]>(
-    JSON.parse(localStorage.getItem('cart-items') ?? '[]')
-  );
+  const [items, setItems] = useState<CartItem[]>([]);
+
+  useEffect(() => {
+    setItems(JSON.parse(localStorage.getItem('cart-items') ?? '[]'));
+  }, []);
 
   const addItem = (item: CartItem) => setItems(oldItems => [...oldItems, item]);
   const removeItem = (item: CartItem) =>

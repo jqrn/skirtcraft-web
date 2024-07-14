@@ -197,7 +197,7 @@ const CartPage = () => {
             <PayPalButtonContainer>
               <PayPalButtons
                 disabled={cartContext.items.length < 1}
-                forceReRender={[cartContext]}
+                forceReRender={[totalPrice]}
                 onShippingChange={(data, actions) => {
                   if (!data.shipping_address?.country_code) {
                     return actions.reject();
