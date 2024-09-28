@@ -861,4 +861,11 @@ export const RATINGS_UNALIGNED: Rating[] = [
     name: 'Daniel and Kelly in Canada',
     review: 'We both (M/F) got one and we both love them!',
   },
+  {
+    date: '2024-08-31',
+    ratingStars: 5,
+    name: 'Onat',
+    review:
+      'Wonderful skirt - great fit, fabric has good weight, and I get lots of compliments.',
+  },
 ];

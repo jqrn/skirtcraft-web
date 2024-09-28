@@ -250,4 +250,9 @@ export const RATINGS_AQUEOUS: Rating[] = [
     review:
       'I now own an unaligned and aqueous skirt from Skirtcraft. Both are quality skirts that are comfortable and have large, functional pockets. Keep more coming Skirtcraft!',
   },
+  {
+    date: '2024-08-31',
+    ratingStars: 5,
+    review: 'Great skirt. Perfect fit Belt loops are a plus',
+  },
 ];
