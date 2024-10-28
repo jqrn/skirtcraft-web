@@ -868,4 +868,11 @@ export const RATINGS_UNALIGNED: Rating[] = [
     review:
       'Wonderful skirt - great fit, fabric has good weight, and I get lots of compliments.',
   },
+  {
+    date: '2024-10-26',
+    ratingStars: 5,
+    name: 'Zack',
+    review:
+      'This was my first skirt buy and it has worked perfect. Comfortable, fits well, and the wife is jealous of the pockets.',
+  },
 ];
