@@ -5,7 +5,7 @@ import ImgHeaderFacebook from '../images/header_facebook.png';
 import ImgHeaderInstagram from '../images/header_instagram.png';
 import ImgHeaderThreads from '../images/header_threads.png';
 import ImgHeaderTiktok from '../images/header_tiktok.png';
-import ImgHeaderTumblr from '../images/header_tumblr.png';
+import ImgHeaderBluesky from '../images/header_bluesky.png';
 import { SocialBarIcon } from './SocialBarIcon';
 
 export const SocialBar = () => (
@@ -21,6 +21,11 @@ export const SocialBar = () => (
       altText={'Threads'}
     />
     <SocialBarIcon
+      linkUrl={'https://bsky.app/profile/skirtcraft.bsky.social'}
+      imageUrl={ImgHeaderBluesky}
+      altText={'Bluesky'}
+    />
+    <SocialBarIcon
       linkUrl={'https://www.tiktok.com/@skirtcraft'}
       imageUrl={ImgHeaderTiktok}
       altText={'TikTok'}
@@ -29,11 +34,6 @@ export const SocialBar = () => (
       linkUrl={'https://facebook.com/skirtcraft'}
       imageUrl={ImgHeaderFacebook}
       altText={'Facebook'}
-    />
-    <SocialBarIcon
-      linkUrl={'https://skirtcraft.tumblr.com'}
-      imageUrl={ImgHeaderTumblr}
-      altText={'Tumblr'}
     />
     <SocialBarIcon
       linkUrl={'https://skirtcraft.etsy.com'}
