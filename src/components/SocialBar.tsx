@@ -16,14 +16,14 @@ export const SocialBar = () => (
       altText={'Instagram'}
     />
     <SocialBarIcon
-      linkUrl={'https://www.threads.net/@skirtcraft'}
-      imageUrl={ImgHeaderThreads}
-      altText={'Threads'}
-    />
-    <SocialBarIcon
       linkUrl={'https://bsky.app/profile/skirtcraft.bsky.social'}
       imageUrl={ImgHeaderBluesky}
       altText={'Bluesky'}
+    />
+    <SocialBarIcon
+      linkUrl={'https://www.threads.net/@skirtcraft'}
+      imageUrl={ImgHeaderThreads}
+      altText={'Threads'}
     />
     <SocialBarIcon
       linkUrl={'https://www.tiktok.com/@skirtcraft'}
