@@ -875,4 +875,9 @@ export const RATINGS_UNALIGNED: Rating[] = [
     review:
       'This was my first skirt buy and it has worked perfect. Comfortable, fits well, and the wife is jealous of the pockets.',
   },
+  {
+    date: '2025-02-01',
+    ratingStars: 5,
+    name: 'Luke H',
+  },
 ];
