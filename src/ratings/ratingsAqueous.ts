@@ -255,4 +255,11 @@ export const RATINGS_AQUEOUS: Rating[] = [
     ratingStars: 5,
     review: 'Great skirt. Perfect fit Belt loops are a plus',
   },
+  {
+    date: '2025-02-02',
+    ratingStars: 5,
+    name: 'Daniel from Canada',
+    review:
+      'The Aqueous is our favourite of the 3. We especially like the depth of the pockets and how they lie flat when the skirt is worn. Material is soft and comfortable and heavy enough to not worry about it flying up. His skirts were a little larger than expected, probably because he measured waist size instead of hips. She finds her skirt a little short to wear to work but ok socially. Overall we are both very pleased. It gives him confidence to wear a skirt that is specifically unisex. Please create more!',
+  },
 ];
