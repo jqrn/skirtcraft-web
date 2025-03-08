@@ -178,4 +178,9 @@ export const RATINGS_TELLURIAN: Rating[] = [
     name: 'Karen',
     review: 'Nice to have a wide variety of fit options, as well as pockets',
   },
+  {
+    date: '2025-03-02',
+    ratingStars: 5,
+    name: 'Philippe',
+  },
 ];
