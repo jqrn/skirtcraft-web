@@ -43,7 +43,7 @@ const UnalignedSkirtProductPage = () => (
             actual product has seven.
           </li>
           <li>Length: 22.5" / 57 cm</li>
-          <li>Colors: Black, Grey, Khaki</li>
+          <li>Colors: Black, Grey</li>
         </ul>
 
         <H2>Materials</H2>
@@ -90,7 +90,6 @@ const UnalignedSkirtProductPage = () => (
     colors={[
       { name: 'Black', defaultPhotoUrl: ImgUnaligned01R },
       { name: 'Grey', defaultPhotoUrl: ImgUnalignedColors },
-      { name: 'Khaki', defaultPhotoUrl: ImgUnalignedColors },
     ]}
     sizes={[
       '30-31',
@@ -108,13 +107,6 @@ const UnalignedSkirtProductPage = () => (
       new ColorSize('Grey', '34-35'),
       new ColorSize('Grey', '36-37'),
       new ColorSize('Grey', '38-39'),
-      new ColorSize('Khaki', '30-31'),
-      new ColorSize('Khaki', '32-33'),
-      new ColorSize('Khaki', '34-35'),
-      new ColorSize('Khaki', '36-37'),
-      new ColorSize('Khaki', '38-39'),
-      new ColorSize('Khaki', '40-41'),
-      new ColorSize('Khaki', '42-43'),
     ]}
     price={parseFloat(process.env.PRICE_UNALIGNED!)}
     photoUrls={[
