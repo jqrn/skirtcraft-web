@@ -214,10 +214,12 @@ export const ProductPage = (props: Props) => {
               <ProductSelectionText>
                 {props.temporaryPrice ? (
                   <span>
-                    <del>${props.price}</del>&nbsp;
+                    <del>
+                      ${props.price} (${process.env.CURRENCY_CODE})
+                    </del>
+                    &nbsp;
                     <TemporaryPriceText>
-                      ${props.temporaryPrice.price} ($
-                      {process.env.CURRENCY_CODE}) until{' '}
+                      ${props.temporaryPrice.price} until{' '}
                       {props.temporaryPrice.untilDate}!
                     </TemporaryPriceText>
                   </span>

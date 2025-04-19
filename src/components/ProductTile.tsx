@@ -21,14 +21,19 @@ export const ProductTile = (props: Props) => {
       <ProductDescription>{props.description}</ProductDescription>
       {props.temporaryPrice ? (
         <ProductPrice>
-          <del>${props.price}</del>&nbsp;
+          <del>
+            ${props.price} (${process.env.CURRENCY_CODE})
+          </del>
+          &nbsp;
           <TemporaryPriceText>
-            ${props.temporaryPrice!.price} (USD) until{' '}
+            ${props.temporaryPrice!.price} until{' '}
             {props.temporaryPrice!.untilDate}!
           </TemporaryPriceText>
         </ProductPrice>
       ) : (
-        <ProductPrice>${props.price} (USD)</ProductPrice>
+        <ProductPrice>
+          ${props.price} (${process.env.CURRENCY_CODE})
+        </ProductPrice>
       )}
     </>
   );
