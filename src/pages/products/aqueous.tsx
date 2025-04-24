@@ -103,6 +103,7 @@ const AqueousSkirtProductPage = () => (
     soldOutColorSizes={[
       new ColorSize('Black', '28-29'),
       new ColorSize('Purple', '28-29'),
+      new ColorSize('Grey', '28-29'),
     ]}
     price={parseFloat(process.env.PRICE_AQUEOUS!)}
     photoUrls={[
