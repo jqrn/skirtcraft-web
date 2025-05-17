@@ -107,6 +107,7 @@ const UnalignedSkirtProductPage = () => (
       new ColorSize('Grey', '34-35'),
       new ColorSize('Grey', '36-37'),
       new ColorSize('Grey', '38-39'),
+      new ColorSize('Grey', '40-41'),
     ]}
     price={parseFloat(process.env.PRICE_UNALIGNED!)}
     photoUrls={[
