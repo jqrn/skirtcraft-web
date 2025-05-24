@@ -7,23 +7,26 @@ const ShippingPage = () => (
     <h1>Shipping</h1>
 
     <p>
-      We typically ship within 48 hours of receiving an order. All orders are
+      We generally ship within 48 hours of receiving an order. All orders are
       shipped via United States Postal Service.{' '}
     </p>
 
     <ul>
       <li>
         US orders use{' '}
-        <a href="https://www.usps.com/ship/priority-mail.htm">Priority Mail</a>{' '}
-        and typically take 1-3 days after you receive notification of shipment.
+        <a href="https://www.usps.com/ship/ground-advantage.htm">
+          USPS Ground Advantage
+        </a>{' '}
+        and typically take 2-5 business days to arrive after you receive
+        notification of shipment.
       </li>
       <li>
-        Non-US orders use the{' '}
-        <a href="https://www.usps.com/international/mail-shipping-services.htm">
-          First Class Package International
+        Non-US orders use{' '}
+        <a href="https://www.usps.com/international/first-class-package-international-service.htm">
+          USPS First Class Package International
         </a>{' '}
-        service and typically take 7-21 days after you receive notification of
-        shipment.
+        service (sometimes facilitated by GlobalPost) and typically take 7-21
+        days to arrive after you receive notification of shipment.
       </li>
     </ul>
 
