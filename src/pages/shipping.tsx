@@ -17,16 +17,15 @@ const ShippingPage = () => (
         <a href="https://www.usps.com/ship/ground-advantage.htm">
           USPS Ground Advantage
         </a>{' '}
-        and typically take 2-5 business days to arrive after you receive
-        notification of shipment.
+        and typically take 2-5 business days from the date we ship.
       </li>
       <li>
         Non-US orders use{' '}
         <a href="https://www.usps.com/international/first-class-package-international-service.htm">
-          USPS First Class Package International
+          USPS First-Class Package International
         </a>{' '}
         service (sometimes facilitated by GlobalPost) and typically take 7-21
-        days to arrive after you receive notification of shipment.
+        days to arrive from the date we ship.
       </li>
     </ul>
 
