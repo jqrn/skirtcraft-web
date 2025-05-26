@@ -880,4 +880,11 @@ export const RATINGS_UNALIGNED: Rating[] = [
     ratingStars: 5,
     name: 'Luke H',
   },
+  {
+    date: '2025-05-24',
+    ratingStars: 5,
+    name: 'Matt',
+    review:
+      'Love it! I wanted a non-feminine skirt that felt comfortable, and this was a great pick.',
+  },
 ];
