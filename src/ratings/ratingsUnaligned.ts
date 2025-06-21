@@ -887,4 +887,11 @@ export const RATINGS_UNALIGNED: Rating[] = [
     review:
       'Love it! I wanted a non-feminine skirt that felt comfortable, and this was a great pick.',
   },
+  {
+    date: '2025-06-20',
+    ratingStars: 5,
+    name: 'Corey',
+    review:
+      'This the first time I bought a skirt. I’m very happy that it fits me very well & I can wear it more comfortably!',
+  },
 ];
