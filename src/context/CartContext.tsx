@@ -13,6 +13,8 @@ export interface CartContextType {
   items: CartItem[];
   removeItem: (item: CartItem) => void;
   removeItemGroup: (item: CartItem) => void;
+  setRef: (ref: string) => void;
+  ref: string;
 }
 
 export const CartContext = React.createContext<CartContextType>({
@@ -29,6 +31,10 @@ export const CartContext = React.createContext<CartContextType>({
   removeItemGroup: () => {
     /* nothing */
   },
+  setRef: () => {
+    /* nothing */
+  },
+  ref: '',
 });
 
 const doItemsMatch = (item1: CartItem, item2: CartItem) =>
@@ -38,9 +44,11 @@ const doItemsMatch = (item1: CartItem, item2: CartItem) =>
 
 export const CartProvider: FC<PropsWithChildren> = ({ children }) => {
   const [items, setItems] = useState<CartItem[]>([]);
+  const [ref, setRef] = useState<string>('');
 
   useEffect(() => {
     setItems(JSON.parse(localStorage.getItem('cart-items') ?? '[]'));
+    setRef(localStorage.getItem('r') ?? '[none]');
   }, []);
 
   const addItem = (item: CartItem) => setItems(oldItems => [...oldItems, item]);
@@ -64,9 +72,21 @@ export const CartProvider: FC<PropsWithChildren> = ({ children }) => {
     localStorage.setItem('cart-items', JSON.stringify(items));
   }, [items]);
 
+  useEffect(() => {
+    localStorage.setItem('r', ref);
+  }, [ref]);
+
   return (
     <CartContext.Provider
-      value={{ items, addItem, removeItem, removeItemGroup, clear }}
+      value={{
+        items,
+        addItem,
+        removeItem,
+        removeItemGroup,
+        clear,
+        ref,
+        setRef,
+      }}
     >
       {children}
     </CartContext.Provider>
