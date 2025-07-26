@@ -133,7 +133,7 @@ export const ProductPage = (props: Props) => {
               src={`https://www.youtube-nocookie.com/embed/${props.kickstarterYoutubeId}`}
               title="YouTube video player"
               frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
               allowfullscreen
             />
