@@ -127,18 +127,6 @@ export const ProductPage = (props: Props) => {
             ))}
           </Thumbnails>
 
-          <LeftSectionHeader>{`Kickstarter video (${props.kickstarterYear})`}</LeftSectionHeader>
-          <YoutubeDiv>
-            <YoutubeIframe
-              src={`https://www.youtube-nocookie.com/embed/${props.kickstarterYoutubeId}`}
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowfullscreen
-            />
-          </YoutubeDiv>
-
           {props.flickrAlbum && (
             <>
               <LeftSectionHeader>Customer photos</LeftSectionHeader>
@@ -368,6 +356,19 @@ export const ProductPage = (props: Props) => {
           <HorizontalRule />
 
           <ProductDetails>{props.details}</ProductDetails>
+
+          <H2>{`Kickstarter video (${props.kickstarterYear})`}</H2>
+          <YoutubeDiv>
+            <YoutubeIframe
+              src={`https://www.youtube-nocookie.com/embed/${props.kickstarterYoutubeId}`}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            />
+          </YoutubeDiv>
+
           {props.ratings.length > 0 && (
             <RatingsAndReviewsSection>
               <H2>RATINGS & REVIEWS</H2>
@@ -428,22 +429,6 @@ const ThumbnailImage = styled.img`
 const LeftSectionHeader = styled.h4`
   margin-top: 6em;
   text-transform: uppercase;
-`;
-
-const YoutubeDiv = styled.div`
-  position: relative;
-  height: 0;
-  padding-top: 56.25%;
-  width: 100%;
-`;
-
-const YoutubeIframe = styled.iframe`
-  position: absolute;
-  top: 0;
-  left: 0;
-  border: 0;
-  width: 100%;
-  height: 100%;
 `;
 
 const FlickrImage = styled.img`
@@ -622,7 +607,23 @@ const HorizontalRule = styled.hr`
 const ProductDetails = styled.div`
   box-sizing: undefined;
   font-size: 95%;
-  margin-bottom: 2em;
+`;
+
+const YoutubeDiv = styled.div`
+  position: relative;
+  height: 0;
+  padding-top: 56.25%;
+  margin-bottom: 1em;
+  width: 100%;
+`;
+
+const YoutubeIframe = styled.iframe`
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  width: 100%;
+  height: 100%;
 `;
 
 const RatingsAndReviewsSection = styled.div`
@@ -631,5 +632,6 @@ const RatingsAndReviewsSection = styled.div`
 `;
 
 const H2 = styled.h2`
+  margin-top: 2.5em;
   font-size: 16px;
 `;
