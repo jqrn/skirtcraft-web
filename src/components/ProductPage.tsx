@@ -26,6 +26,8 @@ interface Props {
   price: number;
   temporaryPrice?: TemporaryPrice;
   photoUrls: string[];
+  kickstarterYoutubeId: string;
+  kickstarterYear: number;
   flickrAlbum?: {
     url: string;
     mainPhotoUrl: string;
@@ -125,9 +127,21 @@ export const ProductPage = (props: Props) => {
             ))}
           </Thumbnails>
 
+          <LeftSectionHeader>{`Kickstarter video (${props.kickstarterYear})`}</LeftSectionHeader>
+          <YoutubeDiv>
+            <YoutubeIframe
+              src={`https://www.youtube-nocookie.com/embed/${props.kickstarterYoutubeId}`}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            />
+          </YoutubeDiv>
+
           {props.flickrAlbum && (
             <>
-              <CustomerPhotosText>Customer photos</CustomerPhotosText>
+              <LeftSectionHeader>Customer photos</LeftSectionHeader>
 
               <a
                 data-flickr-embed="true"
@@ -411,9 +425,25 @@ const ThumbnailImage = styled.img`
   cursor: pointer;
 `;
 
-const CustomerPhotosText = styled.h4`
+const LeftSectionHeader = styled.h4`
   margin-top: 6em;
   text-transform: uppercase;
+`;
+
+const YoutubeDiv = styled.div`
+  position: relative;
+  height: 0;
+  padding-top: 56.25%;
+  width: 100%;
+`;
+
+const YoutubeIframe = styled.iframe`
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: 0;
+  width: 100%;
+  height: 100%;
 `;
 
 const FlickrImage = styled.img`

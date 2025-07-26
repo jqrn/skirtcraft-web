@@ -78,6 +78,8 @@ const TellurianSkirtProductPage = () => (
       ImgTellurianBlackFlatLay3Spread,
     ]}
     ratings={RATINGS_TELLURIAN}
+    kickstarterYoutubeId="pUcEsWTLNHU"
+    kickstarterYear={2023}
   />
 );
 

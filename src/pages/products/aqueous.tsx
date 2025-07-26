@@ -117,6 +117,8 @@ const AqueousSkirtProductPage = () => (
       ImgAqueous30,
       ImgAqueous32,
     ]}
+    kickstarterYoutubeId="0ZhWEuuP5_c"
+    kickstarterYear={2018}
     flickrAlbum={{
       url: process.env.FLICKR_ALBUM_URL_AQUEOUS!,
       mainPhotoUrl: process.env.FLICKR_ALBUM_MAIN_PHOTO_URL_AQUEOUS!,

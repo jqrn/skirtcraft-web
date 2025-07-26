@@ -129,6 +129,8 @@ const UnalignedSkirtProductPage = () => (
       ImgButton,
       ImgOneJump,
     ]}
+    kickstarterYoutubeId="370cPQGcJlY"
+    kickstarterYear={2015}
     flickrAlbum={{
       url: process.env.FLICKR_ALBUM_URL_UNALIGNED!,
       mainPhotoUrl: process.env.FLICKR_ALBUM_MAIN_PHOTO_URL_UNALIGNED!,
