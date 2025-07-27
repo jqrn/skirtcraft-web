@@ -4,7 +4,7 @@ import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import { ColorSquare } from '../components/ColorSquare';
 import { Page } from '../components/Page';
-import { CartContext, CartItem } from '../context/CartContext';
+import { Context, CartItem } from '../context/Context';
 import ImgAqueous from '../images/aqueous21s.jpg';
 import ImgTellurian from '../images/tellurian01.jpg';
 import ImgUnaligned from '../images/unaligned01.png';
@@ -59,11 +59,11 @@ interface CartItemGroup extends CartItem {
 }
 
 const CartPage = () => {
-  const cartContext = useContext(CartContext);
+  const context = useContext(Context);
   const [wasOrderCompleted, setWasOrderCompleted] = useState(false);
   const currencyCode = process.env.CURRENCY_CODE!;
 
-  const totalPrice = cartContext.items.reduce(
+  const totalPrice = context.items.reduce(
     (runningTotal, o) => runningTotal + Number(o.price),
     0
   );
@@ -75,7 +75,7 @@ const CartPage = () => {
       shippingLocationCode = countryCode as shippingLocationCodeType;
     }
 
-    const quantity = cartContext.items.length;
+    const quantity = context.items.length;
     let shippingQuantity: 1 | 2 | 3;
     if (quantity == 1 || quantity == 2) {
       shippingQuantity = quantity;
@@ -88,7 +88,7 @@ const CartPage = () => {
     );
   };
 
-  const groupedCartItems = cartContext.items.reduce((groupedItems, item) => {
+  const groupedCartItems = context.items.reduce((groupedItems, item) => {
     let itemGroup = groupedItems.find(
       currentItemGroup =>
         currentItemGroup.productName === item.productName &&
@@ -103,6 +103,8 @@ const CartPage = () => {
     }
     return groupedItems;
   }, [] as CartItemGroup[]);
+
+  const effectiveRef = context.allowData ? context.ref : '[none]';
 
   return (
     <Page title="Cart">
@@ -150,17 +152,13 @@ const CartPage = () => {
                     <ProductDetail>Qty: </ProductDetail>
                     <Quantity>
                       <QuantityButton
-                        onClick={() =>
-                          cartContext.removeItem({ ...cartItemGroup })
-                        }
+                        onClick={() => context.removeItem({ ...cartItemGroup })}
                       >
                         ➖
                       </QuantityButton>
                       <span>{cartItemGroup.quantity}</span>
                       <QuantityButton
-                        onClick={() =>
-                          cartContext.addItem({ ...cartItemGroup })
-                        }
+                        onClick={() => context.addItem({ ...cartItemGroup })}
                       >
                         ➕
                       </QuantityButton>
@@ -168,7 +166,7 @@ const CartPage = () => {
                   </QuantitySection>
                   <Button
                     onClick={() =>
-                      cartContext.removeItemGroup({ ...cartItemGroup })
+                      context.removeItemGroup({ ...cartItemGroup })
                     }
                   >
                     Remove
@@ -178,7 +176,7 @@ const CartPage = () => {
             );
           })}
         </CartItems>
-        {cartContext.items.length > 0 && (
+        {context.items.length > 0 && (
           <Right>
             <Totals>
               <TotalPrice>
@@ -196,8 +194,8 @@ const CartPage = () => {
 
             <PayPalButtonContainer>
               <PayPalButtons
-                disabled={cartContext.items.length < 1}
-                forceReRender={[totalPrice]}
+                disabled={context.items.length < 1}
+                forceReRender={[totalPrice, effectiveRef]}
                 onShippingChange={(data, actions) => {
                   if (!data.shipping_address?.country_code) {
                     return actions.reject();
@@ -259,14 +257,14 @@ const CartPage = () => {
                             },
                           };
                         }),
-                        custom_id: `ref: ${cartContext.ref}`,
+                        custom_id: `ref: ${effectiveRef}`,
                       },
                     ],
                   });
                 }}
                 onApprove={async (_, actions) => {
                   await actions.order?.capture();
-                  cartContext.clear();
+                  context.clear();
                   setWasOrderCompleted(true);
                   return Promise.resolve();
                 }}

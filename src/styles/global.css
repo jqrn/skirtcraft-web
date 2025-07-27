@@ -6,7 +6,8 @@ div {
 body,
 input,
 select,
-option {
+option,
+button {
   font-family: 'Muli', sans-serif;
 }
 

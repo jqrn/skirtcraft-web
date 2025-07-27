@@ -3,13 +3,14 @@ import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { DestinationPrices } from '../components/DestinationPrices';
 import { Page } from '../components/Page';
-import { CartContext } from '../context/CartContext';
+import { Context } from '../context/Context';
 import { Rating } from '../ratings/Rating';
 import { ColorSize } from '../util/ColorSize';
 import { getSizeDisplay } from '../util/sizeUtils';
 import { addScriptToPage } from '../util/scriptUtils';
 import { TemporaryPrice } from '../util/TemporaryPrice';
 import { ColorSquare } from './ColorSquare';
+import { DisplayIfDataAllowed } from './DisplayIfDataAllowed';
 import { RatingSet } from './RatingSet';
 
 interface Color {
@@ -36,7 +37,7 @@ interface Props {
 }
 
 export const ProductPage = (props: Props) => {
-  const cart = useContext(CartContext);
+  const context = useContext(Context);
 
   const [selectedColor, setSelectedColor] = useState<string | undefined>();
   const [selectedSize, setSelectedSize] = useState<string | undefined>();
@@ -92,7 +93,7 @@ export const ProductPage = (props: Props) => {
     if (!isSelectionValid) {
       setShowInvalidSelectionMessage(true);
     } else {
-      cart.addItem({
+      context.addItem({
         productName: props.name,
         color: selectedColor!,
         size: selectedSize!,
@@ -358,16 +359,18 @@ export const ProductPage = (props: Props) => {
           <ProductDetails>{props.details}</ProductDetails>
 
           <H2>{`Kickstarter video (${props.kickstarterYear})`}</H2>
-          <YoutubeDiv>
-            <YoutubeIframe
-              src={`https://www.youtube-nocookie.com/embed/${props.kickstarterYoutubeId}`}
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowfullscreen
-            />
-          </YoutubeDiv>
+          <DisplayIfDataAllowed>
+            <YoutubeDiv>
+              <YoutubeIframe
+                src={`https://www.youtube-nocookie.com/embed/${props.kickstarterYoutubeId}?privacy_mode=1`}
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              />
+            </YoutubeDiv>
+          </DisplayIfDataAllowed>
 
           {props.ratings.length > 0 && (
             <RatingsAndReviewsSection>

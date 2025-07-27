@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { DisplayIfDataAllowed } from '../components/DisplayIfDataAllowed';
 import { Page } from '../components/Page';
 import { NavTabDef } from '../enums/NavTabDef';
 
@@ -15,9 +16,11 @@ const MapPage = () => (
     </p>
     <br />
 
-    <AspectRatio>
-      <MapIframe src={process.env.GOOGLE_MAP_URL} />
-    </AspectRatio>
+    <DisplayIfDataAllowed>
+      <AspectRatio>
+        <MapIframe src={process.env.GOOGLE_MAP_URL} />
+      </AspectRatio>
+    </DisplayIfDataAllowed>
   </Page>
 );
 

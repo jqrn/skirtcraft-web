@@ -1,9 +1,10 @@
 import { Link } from 'gatsby';
 import moment from 'moment';
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import ImgTumblrShare from '../images/share_tumblr_2.png';
 import { getBlogPostSlug } from '../util/blog';
+import { DisplayIfDataAllowed } from './DisplayIfDataAllowed';
 
 interface Props {
   tumblrPost: {
@@ -45,6 +46,9 @@ export const BlogPost = (props: Props) => {
     return headerElementString.substring(4, headerElementString.length - 5);
   };
 
+  const ContentWrapper =
+    post.body.indexOf('<iframe') >= 0 ? DisplayIfDataAllowed : Fragment;
+
   return (
     <Container>
       <Title>{getTitle()}</Title>
@@ -65,11 +69,13 @@ export const BlogPost = (props: Props) => {
         <img src={ImgTumblrShare} width={24} alt="View on Tumblr" />
       </SocialShareAnchor>
 
-      <Content
-        dangerouslySetInnerHTML={{
-          __html: post.body.substring(removeFirstNCharactersFromBody),
-        }}
-      />
+      <ContentWrapper>
+        <Content
+          dangerouslySetInnerHTML={{
+            __html: post.body.substring(removeFirstNCharactersFromBody),
+          }}
+        />
+      </ContentWrapper>
     </Container>
   );
 };

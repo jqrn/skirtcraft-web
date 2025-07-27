@@ -1,17 +1,17 @@
 import { Link } from 'gatsby';
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { CartContext } from '../context/CartContext';
+import { Context } from '../context/Context';
 import ImgCart from '../images/cart.png';
 
 export const Cart = () => {
-  const cartContext = useContext(CartContext);
+  const context = useContext(Context);
 
   return (
     <Container>
       <CartLink to={`/cart`}>
         <Icon src={ImgCart} alt="cart" />
-        <span>{`(${String(cartContext.items.length)})`}</span>
+        <span>{`(${String(context.items.length)})`}</span>
       </CartLink>
     </Container>
   );

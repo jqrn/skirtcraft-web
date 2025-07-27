@@ -7,7 +7,7 @@ export interface CartItem {
   price: number;
 }
 
-export interface CartContextType {
+export interface ContextType {
   addItem: (item: CartItem) => void;
   clear: () => void;
   items: CartItem[];
@@ -15,9 +15,13 @@ export interface CartContextType {
   removeItemGroup: (item: CartItem) => void;
   setRef: (ref: string) => void;
   ref: string;
+  isPrivacyDisplayed: boolean;
+  setIsPrivacyDisplayed: (isPrivacyDisplayed: boolean) => void;
+  allowData: boolean;
+  allowDataSelected: (allowData: boolean) => void;
 }
 
-export const CartContext = React.createContext<CartContextType>({
+export const Context = React.createContext<ContextType>({
   addItem: () => {
     /* nothing */
   },
@@ -35,6 +39,14 @@ export const CartContext = React.createContext<CartContextType>({
     /* nothing */
   },
   ref: '',
+  isPrivacyDisplayed: false,
+  setIsPrivacyDisplayed: () => {
+    /* nothing */
+  },
+  allowData: false,
+  allowDataSelected: () => {
+    /* nothing */
+  },
 });
 
 const doItemsMatch = (item1: CartItem, item2: CartItem) =>
@@ -42,13 +54,18 @@ const doItemsMatch = (item1: CartItem, item2: CartItem) =>
   item1.color === item2.color &&
   item1.size === item2.size;
 
-export const CartProvider: FC<PropsWithChildren> = ({ children }) => {
+export const ContextProvider: FC<PropsWithChildren> = ({ children }) => {
   const [items, setItems] = useState<CartItem[]>([]);
   const [ref, setRef] = useState<string>('');
+  const [allowData, setAllowData] = useState<boolean>(false);
+  const [isPrivacyDisplayed, setIsPrivacyDisplayed] = useState<boolean>(false);
 
   useEffect(() => {
     setItems(JSON.parse(localStorage.getItem('cart-items') ?? '[]'));
     setRef(localStorage.getItem('r') ?? '[none]');
+    const storedAllowData = localStorage.getItem('allow-data');
+    setAllowData(storedAllowData === 'true');
+    setIsPrivacyDisplayed(storedAllowData == null);
   }, []);
 
   const addItem = (item: CartItem) => setItems(oldItems => [...oldItems, item]);
@@ -68,6 +85,12 @@ export const CartProvider: FC<PropsWithChildren> = ({ children }) => {
     );
   const clear = () => setItems([]);
 
+  const allowDataSelected = (allowDataSelection: boolean) => {
+    setAllowData(allowDataSelection);
+    localStorage.setItem('allow-data', allowDataSelection.toString());
+    setIsPrivacyDisplayed(false);
+  };
+
   useEffect(() => {
     localStorage.setItem('cart-items', JSON.stringify(items));
   }, [items]);
@@ -77,7 +100,7 @@ export const CartProvider: FC<PropsWithChildren> = ({ children }) => {
   }, [ref]);
 
   return (
-    <CartContext.Provider
+    <Context.Provider
       value={{
         items,
         addItem,
@@ -86,9 +109,13 @@ export const CartProvider: FC<PropsWithChildren> = ({ children }) => {
         clear,
         ref,
         setRef,
+        isPrivacyDisplayed,
+        setIsPrivacyDisplayed,
+        allowData,
+        allowDataSelected,
       }}
     >
       {children}
-    </CartContext.Provider>
+    </Context.Provider>
   );
 };

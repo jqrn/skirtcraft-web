@@ -1,11 +1,11 @@
 import React from 'react';
 import { PayPalScriptProvider } from '@paypal/react-paypal-js';
-import { CartProvider } from './src/context/CartContext.tsx';
+import { ContextProvider } from './src/context/Context.tsx';
 import './src/styles/global.css';
 
 export const wrapRootElement = ({ element }) => {
   return (
-    <CartProvider>
+    <ContextProvider>
       <PayPalScriptProvider
         options={{
           clientId: process.env.PAYPAL_CLIENT_ID,
@@ -17,6 +17,6 @@ export const wrapRootElement = ({ element }) => {
       >
         {element}
       </PayPalScriptProvider>
-    </CartProvider>
+    </ContextProvider>
   );
 };

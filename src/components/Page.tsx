@@ -1,13 +1,14 @@
 import React, { useContext, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
-import { CartContext } from '../context/CartContext';
+import { Context } from '../context/Context';
 import { NavTabDef } from '../enums/NavTabDef';
 import ImgFavicon from '../images/icon.png';
 import { BASE_URL } from '../util/constants';
 import { Footer } from './Footer';
 import { Header } from './Header';
 import { NavBar } from './NavBar';
+import { Privacy } from './Privacy';
 
 export interface Props {
   title: string;
@@ -18,16 +19,16 @@ export interface Props {
 }
 
 export const Page = (props: Props) => {
-  const cartContext = useContext(CartContext);
+  const context = useContext(Context);
   let currentRef = '';
   if (typeof window !== 'undefined') {
     currentRef = new URLSearchParams(window.location.search).get('ref') ?? '';
   }
   useEffect(() => {
-    if (currentRef && cartContext.ref && currentRef !== cartContext.ref) {
-      cartContext.setRef(currentRef);
+    if (currentRef && context.ref && currentRef !== context.ref) {
+      context.setRef(currentRef);
     }
-  }, [currentRef, cartContext.ref]);
+  }, [currentRef, context.ref]);
 
   return (
     <Container>
@@ -70,6 +71,7 @@ export const Page = (props: Props) => {
       <NavBar currentTab={props.currentTab} />
       <Main style={props.mainStyle}>{props.children}</Main>
       <Footer currentTab={props.currentTab} />
+      {context.isPrivacyDisplayed && <Privacy />}
     </Container>
   );
 };
