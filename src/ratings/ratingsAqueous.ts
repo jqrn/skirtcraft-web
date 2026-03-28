@@ -272,4 +272,12 @@ export const RATINGS_AQUEOUS: Rating[] = [
     ratingStars: 5,
     name: 'Ben',
   },
+  {
+    date: '2026-03-07',
+    ratingStars: 5,
+  },
+  {
+    date: '2026-03-08',
+    ratingStars: 5,
+  },
 ];
