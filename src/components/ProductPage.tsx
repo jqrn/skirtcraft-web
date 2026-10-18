@@ -519,7 +519,6 @@ const SizeButtons = styled.div`
 `;
 
 const SizeButton = styled.button<{ selected?: boolean }>`
-  width: 4.5em;
   border-width: 2px;
   border-color: ${props => (props.selected ? 'black' : 'transparent')};
   border-style: solid;
